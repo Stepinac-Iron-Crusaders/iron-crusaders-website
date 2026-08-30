@@ -65,11 +65,11 @@ export default function Contact() {
               <div className="border border-zinc-800 bg-zinc-950 p-6">
                 <h3 className="text-xs font-black uppercase tracking-[0.12em] text-white">Leads & Faculty</h3>
                 <ul className="mt-4 space-y-3 text-sm">
-                  <li className="flex justify-between"><span className="text-zinc-300">Ms. Desai — Faculty Advisor</span><span className="font-mono text-xs text-zinc-500">desai@stepinac.org</span></li>
+                  <li className="flex justify-between"><span className="text-zinc-300">Mr. Estrella — Faculty Advisor</span><span className="font-mono text-xs text-zinc-500">aestrella@stepinac.org</span></li>
                   <li className="flex justify-between"><span className="text-zinc-300">Alex Rivera — Captain</span><span className="font-mono text-xs text-zinc-500">captain • via advisor</span></li>
                 </ul>
                 <div className="mt-4 flex gap-2">
-                  <a href="https://instagram.com" target="_blank" rel="noreferrer" className="border border-zinc-800 bg-zinc-900 px-3 py-2 font-mono text-xs uppercase tracking-wide text-zinc-300 hover:text-white">Instagram</a>
+                  <a href="https://www.instagram.com/stepinacrobotics/" target="_blank" rel="noreferrer" className="border border-zinc-800 bg-zinc-900 px-3 py-2 font-mono text-xs uppercase tracking-wide text-zinc-300 hover:text-white">Instagram</a>
                   <a href="https://youtube.com" target="_blank" rel="noreferrer" className="border border-zinc-800 bg-zinc-900 px-3 py-2 font-mono text-xs uppercase tracking-wide text-zinc-300 hover:text-white">YouTube</a>
                 </div>
               </div>
