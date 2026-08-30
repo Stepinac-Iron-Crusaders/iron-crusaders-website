@@ -156,12 +156,15 @@ export function Header() {
           </div>
 
           {/* Wordmark */}
-          <Link to="/" className="group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950">
-            <div className="font-sans text-[22px] font-black uppercase leading-none tracking-[0.02em] text-white md:text-[26px]">
-              Iron Crusaders
-            </div>
-            <div className="mt-1 font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 md:text-[11px]">
-              Archbishop Stepinac High School
+          <Link to="/" className="group inline-flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950">
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Iron Crusaders logo" className="h-10 w-10 shrink-0 object-contain md:h-11 md:w-11" />
+            <div>
+              <div className="font-sans text-[22px] font-black uppercase leading-none tracking-[0.02em] text-white md:text-[26px]">
+                Iron Crusaders
+              </div>
+              <div className="mt-1 font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 md:text-[11px]">
+                Archbishop Stepinac High School
+              </div>
             </div>
           </Link>
         </div>
