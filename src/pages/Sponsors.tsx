@@ -1,13 +1,31 @@
 import { Link } from "react-router-dom";
 import { PlaceholderImage } from "../components/PlaceholderImage";
+import SendCutSendLogo from "../assets/sendcutsend_logo.png";
 
 const TIERS = [
-  { name: "Crusader", price: "$5,000+", perks: ["Large logo on robot chassis", "Logo on team banner at competitions", "Large logo on team website & all social media", "Shoutout on social media", "Large logo on team shirt", "Large logo on team presentations"], accent: "bg-yellow-300 text-black" },
-  { name: "Knight", price: "$2,500", perks: ["Medium logo on robot", "Logo on team banner", "Medium logo on team website", "Social media recognition", "Medium logo on team shirt", "Medium logo on team presentations"], accent: "bg-pink-300 text-black" },
-  { name: "Paladin", price: "$1,000", perks: ["Small logo on robot", "Small logo on team shirt", "Named on team website", "Social media shoutout", "Small logo on team presentations"], accent: "bg-blue-300 text-black" },
-  { name: "Squire", price: "$500", perks: ["Small logo on team shirt", "Social media shoutout", "Named on team website", "Small logo on team presentations"], accent: "bg-gray-300 text-black" },
-  { name: "Ally", price: "$250", perks: ["Named on team website", "Named on team presentations", "Social media shoutout"], accent: "bg-purple-300 text-black" },
+  { name: "Crusader", price: "$5,000+", perks: ["Large logo on robot chassis", "Logo on team banner at competitions", "Large logo on team website & all social media", "Shoutout on social media", "Large logo on team shirt", "Large logo on team presentations"], accent: "bg-yellow-300 text-black", logoSize: "max-h-20" },
+  { name: "Knight", price: "$2,500", perks: ["Medium logo on robot", "Logo on team banner", "Medium logo on team website", "Social media recognition", "Medium logo on team shirt", "Medium logo on team presentations"], accent: "bg-pink-300 text-black", logoSize: "max-h-16" },
+  { name: "Paladin", price: "$1,000", perks: ["Small logo on robot", "Small logo on team shirt", "Named on team website", "Social media shoutout", "Small logo on team presentations"], accent: "bg-blue-300 text-black", logoSize: "max-h-14" },
+  { name: "Squire", price: "$500", perks: ["Small logo on team shirt", "Social media shoutout", "Named on team website", "Small logo on team presentations"], accent: "bg-gray-300 text-black", logoSize: "max-h-12" },
+  { name: "Ally", price: "$250", perks: ["Named on team website", "Named on team presentations", "Social media shoutout"], accent: "bg-purple-300 text-black", logoSize: "max-h-10" },
 ];
+
+// Sponsor data with tier levels
+const SPONSORS = [
+  { name: "SendCutSend", tier: "Knight", logo: SendCutSendLogo },
+  { name: "[Your Logo Here]", tier: "Ally", logo: null },
+  { name: "[Your Logo Here]", tier: "Ally", logo: null },
+  { name: "[Your Logo Here]", tier: "Ally", logo: null },
+  { name: "[Your Logo Here]", tier: "Ally", logo: null },
+  { name: "[Your Logo Here]", tier: "Ally", logo: null },
+  { name: "[Your Logo Here]", tier: "Ally", logo: null },
+  { name: "[Your Logo Here]", tier: "Ally", logo: null },
+];
+
+// Helper function to get sponsor tier info
+const getTierInfo = (tierName: string) => {
+  return TIERS.find(t => t.name === tierName);
+};
 
 export default function Sponsors() {
   return (
@@ -115,21 +133,28 @@ export default function Sponsors() {
       <section className="border-b border-zinc-800 bg-zinc-950">
         <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-14">
           <h2 className="text-center font-mono text-xs font-bold uppercase tracking-[0.12em] text-zinc-500">Our Sponsors</h2>
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-            {[
-              "Acme Machining",
-              "Westchester CNC",
-              "Hudson Valley Bank",
-              "Stepinac Alumni Fund",
-              "ConEd STEM Grant",
-              "Haas Foundation",
-              "Local 3 IBEW",
-              "Family Partners ×11",
-            ].map((s) => (
-              <div key={s} className="flex aspect-[3/2] items-center justify-center border border-zinc-800 bg-zinc-900 p-6 text-center">
-                <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-zinc-500">{s}</span>
-              </div>
-            ))}
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {SPONSORS.map((sponsor) => {
+              const tierInfo = getTierInfo(sponsor.tier);
+              return (
+                <div
+                  key={sponsor.name}
+                  className="flex aspect-[3/2] items-center justify-center border border-zinc-800 bg-zinc-900 p-6 text-center"
+                >
+                  {sponsor.logo ? (
+                    <img
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      className={`${tierInfo?.logoSize} object-contain`}
+                    />
+                  ) : (
+                    <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-zinc-500">
+                      {sponsor.name}
+                    </span>
+                  )}
+                </div>
+              );
+            })}
           </div>
           <div className="mt-10 flex flex-col items-center gap-3">
             <p className="text-sm text-zinc-400">Want to see your logo here next season?</p>
