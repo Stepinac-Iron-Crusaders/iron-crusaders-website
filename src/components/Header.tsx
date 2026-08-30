@@ -116,39 +116,16 @@ export function Header() {
               </Link>
               <div className="flex items-center gap-2 md:gap-2.5">
                 <a
-                  href="https://x.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="X (Twitter)"
-                  className="text-zinc-500 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
-                >
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M4 4l16 16M20 4L4 20" />
-                  </svg>
-                </a>
-                <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/stepinacrobotics/"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Instagram"
                   className="text-zinc-500 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
                 >
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
                     <rect x="3" y="3" width="18" height="18" rx="4" />
                     <circle cx="12" cy="12" r="4" />
                     <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-                  </svg>
-                </a>
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="YouTube"
-                  className="text-zinc-500 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
-                >
-                  <svg width="15" height="13" viewBox="0 0 24 16" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
-                    <rect x="1.5" y="1.5" width="21" height="13" rx="2.5" />
-                    <path d="M10 5.2l5 2.8-5 2.8z" fill="currentColor" stroke="none" />
                   </svg>
                 </a>
                 <a
@@ -158,7 +135,7 @@ export function Header() {
                   aria-label="GitHub"
                   className="text-zinc-500 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
                 >
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
                     <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48v-1.7c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.26.1-2.64 0 0 .84-.27 2.75 1.02A9.3 9.3 0 0 1 12 6.8a9.3 9.3 0 0 1 2.5.34c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
                   </svg>
                 </a>
@@ -401,21 +378,10 @@ export function Header() {
           <div className="mt-6 flex items-center gap-4 border-t border-zinc-800 pt-6">
             <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500">Follow us</span>
             <div className="flex gap-3">
-              <a href="https://x.com" aria-label="X" className="text-zinc-500 hover:text-white">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-                  <path d="M4 4l16 16M20 4L4 20" />
-                </svg>
-              </a>
-              <a href="https://instagram.com" aria-label="Instagram" className="text-zinc-500 hover:text-white">
+              <a href="https://www.instagram.com/stepinacrobotics/" aria-label="Instagram" className="text-zinc-500 hover:text-white">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
                   <rect x="3" y="3" width="18" height="18" rx="4" />
                   <circle cx="12" cy="12" r="4" />
-                </svg>
-              </a>
-              <a href="https://youtube.com" aria-label="YouTube" className="text-zinc-500 hover:text-white">
-                <svg width="16" height="14" viewBox="0 0 24 16" fill="none" stroke="currentColor" strokeWidth="1.4">
-                  <rect x="1.5" y="1.5" width="21" height="13" rx="3" />
-                  <path d="M10 5.2l5 2.8-5 2.8z" fill="currentColor" stroke="none" />
                 </svg>
               </a>
               <a href="https://github.com" aria-label="GitHub" className="text-zinc-500 hover:text-white">

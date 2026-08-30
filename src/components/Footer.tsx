@@ -13,9 +13,7 @@ export function Footer() {
             </p>
             <div className="mt-6 flex gap-3">
               {[
-                { label: "X", href: "https://x.com" },
                 { label: "Instagram", href: "https://www.instagram.com/stepinacrobotics/" },
-                { label: "YouTube", href: "https://youtube.com" },
                 { label: "GitHub", href: "https://github.com" },
               ].map((s) => (
                 <a

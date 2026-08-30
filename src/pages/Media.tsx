@@ -21,8 +21,7 @@ export default function Media() {
               <p className="mt-3 max-w-[48ch] text-sm leading-relaxed text-zinc-400">Reveal videos, match footage, pit photos — every season documented. Replace placeholders with your real assets.</p>
             </div>
             <div className="flex gap-2">
-              <a href="https://youtube.com" target="_blank" rel="noreferrer" className="bg-red-600 px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-red-700">YouTube →</a>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="border border-zinc-800 bg-zinc-900 px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-zinc-800">Instagram</a>
+              <a href="https://www.instagram.com/stepinacrobotics/" target="_blank" rel="noreferrer" className="bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:opacity-90">Instagram →</a>
             </div>
           </div>
         </div>
