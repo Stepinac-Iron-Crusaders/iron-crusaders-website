@@ -3,6 +3,7 @@ import { PlaceholderImage } from "../components/PlaceholderImage";
 
 const STATS = {
   students: "20+",
+  awards: "N/A",
   competitions: "ROOKIE",
   founded: "2026",
 } as const;
