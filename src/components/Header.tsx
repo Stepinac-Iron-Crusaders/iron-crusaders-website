@@ -103,7 +103,7 @@ export function Header() {
     >
       <div className="mx-auto flex max-w-[1280px] items-center justify-between px-4 py-4 lg:px-8">
         {/* LEFT */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-3">
           {/* Social row */}
           <div className="flex items-center gap-3">
             <a
@@ -156,8 +156,11 @@ export function Header() {
           </div>
 
           {/* Wordmark */}
-          <Link to="/" className="group inline-flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950">
-            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Iron Crusaders logo" className="h-10 w-10 shrink-0 object-contain md:h-11 md:w-11" />
+          <Link to="/" className="group inline-flex items-center gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950">
+            <div className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white p-1.5 shadow-[0_4px_20px_rgba(0,0,0,0.35)] ring-1 ring-white/20 transition-all duration-300 group-hover:scale-[1.04] group-hover:shadow-[0_8px_28px_rgba(0,0,0,0.45)] md:h-[64px] md:w-[64px] md:rounded-2xl md:p-2">
+              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Iron Crusaders logo" className="h-full w-full object-contain" />
+              <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/5 md:rounded-2xl" />
+            </div>
             <div>
               <div className="font-sans text-[22px] font-black uppercase leading-none tracking-[0.02em] text-white md:text-[26px]">
                 Iron Crusaders
