@@ -101,75 +101,75 @@ export function Header() {
       ref={headerRef}
       className="sticky top-0 z-50 border-b border-zinc-800 bg-zinc-950/95 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/80"
     >
-      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-4 py-4 lg:px-8">
-        {/* LEFT */}
-        <div className="flex flex-col gap-3">
-          {/* Social row */}
-          <div className="flex items-center gap-3">
-            <a
-              href="https://x.com"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="X (Twitter)"
-              className="text-zinc-500 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M4 4l16 16M20 4L4 20" />
-              </svg>
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram"
-              className="text-zinc-500 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="4" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-              </svg>
-            </a>
-            <a
-              href="https://youtube.com"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="YouTube"
-              className="text-zinc-500 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
-            >
-              <svg width="16" height="14" viewBox="0 0 24 16" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
-                <rect x="1.5" y="1.5" width="21" height="13" rx="2.5" />
-                <path d="M10 5.2l5 2.8-5 2.8z" fill="currentColor" stroke="none" />
-              </svg>
-            </a>
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-              className="text-zinc-500 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-                <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48v-1.7c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.26.1-2.64 0 0 .84-.27 2.75 1.02A9.3 9.3 0 0 1 12 6.8a9.3 9.3 0 0 1 2.5.34c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
-              </svg>
-            </a>
-          </div>
-
-          {/* Wordmark */}
-          <Link to="/" className="group inline-flex items-center gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950">
-            <div className="relative flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white p-1.5 shadow-[0_4px_20px_rgba(0,0,0,0.35)] ring-1 ring-white/20 transition-all duration-300 group-hover:scale-[1.04] group-hover:shadow-[0_8px_28px_rgba(0,0,0,0.45)] md:h-[64px] md:w-[64px] md:rounded-2xl md:p-2">
-              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Iron Crusaders logo" className="h-full w-full object-contain" />
-              <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/5 md:rounded-2xl" />
-            </div>
-            <div>
-              <div className="font-sans text-[22px] font-black uppercase leading-none tracking-[0.02em] text-white md:text-[26px]">
-                Iron Crusaders
+      <div className="mx-auto flex max-w-[1280px] items-center justify-between pl-2 pr-4 py-2 md:pl-3 md:pr-6 lg:pl-3 lg:pr-8">
+        {/* LEFT — logo pushed left, transparent, spanning header top→bottom; social pushed over Iron Crusaders */}
+        <div className="flex items-center gap-3 md:gap-4">
+          <Link to="/" className="group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950" aria-label="Home">
+            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Iron Crusaders logo" className="h-[64px] w-[64px] shrink-0 object-contain drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] transition-transform duration-300 group-hover:scale-[1.04] md:h-[78px] md:w-[78px] lg:h-[84px] lg:w-[84px]" />
+          </Link>
+          <div className="flex flex-col gap-0.5">
+            <div className="flex flex-wrap items-center gap-2.5 md:gap-3">
+              <Link to="/" className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950">
+                <div className="font-sans text-[22px] font-black uppercase leading-none tracking-[0.02em] text-white md:text-[26px]">
+                  Iron Crusaders
+                </div>
+              </Link>
+              <div className="flex items-center gap-2 md:gap-2.5">
+                <a
+                  href="https://x.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="X (Twitter)"
+                  className="text-zinc-500 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+                >
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M4 4l16 16M20 4L4 20" />
+                  </svg>
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Instagram"
+                  className="text-zinc-500 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+                >
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="4" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                  </svg>
+                </a>
+                <a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="YouTube"
+                  className="text-zinc-500 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+                >
+                  <svg width="15" height="13" viewBox="0 0 24 16" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
+                    <rect x="1.5" y="1.5" width="21" height="13" rx="2.5" />
+                    <path d="M10 5.2l5 2.8-5 2.8z" fill="currentColor" stroke="none" />
+                  </svg>
+                </a>
+                <a
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="GitHub"
+                  className="text-zinc-500 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+                >
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+                    <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48v-1.7c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69-.1-.25-.45-1.26.1-2.64 0 0 .84-.27 2.75 1.02A9.3 9.3 0 0 1 12 6.8a9.3 9.3 0 0 1 2.5.34c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
+                  </svg>
+                </a>
               </div>
-              <div className="mt-1 font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 md:text-[11px]">
+            </div>
+            <Link to="/" className="focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-red-600 focus-visible:ring-offset-1 focus-visible:ring-offset-zinc-950">
+              <div className="font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500 md:text-[11px]">
                 Archbishop Stepinac High School
               </div>
-            </div>
-          </Link>
+            </Link>
+          </div>
         </div>
 
         {/* RIGHT - Desktop nav */}
