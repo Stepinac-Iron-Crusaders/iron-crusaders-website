@@ -2,10 +2,11 @@ import { Link } from "react-router-dom";
 import { PlaceholderImage } from "../components/PlaceholderImage";
 
 const TIERS = [
-  { name: "Platinum", price: "$5,000+", perks: ["Logo on robot + pit banner", "Social & newsletter feature", "Pit tour + demo day invite"], accent: "bg-zinc-100 text-zinc-900" },
-  { name: "Gold", price: "$2,500", perks: ["Logo on pit banner + shirts", "Newsletter feature", "Shop tour"], accent: "bg-amber-500 text-white" },
-  { name: "Silver", price: "$1,000", perks: ["Logo on website & banner", "Thank-you packet"], accent: "bg-zinc-400 text-white" },
-  { name: "Bronze", price: "$500", perks: ["Logo on website sponsors", "Handwritten team thanks"], accent: "bg-amber-800 text-white" },
+  { name: "Crusader", price: "$5,000+", perks: ["Large logo on robot chassis", "Logo on team banner at competitions", "Large logo on team website & all social media", "Shoutout on social media", "Large logo on team shirt", "Large logo on team presentations"], accent: "bg-yellow-300 text-black" },
+  { name: "Knight", price: "$2,500", perks: ["Medium logo on robot", "Logo on team banner", "Medium logo on team website", "Social media recognition", "Medium logo on team shirt", "Medium logo on team presentations"], accent: "bg-pink-300 text-black" },
+  { name: "Paladin", price: "$1,000", perks: ["Small logo on robot", "Small logo on team shirt", "Named on team website", "Social media shoutout", "Small logo on team presentations"], accent: "bg-blue-300 text-black" },
+  { name: "Squire", price: "$500", perks: ["Small logo on team shirt", "Social media shoutout", "Named on team website", "Small logo on team presentations"], accent: "bg-gray-300 text-black" },
+  { name: "Ally", price: "$250", perks: ["Named on team website", "Named on team presentations", "Social media shoutout"], accent: "bg-purple-300 text-black" },
 ];
 
 export default function Sponsors() {
@@ -34,7 +35,7 @@ export default function Sponsors() {
                 Every dollar goes to materials, machining, travel, and outreach — directly into student learning. Join 18 companies and families funding the 2025–26 season.
               </p>
               <div className="mt-6 flex gap-3">
-                <a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship" className="bg-red-600 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700">Email to Sponsor →</a>
+                <a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship" className="bg-red-600 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700">Email to Sponsor</a>
                 <a href="#tiers" className="border border-zinc-700 bg-zinc-900 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-zinc-800">View Tiers</a>
               </div>
               <p className="mt-4 font-mono text-[11px] uppercase tracking-wide text-zinc-600">W-9 + receipt on request • Contact: engineeringclub@stepinac.org</p>
@@ -69,7 +70,7 @@ export default function Sponsors() {
         <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-14">
           <h2 className="text-[28px] font-black uppercase tracking-[-0.02em] text-white">Sponsorship Tiers</h2>
           <p className="mt-2 text-sm text-zinc-400">All tiers include website listing and thank-you social post. Higher tiers stack all lower perks.</p>
-          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-5">
             {TIERS.map((t) => (
               <div key={t.name} className="flex flex-col border border-zinc-800 bg-zinc-950">
                 <div className={`px-5 py-3 text-center font-mono text-xs font-black uppercase tracking-[0.12em] ${t.accent}`}>{t.name} • {t.price}</div>
@@ -99,7 +100,7 @@ export default function Sponsors() {
           <div className="mx-auto max-w-2xl border border-zinc-800 bg-zinc-900 p-6 text-center lg:p-8">
             <h2 className="text-sm font-black uppercase tracking-[0.08em] text-white">Ready to Sponsor?</h2>
             <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-              Email us with the subject “Sponsorship — (tier)” and we'll follow up within 24 hours with a W-9, receipt, and next steps.
+              Email us with the subject "Sponsorship — (tier)" and we'll follow up within 24 hours with a W-9, receipt, and next steps.
             </p>
             <a
               href="mailto:engineeringclub@stepinac.org?subject=Sponsorship%20%E2%80%94%20Tier%20Inquiry"
@@ -132,7 +133,9 @@ export default function Sponsors() {
           </div>
           <div className="mt-10 flex flex-col items-center gap-3">
             <p className="text-sm text-zinc-400">Want to see your logo here next season?</p>
-            <a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship%20%E2%80%94%20Become%20a%20Sponsor" className="inline-flex bg-white px-8 py-3 text-xs font-black uppercase tracking-[0.14em] text-zinc-900 hover:bg-zinc-100">Become a Sponsor — Email Us</a>
+            <a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship%20%E2%80%94%20Become%20a%20Sponsor" className="inline-flex bg-white px-8 py-3 text-xs font-black uppercase tracking-[0.14em] text-black hover:bg-zinc-200">
+              Become a Sponsor
+            </a>
           </div>
         </div>
       </section>
