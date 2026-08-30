@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Iron Crusaders — Redirecting…</title>
+    <script>
+      (function () {
+        var base = "/robotics-websites";
+        var path = window.location.pathname;
+        if (path.indexOf(base) === 0) {
+          path = path.slice(base.length);
+        }
+        if (path.charAt(0) !== "/") {
+          path = "/" + path;
+        }
+        window.location.replace(base + "/#" + path);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

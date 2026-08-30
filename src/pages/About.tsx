@@ -25,7 +25,7 @@ export default function About() {
                 <span className="text-zinc-500">Us</span>
               </h1>
               <p className="mt-6 max-w-[48ch] text-[15px] leading-7 text-zinc-300">
-                We are the Iron Crusaders — Stepinac’s FRC team. Student-led, mentor-supported, and alumni-propelled. We build robots to learn how to build everything else: systems, teams, and community.
+                 We design, build, and test Engineering projects. For instance, we can build things such as Robots, electronics, software, according to Student Interests. Should a robot is ready and working by December, we can enter the national competition "First Tech Challenge
               </p>
               <div className="mt-6 grid grid-cols-3 gap-3 border-t border-zinc-800 pt-6">
                 {[

@@ -53,8 +53,8 @@ export default function Sponsors() {
                 Every dollar goes to materials, machining, travel, and outreach — directly into student learning. Join 18 companies and families funding the 2025–26 season.
               </p>
               <div className="mt-6 flex gap-3">
-                <a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship" className="bg-red-600 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700">Email to Sponsor</a>
-                <a href="#tiers" className="border border-zinc-700 bg-zinc-900 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-zinc-800">View Tiers</a>
+<a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship" className="bg-red-600 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700">Email to Sponsor →</a>
+                <button type="button" onClick={() => document.getElementById("tiers")?.scrollIntoView({ behavior: "smooth" })} className="border border-zinc-700 bg-zinc-900 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-zinc-800">View Tiers</button>
               </div>
               <p className="mt-4 font-mono text-[11px] uppercase tracking-wide text-zinc-600">W-9 + receipt on request • Contact: engineeringclub@stepinac.org</p>
             </div>

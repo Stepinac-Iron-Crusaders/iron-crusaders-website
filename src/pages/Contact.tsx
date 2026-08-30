@@ -35,7 +35,7 @@ export default function Contact() {
               </p>
               <div className="mt-6 space-y-3">
                 <a
-                  href="mailto:engineeringclub@stepinac.org?subject=Iron%20Crusaders%20—%20General%20Inquiry"
+                  href="mailto:engineeringclub@stepinac.org?subject=Iron%20Crusaders%20%E2%80%94%20General%20Inquiry"
                   className="block w-full bg-red-600 px-6 py-3.5 text-center text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700 active:bg-red-800"
                 >
                   Email engineeringclub@stepinac.org →
