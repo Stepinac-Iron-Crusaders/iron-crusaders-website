@@ -6,4 +6,9 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: "/robotics-websites/",
+  server: {
+    proxy: {
+      "/api": "http://localhost:3001",
+    },
+  },
 })

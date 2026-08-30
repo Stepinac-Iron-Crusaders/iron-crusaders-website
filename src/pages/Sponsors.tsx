@@ -53,7 +53,7 @@ export default function Sponsors() {
                 Every dollar goes to materials, machining, travel, and outreach — directly into student learning. Join 18 companies and families funding the 2025–26 season.
               </p>
               <div className="mt-6 flex gap-3">
-<a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship" className="bg-red-600 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700">Email to Sponsor →</a>
+                <Link to="/contact?subject=Sponsorship" className="bg-red-600 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700">Sponsor via Form →</Link>
                 <button type="button" onClick={() => document.getElementById("tiers")?.scrollIntoView({ behavior: "smooth" })} className="border border-zinc-700 bg-zinc-900 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-zinc-800">View Tiers</button>
               </div>
               <p className="mt-4 font-mono text-[11px] uppercase tracking-wide text-zinc-600">W-9 + receipt on request • Contact: engineeringclub@stepinac.org</p>
@@ -100,12 +100,12 @@ export default function Sponsors() {
                   </ul>
                 </div>
                 <div className="p-6 pt-0">
-                  <a
-                    href={`mailto:engineeringclub@stepinac.org?subject=${encodeURIComponent(`Sponsorship Interest — ${t.name} Tier`)}`}
+                  <Link
+                    to={`/contact?tier=${encodeURIComponent(t.name)}`}
                     className="block w-full border border-zinc-700 bg-zinc-900 py-3 text-center text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-zinc-800"
                   >
                     Choose {t.name}
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -120,12 +120,12 @@ export default function Sponsors() {
             <p className="mt-2 text-sm leading-relaxed text-zinc-400">
               Email us with the subject "Sponsorship — (tier)" and we'll follow up within 24 hours with a W-9, receipt, and next steps.
             </p>
-            <a
-              href="mailto:engineeringclub@stepinac.org?subject=Sponsorship%20%E2%80%94%20Tier%20Inquiry"
+            <Link
+              to="/contact?subject=Sponsorship%20%E2%80%94%20Tier%20Inquiry"
               className="mt-6 inline-flex bg-red-600 px-8 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700"
             >
-              Email engineeringclub@stepinac.org →
-            </a>
+              Contact via Form →
+            </Link>
           </div>
         </div>
       </section>
@@ -158,9 +158,9 @@ export default function Sponsors() {
           </div>
           <div className="mt-10 flex flex-col items-center gap-3">
             <p className="text-sm text-zinc-400">Want to see your logo here next season?</p>
-            <a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship%20%E2%80%94%20Become%20a%20Sponsor" className="inline-flex bg-white px-8 py-3 text-xs font-black uppercase tracking-[0.14em] text-black hover:bg-zinc-200">
+            <Link to="/contact?tier=Crusader" className="inline-flex bg-white px-8 py-3 text-xs font-black uppercase tracking-[0.14em] text-black hover:bg-zinc-200">
               Become a Sponsor
-            </a>
+            </Link>
           </div>
         </div>
       </section>
