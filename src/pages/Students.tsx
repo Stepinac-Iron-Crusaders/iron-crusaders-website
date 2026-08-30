@@ -1,0 +1,94 @@
+import { Link } from "react-router-dom";
+import { PlaceholderImage } from "../components/PlaceholderImage";
+
+const SUBTEAMS = [
+  { name: "Mechanical", lead: "Lead: Alex R. • 8 members", desc: "CAD, fabrication, assembly — from sheet metal to carbon." },
+  { name: "Electrical", lead: "Lead: Jayden T. • 6 members", desc: "Harnessing, pneumatics, battery, CAN — reliability wins matches." },
+  { name: "Software", lead: "Lead: Priya M. • 7 members", desc: "WPILib, vision, autos — Java with AdvantageKit." },
+  { name: "Strategy & Drive", lead: "Lead: Marco D. • 5 members", desc: "Scouting, game theory, driver practice." },
+  { name: "Business & Media", lead: "Lead: Sofia L. • 6 members", desc: "Sponsors, newsletter, outreach, video." },
+];
+
+const ROSTER = [
+  { n: "Alex Rivera", role: "Build Lead — Mechanical", yr: "Senior" },
+  { n: "Priya Mehta", role: "Software Lead", yr: "Senior" },
+  { n: "Jayden Torres", role: "Electrical Lead", yr: "Junior" },
+  { n: "Marco Diaz", role: "Drive Coach", yr: "Senior" },
+  { n: "Sofia Li", role: "Outreach Lead", yr: "Junior" },
+  { n: "Ethan Cole", role: "CAD — Arm", yr: "Sophomore" },
+  { n: "Nora Kim", role: "Vision & Auto", yr: "Junior" },
+  { n: "Daniel Park", role: "Fabrication", yr: "Senior" },
+];
+
+export default function Students() {
+  return (
+    <>
+      <section className="border-b border-zinc-800 bg-zinc-950">
+        <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-16">
+          <div className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-zinc-500">
+            <Link to="/" className="hover:text-white">Home</Link>
+            <span className="text-zinc-700">/</span>
+            <Link to="/team/about" className="hover:text-white">The Team</Link>
+            <span className="text-zinc-700">/</span>
+            <span className="text-zinc-300">Students</span>
+          </div>
+          <div className="mt-6 flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <div className="mb-3 flex items-center gap-3">
+                <span className="h-px w-8 bg-red-600" aria-hidden="true" />
+                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-red-500">30+ Members • Grades 9–12</span>
+              </div>
+              <h1 className="text-[36px] font-black uppercase tracking-[-0.02em] text-white sm:text-[48px]">Students</h1>
+              <p className="mt-3 max-w-[52ch] text-sm leading-relaxed text-zinc-400">Students own the robot. Mentors guide, but student hands hold the tools, the commits, and the match strategy.</p>
+            </div>
+            <Link to="/team/leadership" className="border border-zinc-700 bg-zinc-900 px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-zinc-800">View Leadership →</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-zinc-800 bg-zinc-900">
+        <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-14">
+          <h2 className="font-mono text-xs font-bold uppercase tracking-[0.12em] text-white">Subteams</h2>
+          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {SUBTEAMS.map((t) => (
+              <div key={t.name} className="border border-zinc-800 bg-zinc-950 p-6">
+                <h3 className="text-sm font-black uppercase tracking-[0.08em] text-white">{t.name}</h3>
+                <div className="mt-1 font-mono text-[11px] text-zinc-500">{t.lead}</div>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-400">{t.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-zinc-800 bg-zinc-950">
+        <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-14">
+          <h2 className="font-mono text-xs font-bold uppercase tracking-[0.12em] text-white">Roster Highlights</h2>
+          <p className="mt-2 text-sm text-zinc-400">A selection — full roster of 33 students active Spring 2025.</p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {ROSTER.map((m) => (
+              <div key={m.n} className="border border-zinc-800 bg-zinc-900 p-5">
+                <div className="h-12 w-12 border border-zinc-700 bg-zinc-800" aria-hidden="true" />
+                <div className="mt-4 text-sm font-bold text-white">{m.n}</div>
+                <div className="text-xs text-zinc-400">{m.role}</div>
+                <div className="mt-2 inline-flex border border-zinc-800 bg-zinc-950 px-2 py-1 font-mono text-[11px] uppercase tracking-wide text-zinc-500">{m.yr}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+            <PlaceholderImage label="STUDENTS — SHOP ACTION PLACEHOLDER" className="aspect-[16/10]" />
+            <div className="border border-zinc-800 bg-zinc-900 p-6">
+              <h3 className="text-xs font-black uppercase tracking-[0.12em] text-white">Join the Team</h3>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-400">No experience needed — just commitment. Freshmen start with onboarding, safety, and a starter project (bumpers, intake rollers, or auto sim). Recruitment opens each September; offseason build nights run year-round.</p>
+              <ul className="mt-4 space-y-2 text-sm text-zinc-300">
+                <li className="flex gap-2"><span className="mt-2 h-1 w-1 bg-red-600" /> Meetings: Tue/Thu 3:30–7pm • Sat 9am–4pm (build season)</li>
+                <li className="flex gap-2"><span className="mt-2 h-1 w-1 bg-blue-600" /> Location: Stepinac Engineering Lab, Room 112</li>
+              </ul>
+              <Link to="/contact" className="mt-6 inline-flex bg-red-600 px-6 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-red-700">Contact Us to Join</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
