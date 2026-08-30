@@ -2,10 +2,9 @@ import { Link } from "react-router-dom";
 import { PlaceholderImage } from "../components/PlaceholderImage";
 
 const STATS = {
-  students: "45+",
-  awards: "18+",
-  competitions: "30+",
-  founded: "2014",
+  students: "20+",
+  competitions: "ROOKIE",
+  founded: "2026",
 } as const;
 
 export default function Home() {
@@ -77,7 +76,7 @@ export default function Home() {
               <div className="mt-8 flex flex-wrap items-center gap-6 border-t border-zinc-800 pt-6">
                 <div className="flex items-center gap-2">
                   <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-zinc-500">Season</span>
-                  <span className="text-sm font-semibold text-white">2025 — Reefscape</span>
+                  <span className="text-sm font-semibold text-white">2026 — Biocore</span>
                 </div>
                 <span className="hidden h-4 w-px bg-zinc-800 sm:block" aria-hidden="true" />
                 <div className="flex items-center gap-2">
