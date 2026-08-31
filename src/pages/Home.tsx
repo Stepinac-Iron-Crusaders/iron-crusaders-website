@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import { PlaceholderImage } from "../components/PlaceholderImage";
+import SponsorsGrid from "../components/SponsorsGrid";
+import { SPONSORS } from "../data/sponsors";
+
 
 const STATS = {
   students: "20+",
@@ -526,9 +529,9 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div
+          <div className="mt-10">
+              <SponsorsGrid sponsors={SPONSORS} />
+            </div>
                 key={i}
                 className="flex aspect-[3/2] items-center justify-center border border-zinc-800 bg-zinc-950 p-6 transition-colors hover:border-zinc-700"
               >
