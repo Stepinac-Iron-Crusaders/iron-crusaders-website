@@ -1,4 +1,16 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+
+function StudentPhoto({ name }: { name: string }) {
+  const [failed, setFailed] = useState(false);
+  const [phFailed, setPhFailed] = useState(false);
+  if (failed) {
+    if (phFailed) return <div className="h-12 w-12 border border-zinc-700 bg-zinc-800" aria-hidden="true" />;
+    return <img src={`${import.meta.env.BASE_URL}students/placeholder.jpg`} alt="placeholder" className="h-12 w-12 border border-zinc-700 bg-zinc-800 object-cover" onError={() => setPhFailed(true)} loading="lazy" />;
+  }
+  const src = `${import.meta.env.BASE_URL}students/${encodeURIComponent(name)}.jpg`;
+  return <img src={src} alt={name} className="h-12 w-12 border border-zinc-700 bg-zinc-800 object-cover" onError={() => setFailed(true)} loading="lazy" />;
+}
 
 const SUBTEAMS = [
   { name: "Mechanical", lead: "Lead: Alex R. • 8 members", desc: "CAD, fabrication, assembly — from sheet metal to carbon." },
@@ -9,14 +21,10 @@ const SUBTEAMS = [
 ];
 
 const ROSTER = [
-  { n: "Alex Rivera", role: "Build Lead — Mechanical", yr: "Senior" },
-  { n: "Priya Mehta", role: "Software Lead", yr: "Senior" },
-  { n: "Jayden Torres", role: "Electrical Lead", yr: "Junior" },
-  { n: "Marco Diaz", role: "Drive Coach", yr: "Senior" },
-  { n: "Sofia Li", role: "Outreach Lead", yr: "Junior" },
-  { n: "Ethan Cole", role: "CAD — Arm", yr: "Sophomore" },
-  { n: "Nora Kim", role: "Vision & Auto", yr: "Junior" },
-  { n: "Daniel Park", role: "Fabrication", yr: "Senior" },
+  { n: "Jace Reyna", role: "Coding Team, Finance Team, Marketing/Social Media Team", yr: "Junior" },
+  { n: "Aston Seravo", role: "Design/Build Team, Coding Team, Finance Team", yr: "Sophomore" },
+  { n: "Joseph Uthuppan", role: "Design/Build Team, Coding Team", yr: "Junior" },
+  { n: "Joseph Alex", role: "Design/Build Team, Coding Team, Finance Team, Marketing/Social Media Team", yr: "Sophomore" },
 ];
 
 export default function Students() {
@@ -35,7 +43,7 @@ export default function Students() {
             <div>
               <div className="mb-3 flex items-center gap-3">
                 <span className="h-px w-8 bg-red-600" aria-hidden="true" />
-                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-red-500">30+ Members • Grades 9–12</span>
+                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-red-500">4 Members • Grades 9–12 • Rookie 2026-2027</span>
               </div>
               <h1 className="text-[36px] font-black uppercase tracking-[-0.02em] text-white sm:text-[48px]">Students</h1>
               <p className="mt-3 max-w-[52ch] text-sm leading-relaxed text-zinc-400">Students own the robot. Mentors guide, but student hands hold the tools, the commits, and the match strategy.</p>
@@ -62,14 +70,14 @@ export default function Students() {
 
       <section className="border-b border-zinc-800 bg-zinc-950">
         <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-14">
-          <h2 className="font-mono text-xs font-bold uppercase tracking-[0.12em] text-white">Roster Highlights</h2>
-          <p className="mt-2 text-sm text-zinc-400">A selection — full roster of 33 students active Spring 2025.</p>
+          <h2 className="font-mono text-xs font-bold uppercase tracking-[0.12em] text-white">Roster</h2>
+          <p className="mt-2 text-sm text-zinc-400">Current roster — 4 members • Add photos as <span className="font-mono text-xs text-zinc-500">public/students/&lt;Name&gt;.jpg</span> (e.g. “Jace Reyna.jpg”) — shows placeholder until file exists.</p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {ROSTER.map((m) => (
               <div key={m.n} className="border border-zinc-800 bg-zinc-900 p-5">
-                <div className="h-12 w-12 border border-zinc-700 bg-zinc-800" aria-hidden="true" />
+                <StudentPhoto name={m.n} />
                 <div className="mt-4 text-sm font-bold text-white">{m.n}</div>
-                <div className="text-xs text-zinc-400">{m.role}</div>
+                <div className="text-xs leading-relaxed text-zinc-400">{m.role}</div>
                 <div className="mt-2 inline-flex border border-zinc-800 bg-zinc-950 px-2 py-1 font-mono text-[11px] uppercase tracking-wide text-zinc-500">{m.yr}</div>
               </div>
             ))}
