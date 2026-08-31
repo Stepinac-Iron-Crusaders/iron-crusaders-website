@@ -19,7 +19,7 @@ export default function NewsletterSignup() {
           </div>
           <div className="mt-6 max-w-xl">
             <h1 className="text-[36px] font-black uppercase tracking-[-0.02em] text-white sm:text-[48px]">Newsletter Signup</h1>
-            <p className="mt-3 text-sm leading-relaxed text-zinc-400">Private signup form — only email required. We’ll add you to the monthly list (1,200+ subscribers). No spam, unsubscribe anytime.</p>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-400">All that is required is an email address and we’ll add you to the monthly list. No spam, unsubscribe anytime.</p>
           </div>
         </div>
       </section>
