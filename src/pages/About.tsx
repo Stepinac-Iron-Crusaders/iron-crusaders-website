@@ -25,7 +25,7 @@ export default function About() {
                 <span className="text-zinc-500">Us</span>
               </h1>
               <p className="mt-6 max-w-[48ch] text-[15px] leading-7 text-zinc-300">
-                 We design, build, and test Engineering projects. For instance, we can build things such as Robots, electronics, software, according to Student Interests. Should a robot is ready and working by December, we can enter the national competition "First Tech Challenge
+                 We are a group of passionate students who want to challenge the elite teams of FIRST Robotics with radical new ideas. We want to make robotics competitive even for teams that do not have a monopoly on resources. By making our systems open-source, other small teams are able to use our more affordable methods to move forward.
               </p>
               <div className="mt-6 grid grid-cols-3 gap-3 border-t border-zinc-800 pt-6">
                 {[
