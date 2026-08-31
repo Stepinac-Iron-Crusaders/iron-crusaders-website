@@ -18,10 +18,6 @@ export default function NewsletterSignup() {
             <span className="text-zinc-300">Signup</span>
           </div>
           <div className="mt-6 max-w-xl">
-            <div className="mb-3 flex items-center gap-3">
-              <span className="h-px w-8 bg-red-600" aria-hidden="true" />
-              <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-red-500">Private • Not in nav</span>
-            </div>
             <h1 className="text-[36px] font-black uppercase tracking-[-0.02em] text-white sm:text-[48px]">Newsletter Signup</h1>
             <p className="mt-3 text-sm leading-relaxed text-zinc-400">Private signup form — only email required. We’ll add you to the monthly list (1,200+ subscribers). No spam, unsubscribe anytime.</p>
           </div>
@@ -32,7 +28,6 @@ export default function NewsletterSignup() {
         <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8">
           <div className="mx-auto max-w-md border border-zinc-800 bg-zinc-950 p-6 lg:p-8">
             <h2 className="text-xs font-black uppercase tracking-[0.12em] text-white">Enter your email</h2>
-            <p className="mt-2 font-mono text-[11px] text-zinc-500">Subject will be “Newsletter signup” — the email itself is the content.</p>
 
             {state.succeeded ? (
               <div className="mt-6 border border-emerald-900 bg-emerald-950/30 p-6 text-center">
