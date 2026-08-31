@@ -1,12 +1,5 @@
 import { Link } from "react-router-dom";
 
-const ISSUES = [
-  { issue: "#14 — Aug 2026", title: "Build Season Prep: Swerve, Inventory, Strategy", excerpt: "How we’re calibrating for Reefscape — new CANivore, spare modules, and binders ready." },
-  { issue: "#13 — Jun 2026", title: "Offseason Winners & Lessons", excerpt: "Ra Cha Cha recap — 6–2–0 run, 4-piece auto hit rate, and what broke." },
-  { issue: "#12 — Mar 2026", title: "NYC Regional Day 3 — Alliance Selection inside", excerpt: "Scouting choices, match 84 heartbreak, and pit story." },
-  { issue: "#11 — Jan 2026", title: "Kickoff Debrief — Reefscape first impressions", excerpt: "Coral vs algae priority? Our first prototype cuts." },
-];
-
 export default function Newsletter() {
   return (
     <>
@@ -45,19 +38,15 @@ export default function Newsletter() {
               <p className="mt-3 font-mono text-[11px] leading-relaxed text-zinc-500">Private signup — just email, subject “Newsletter signup”. No trackers.</p>
             </div>
 
-            <div className="mt-10">
-              <h3 className="font-mono text-xs font-bold uppercase tracking-[0.12em] text-white">Recent Issues</h3>
-              <div className="mt-4 space-y-3">
-                {ISSUES.map((it) => (
-                  <div key={it.issue} className="border border-zinc-800 bg-zinc-950 p-5">
-                    <div className="font-mono text-[11px] uppercase tracking-wide text-zinc-500">{it.issue}</div>
-                    <div className="mt-1 text-sm font-bold text-white">{it.title}</div>
-                    <div className="text-sm leading-relaxed text-zinc-400">{it.excerpt}</div>
-                    <a href="#" className="mt-3 inline-flex text-xs font-semibold uppercase tracking-[0.1em] text-zinc-400 hover:text-white">Read →</a>
-                  </div>
-                ))}
+            <div className="mt-10 border border-dashed border-zinc-700 bg-zinc-950 p-10 text-center">
+              <div className="mx-auto max-w-[44ch]">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center border border-zinc-800 bg-zinc-900 text-zinc-500">
+                  <span className="font-mono text-lg">—</span>
+                </div>
+                <h3 className="mt-4 text-sm font-black uppercase tracking-[0.08em] text-white">Nothing to see here yet</h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-400">Rookie team — no past issues yet. Our first issue will drop after kickoff. Subscribe above and you’ll get it first.</p>
+                <Link to="/newsletter/signup" className="mt-6 inline-flex border border-zinc-700 bg-zinc-900 px-6 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-zinc-800">Get notified →</Link>
               </div>
-              <a href="#" className="mt-6 inline-flex border border-zinc-700 bg-zinc-900 px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-zinc-800">View Archive (14 issues) →</a>
             </div>
           </div>
         </div>
