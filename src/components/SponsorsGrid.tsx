@@ -1,4 +1,5 @@
-import { Sponsor, getLogoClass } from "../data/sponsors";
+import type { Sponsor } from "../data/sponsors";
+import { getLogoClass } from "../data/sponsors";
 
 export default function SponsorsGrid({ sponsors }: { sponsors: Sponsor[] }) {
   return (
