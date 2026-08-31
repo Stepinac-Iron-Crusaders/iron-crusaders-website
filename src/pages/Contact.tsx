@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { PlaceholderImage } from "../components/PlaceholderImage";
 
 export default function Contact() {
   return (
@@ -59,12 +58,11 @@ export default function Contact() {
                   <a href="https://maps.google.com/?q=950+Mamaroneck+Ave+White+Plains+NY" target="_blank" rel="noreferrer" className="border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-white hover:bg-zinc-800">Maps →</a>
                 </div>
                 <div className="mt-6 overflow-hidden border border-zinc-800 bg-zinc-900">
-                  <PlaceholderImage label="ARCHBISHOP STEPINAC HIGH SCHOOL — BUILDING PHOTO" className="aspect-[16/9] border-0" />
+                  <img src={`${import.meta.env.BASE_URL}school.jpg`} alt="Archbishop Stepinac High School building" className="aspect-[16/9] w-full object-cover" />
                   <div className="flex items-center justify-between border-t border-zinc-800 bg-zinc-950 px-3 py-2 font-mono text-[11px] uppercase tracking-wide text-zinc-500">
                     <span>Archbishop Stepinac — White Plains</span>
                     <a href="https://www.google.com/maps/search/?api=1&query=Archbishop%20Stepinac%20High%20School%20950%20Mamaroneck%20Ave%20White%20Plains%20NY%2010605" target="_blank" rel="noreferrer" className="text-zinc-300 hover:text-white">Open in Maps →</a>
                   </div>
-                  <p className="bg-zinc-950 px-3 pb-3 font-mono text-[10px] leading-relaxed text-zinc-500">Replace with your photo: add <span className="text-zinc-300">public/school.jpg</span> and change the PlaceholderImage to an &lt;img&gt; tag.</p>
                 </div>
               </div>
 
