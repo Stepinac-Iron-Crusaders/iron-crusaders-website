@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { PlaceholderImage } from "../components/PlaceholderImage";
 
 const SUBTEAMS = [
   { name: "Mechanical", lead: "Lead: Alex R. • 8 members", desc: "CAD, fabrication, assembly — from sheet metal to carbon." },
@@ -76,7 +75,9 @@ export default function Students() {
             ))}
           </div>
           <div className="mt-8 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-            <PlaceholderImage label="STUDENTS — SHOP ACTION PLACEHOLDER" className="aspect-[16/10]" />
+            <div className="overflow-hidden border border-zinc-800 bg-zinc-900">
+              <img src={`${import.meta.env.BASE_URL}shop-action.png`} alt="Students working in the shop" className="aspect-[16/10] w-full object-cover" />
+            </div>
             <div className="border border-zinc-800 bg-zinc-900 p-6">
               <h3 className="text-xs font-black uppercase tracking-[0.12em] text-white">Join the Team</h3>
               <p className="mt-3 text-sm leading-relaxed text-zinc-400">No experience needed — just commitment. Freshmen start with onboarding, safety, and a starter project (bumpers, intake rollers, or auto sim). Recruitment opens each September; offseason build nights run year-round.</p>
