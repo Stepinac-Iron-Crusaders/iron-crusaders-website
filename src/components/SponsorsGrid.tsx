@@ -1,21 +1,5 @@
-export type Sponsor = {
-  name: string;
-  tier?: string;
-  logo?: string | null;
-};
-
-const DEFAULT_LOGO_SIZES: Record<string, string> = {
-  Crusader: "max-h-28",
-  Knight: "max-h-20",
-  Paladin: "max-h-16",
-  Squire: "max-h-12",
-  Ally: "max-h-10",
-};
-
-const getLogoClass = (tier?: string) => {
-  if (!tier) return DEFAULT_LOGO_SIZES.Ally;
-  return DEFAULT_LOGO_SIZES[tier] ?? DEFAULT_LOGO_SIZES.Ally;
-};
+import type { Sponsor } from "../data/sponsors";
+import { getLogoClass } from "../data/sponsors";
 
 export default function SponsorsGrid({ sponsors }: { sponsors: Sponsor[] }) {
   return (

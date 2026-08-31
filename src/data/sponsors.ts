@@ -1,3 +1,9 @@
+export type Sponsor = {
+  name: string;
+  tier?: string;
+  logo?: string | null;
+};
+
 import SendCutSendLogo from "../assets/sendcutsend_logo.png";
 
 export const TIERS = [
@@ -10,8 +16,8 @@ export const TIERS = [
       "Large logo on team website & all social media",
       "Shoutout on social media",
     ],
+    accent: "bg-red-600 text-white",
     logoSize: "max-h-28",
-    accent: "bg-gold-500 text-black",
   },
   {
     name: "Knight",
@@ -23,6 +29,7 @@ export const TIERS = [
       "Social media recognition",
       "Medium logo on team shirt",
     ],
+    accent: "bg-blue-600 text-white",
     logoSize: "max-h-20",
   },
   {
@@ -35,8 +42,8 @@ export const TIERS = [
       "Social media shoutout",
       "Small logo on team presentations",
     ],
+    accent: "bg-zinc-800 text-white",
     logoSize: "max-h-16",
-    accent: "bg-blue-300 text-black",
   },
   {
     name: "Squire",
@@ -47,20 +54,20 @@ export const TIERS = [
       "Named on team website",
       "Small logo on team presentations",
     ],
-    logoSize: "max-h-12",
     accent: "bg-gray-300 text-black",
+    logoSize: "max-h-12",
   },
   {
     name: "Ally",
     price: "$250",
     perks: ["Named on team website", "Named on team presentations", "Social media shoutout"],
-    logoSize: "max-h-10",
     accent: "bg-purple-300 text-black",
+    logoSize: "max-h-10",
   },
 ];
 
-export const SPONSORS = [
-  { name: "SendCutSend", tier: "Knight", logo: SendCutSendLogo },
+export const SPONSORS: Sponsor[] = [
+  { name: "SendCutSend", tier: "Paladin", logo: SendCutSendLogo },
   { name: "[Your Logo Here]", tier: "Ally", logo: null },
   { name: "[Your Logo Here]", tier: "Ally", logo: null },
   { name: "[Your Logo Here]", tier: "Ally", logo: null },
@@ -69,3 +76,17 @@ export const SPONSORS = [
   { name: "[Your Logo Here]", tier: "Ally", logo: null },
   { name: "[Your Logo Here]", tier: "Ally", logo: null },
 ];
+
+export const DEFAULT_LOGO_SIZES: Record<string, string> = {
+  Crusader: "max-h-28",
+  Knight: "max-h-20",
+  Paladin: "max-h-16",
+  Squire: "max-h-12",
+  Ally: "max-h-10",
+};
+
+export const getLogoClass = (tierName?: string) => {
+  if (!tierName) return DEFAULT_LOGO_SIZES.Ally;
+  const tier = TIERS.find((t) => t.name === tierName);
+  return tier?.logoSize ?? DEFAULT_LOGO_SIZES[tierName] ?? DEFAULT_LOGO_SIZES.Ally;
+};
