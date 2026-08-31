@@ -102,9 +102,7 @@ export default function Home() {
                     Season
                   </span>
 
-                  <span className="text-sm font-semibold text-white">
-                    2026 — Biocore
-                  </span>
+                  <span className="text-sm font-semibold text-white">2026-2027</span>
                 </div>
 
                 <span
@@ -118,9 +116,7 @@ export default function Home() {
                     aria-hidden="true"
                   />
 
-                  <span className="font-mono text-xs uppercase tracking-wide text-zinc-400">
-                    Build Season Active
-                  </span>
+                  <span className="font-mono text-xs uppercase tracking-wide text-zinc-400">Biocore build season active</span>
                 </div>
               </div>
             </div>
