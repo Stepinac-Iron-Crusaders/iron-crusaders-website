@@ -70,7 +70,6 @@ export default function NewsletterSignup() {
               </form>
             )}
           </div>
-          <p className="mx-auto mt-6 max-w-md text-center font-mono text-[10px] leading-relaxed text-zinc-600">This page is not in the main navigation — share the link directly: <span className="text-zinc-400">/newsletter/signup</span></p>
         </div>
       </section>
     </>
