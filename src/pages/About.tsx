@@ -29,7 +29,7 @@ export default function About() {
               </p>
               <div className="mt-6 grid grid-cols-3 gap-3 border-t border-zinc-800 pt-6">
                 {[
-                  { v: "ROOKIE", k: "Seasons" },
+                  { v: "ROOKIE", k: "Season" },
                   { v: "0", k: "Alumni" },
                   { v: "501(c)(3)", k: "Nonprofit" },
                 ].map((s) => (
