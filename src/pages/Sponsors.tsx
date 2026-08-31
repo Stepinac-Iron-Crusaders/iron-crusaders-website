@@ -3,10 +3,6 @@ import { PlaceholderImage } from "../components/PlaceholderImage";
 import SponsorsGrid from "../components/SponsorsGrid";
 import { SPONSORS, TIERS } from "../data/sponsors";
 
-const getTierInfo = (tierName: string) => {
-  return TIERS.find((t) => t.name === tierName);
-};
-
 export default function Sponsors() {
   return (
     <>

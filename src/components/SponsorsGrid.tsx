@@ -1,5 +1,3 @@
-import React from "react";
-
 export type Sponsor = {
   name: string;
   tier?: string;
