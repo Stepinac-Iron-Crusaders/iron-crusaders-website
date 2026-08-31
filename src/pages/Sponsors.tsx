@@ -1,44 +1,10 @@
 import { Link } from "react-router-dom";
 import { PlaceholderImage } from "../components/PlaceholderImage";
-import SendCutSendLogo from "../assets/sendcutsend_logo.png";
+import SponsorsGrid from "../components/SponsorsGrid";
+import { SPONSORS, TIERS } from "../data/sponsors";
 
-const TIERS = [
-  { name: "Crusader", price: "$5,000+", perks: ["Large logo on robot chassis", "Logo on team banner at competitions", "Large logo on team website & all social media", "Shoutout on social media"], logoSize: "max-h-28", accent: "bg-gold-500 text-black" },
-  { name: "Knight", price: "$2,500", perks: ["Medium logo on robot", "Logo on team banner", "Medium logo on team website", "Social media recognition", "Medium logo on team shirt"], logoSize: "max-h-20" },
-  { name: "Paladin", price: "$1,000", perks: ["Small logo on robot", "Small logo on team shirt", "Named on team website", "Social media shoutout", "Small logo on team presentations"], accent: "bg-blue-300 text-black", logoSize: "max-h-16" },
-  { name: "Squire", price: "$500", perks: ["Small logo on team shirt", "Social media shoutout", "Named on team website", "Small logo on team presentations"], accent: "bg-gray-300 text-black", logoSize: "max-h-12" },
-  { name: "Ally", price: "$250", perks: ["Named on team website", "Named on team presentations", "Social media shoutout"], accent: "bg-purple-300 text-black", logoSize: "max-h-10" },
-];
-
-// Sponsor data with tier levels
-const SPONSORS = [
-  { name: "SendCutSend", tier: "Knight", logo: SendCutSendLogo },
-  { name: "[Your Logo Here]", tier: "Ally", logo: null },
-  { name: "[Your Logo Here]", tier: "Ally", logo: null },
-  { name: "[Your Logo Here]", tier: "Ally", logo: null },
-  { name: "[Your Logo Here]", tier: "Ally", logo: null },
-  { name: "[Your Logo Here]", tier: "Ally", logo: null },
-  { name: "[Your Logo Here]", tier: "Ally", logo: null },
-  { name: "[Your Logo Here]", tier: "Ally", logo: null },
-];
-
-// Helper function to get sponsor tier info
 const getTierInfo = (tierName: string) => {
-  return TIERS.find(t => t.name === tierName);
-};
-
-const DEFAULT_LOGO_SIZES: Record<string, string> = {
-  Crusader: "max-h-28",
-  Knight: "max-h-20",
-  Paladin: "max-h-16",
-  Squire: "max-h-12",
-  Ally: "max-h-10",
-};
-
-const getLogoClass = (tierName?: string) => {
-  if (!tierName) return DEFAULT_LOGO_SIZES.Ally;
-  const tier = getTierInfo(tierName);
-  return tier?.logoSize ?? DEFAULT_LOGO_SIZES[tierName] ?? DEFAULT_LOGO_SIZES.Ally;
+  return TIERS.find((t) => t.name === tierName);
 };
 
 export default function Sponsors() {
@@ -48,7 +14,9 @@ export default function Sponsors() {
         <div aria-hidden="true" className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-red-600/40 to-transparent" />
         <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-16">
           <div className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-zinc-500">
-            <Link to="/" className="hover:text-white">Home</Link>
+            <Link to="/" className="hover:text-white">
+              Home
+            </Link>
             <span className="text-zinc-700">/</span>
             <span className="text-zinc-300">Sponsors</span>
           </div>
@@ -67,8 +35,16 @@ export default function Sponsors() {
                 Every dollar goes to materials, machining, travel, and outreach — directly into student learning. Join 18 companies and families funding the 2025–26 season.
               </p>
               <div className="mt-6 flex gap-3">
-                <a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship" className="bg-red-600 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700">Email to Sponsor →</a>
-                <button type="button" onClick={() => document.getElementById("tiers")?.scrollIntoView({ behavior: "smooth" })} className="border border-zinc-700 bg-zinc-900 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-zinc-800">See Tiers</button>
+                <a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship" className="bg-red-600 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700">
+                  Email to Sponsor →
+                </a>
+                <button
+                  type="button"
+                  onClick={() => document.getElementById("tiers")?.scrollIntoView({ behavior: "smooth" })}
+                  className="border border-zinc-700 bg-zinc-900 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-zinc-800"
+                >
+                  View Tiers
+                </button>
               </div>
               <p className="mt-4 font-mono text-[11px] uppercase tracking-wide text-zinc-600">W-9 + receipt on request • Contact: engineeringclub@stepinac.org</p>
             </div>
@@ -131,15 +107,8 @@ export default function Sponsors() {
         <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-14">
           <div className="mx-auto max-w-2xl border border-zinc-800 bg-zinc-900 p-6 text-center lg:p-8">
             <h2 className="text-sm font-black uppercase tracking-[0.08em] text-white">Ready to Sponsor?</h2>
-            <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-              Email us with the subject "Sponsorship — (tier)" and we'll follow up within 24 hours with a W-9, receipt, and next steps.
-            </p>
-            <a
-              href="mailto:engineeringclub@stepinac.org?subject=Sponsorship%20%E2%80%94%20Tier%20Inquiry"
-              className="mt-6 inline-flex bg-red-600 px-8 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700"
-            >
-              Email engineeringclub@stepinac.org →
-            </a>
+            <p className="mt-2 text-sm leading-relaxed text-zinc-400">Email us with the subject "Sponsorship — (tier)" and we'll follow up within 24 hours with a W-9, receipt, and next steps.</p>
+            <a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship%20%E2%80%94%20Tier%20Inquiry" className="mt-6 inline-flex bg-red-600 px-8 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700">Email engineeringclub@stepinac.org →</a>
           </div>
         </div>
       </section>
@@ -147,41 +116,12 @@ export default function Sponsors() {
       <section className="border-b border-zinc-800 bg-zinc-950">
         <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-14">
           <h2 className="text-center font-mono text-xs font-bold uppercase tracking-[0.12em] text-zinc-500">Our Sponsors</h2>
-
-          {/*
-            New sponsor layout:
-            - Use a tight, wrapping layout (flex/grid) with no boxed backgrounds.
-            - Logos sized by tier (logoSize from TIERS or DEFAULT_LOGO_SIZES).
-            - Flex-wrap / auto-fit so adding new logos adjusts layout automatically.
-          */}
-
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
-            {SPONSORS.map((sponsor) => {
-              const logoClass = getLogoClass(sponsor.tier);
-              return (
-                <div key={sponsor.name} className="flex items-center justify-center p-1">
-                  {sponsor.logo ? (
-                    <img
-                      src={sponsor.logo}
-                      alt={sponsor.name}
-                      className={`${logoClass} object-contain opacity-95`} 
-                      style={{ width: 'auto' }}
-                    />
-                  ) : (
-                    <div className="flex items-center justify-center">
-                      <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-zinc-500">{sponsor.name}</span>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+          <div className="mt-8">
+            <SponsorsGrid sponsors={SPONSORS} />
           </div>
-
           <div className="mt-10 flex flex-col items-center gap-3">
             <p className="text-sm text-zinc-400">Want to see your logo here next season?</p>
-            <a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship%20%E2%80%94%20Become%20a%20Sponsor" className="inline-flex bg-white px-8 py-3 text-xs font-black uppercase tracking-[0.14em] text-red-600">
-              Become a Sponsor
-            </a>
+            <a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship%20%E2%80%94%20Become%20a%20Sponsor" className="inline-flex bg-white px-8 py-3 text-xs font-black uppercase tracking-[0.14em] text-zinc-900">Become a Sponsor</a>
           </div>
         </div>
       </section>
