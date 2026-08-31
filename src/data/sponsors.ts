@@ -69,12 +69,6 @@ export const TIERS = [
 export const SPONSORS: Sponsor[] = [
   { name: "SendCutSend", tier: "Paladin", logo: SendCutSendLogo },
   { name: "[Your Logo Here]", tier: "Ally", logo: null },
-  { name: "[Your Logo Here]", tier: "Ally", logo: null },
-  { name: "[Your Logo Here]", tier: "Ally", logo: null },
-  { name: "[Your Logo Here]", tier: "Ally", logo: null },
-  { name: "[Your Logo Here]", tier: "Ally", logo: null },
-  { name: "[Your Logo Here]", tier: "Ally", logo: null },
-  { name: "[Your Logo Here]", tier: "Ally", logo: null },
 ];
 
 export const DEFAULT_LOGO_SIZES: Record<string, string> = {
