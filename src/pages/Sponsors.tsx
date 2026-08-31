@@ -10,9 +10,7 @@ export default function Sponsors() {
         <div aria-hidden="true" className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-red-600/40 to-transparent" />
         <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-16">
           <div className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-zinc-500">
-            <Link to="/" className="hover:text-white">
-              Home
-            </Link>
+            <Link to="/" className="hover:text-white">Home</Link>
             <span className="text-zinc-700">/</span>
             <span className="text-zinc-300">Sponsors</span>
           </div>
@@ -31,16 +29,8 @@ export default function Sponsors() {
                 Every dollar goes to materials, machining, travel, and outreach — directly into student learning. Join 18 companies and families funding the 2025–26 season.
               </p>
               <div className="mt-6 flex gap-3">
-                <a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship" className="bg-red-600 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700">
-                  Email to Sponsor →
-                </a>
-                <button
-                  type="button"
-                  onClick={() => document.getElementById("tiers")?.scrollIntoView({ behavior: "smooth" })}
-                  className="border border-zinc-700 bg-zinc-900 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-zinc-800"
-                >
-                  View Tiers
-                </button>
+                <a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship" className="bg-red-600 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700">Email</a>
+                <button type="button" onClick={() => document.getElementById("tiers")?.scrollIntoView({ behavior: "smooth" })} className="border border-zinc-700 bg-zinc-900 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white">View tiers</button>
               </div>
               <p className="mt-4 font-mono text-[11px] uppercase tracking-wide text-zinc-600">W-9 + receipt on request • Contact: engineeringclub@stepinac.org</p>
             </div>
@@ -103,8 +93,15 @@ export default function Sponsors() {
         <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-14">
           <div className="mx-auto max-w-2xl border border-zinc-800 bg-zinc-900 p-6 text-center lg:p-8">
             <h2 className="text-sm font-black uppercase tracking-[0.08em] text-white">Ready to Sponsor?</h2>
-            <p className="mt-2 text-sm leading-relaxed text-zinc-400">Email us with the subject "Sponsorship — (tier)" and we'll follow up within 24 hours with a W-9, receipt, and next steps.</p>
-            <a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship%20%E2%80%94%20Tier%20Inquiry" className="mt-6 inline-flex bg-red-600 px-8 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700">Email engineeringclub@stepinac.org →</a>
+            <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+              Email us with the subject "Sponsorship — (tier)" and we'll follow up within 24 hours with a W-9, receipt, and next steps.
+            </p>
+            <a
+              href="mailto:engineeringclub@stepinac.org?subject=Sponsorship%20%E2%80%94%20Tier%20Inquiry"
+              className="mt-6 inline-flex bg-red-600 px-8 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700"
+            >
+              Email engineeringclub@stepinac.org →
+            </a>
           </div>
         </div>
       </section>
@@ -112,12 +109,16 @@ export default function Sponsors() {
       <section className="border-b border-zinc-800 bg-zinc-950">
         <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-14">
           <h2 className="text-center font-mono text-xs font-bold uppercase tracking-[0.12em] text-zinc-500">Our Sponsors</h2>
+
           <div className="mt-8">
             <SponsorsGrid sponsors={SPONSORS} />
           </div>
+
           <div className="mt-10 flex flex-col items-center gap-3">
             <p className="text-sm text-zinc-400">Want to see your logo here next season?</p>
-            <a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship%20%E2%80%94%20Become%20a%20Sponsor" className="inline-flex bg-white px-8 py-3 text-xs font-black uppercase tracking-[0.14em] text-zinc-900">Become a Sponsor</a>
+            <a href="mailto:engineeringclub@stepinac.org?subject=Sponsorship%20%E2%80%94%20Become%20a%20Sponsor" className="inline-flex bg-white px-8 py-3 text-xs font-black uppercase tracking-[0.14em] text-zinc-900">
+              Become a Sponsor
+            </a>
           </div>
         </div>
       </section>
