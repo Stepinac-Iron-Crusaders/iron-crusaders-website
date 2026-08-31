@@ -17,7 +17,7 @@ export default function About() {
             <div>
               <div className="mb-3 flex items-center gap-3">
                 <span className="h-px w-8 bg-red-600" aria-hidden="true" />
-                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-red-500">Archbishop Stepinac • Since 2014</span>
+                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-red-500">Archbishop Stepinac High School• Since 2026</span>
               </div>
               <h1 className="text-[36px] font-black uppercase leading-[0.9] tracking-[-0.03em] text-white sm:text-[52px]">
                 About
@@ -29,8 +29,8 @@ export default function About() {
               </p>
               <div className="mt-6 grid grid-cols-3 gap-3 border-t border-zinc-800 pt-6">
                 {[
-                  { v: "11", k: "Seasons" },
-                  { v: "200+", k: "Alumni" },
+                  { v: "ROOKIE", k: "Seasons" },
+                  { v: "0", k: "Alumni" },
                   { v: "501(c)(3)", k: "Nonprofit" },
                 ].map((s) => (
                   <div key={s.k} className="border border-zinc-800 bg-zinc-900 p-4 text-center">
