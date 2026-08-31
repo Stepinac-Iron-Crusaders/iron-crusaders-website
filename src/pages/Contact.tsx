@@ -57,8 +57,20 @@ export default function Contact() {
                   <span className="border border-zinc-800 bg-zinc-900 px-3 py-1.5 text-zinc-300">Mon–Sat • See Events</span>
                   <a href="https://maps.google.com/?q=950+Mamaroneck+Ave+White+Plains+NY" target="_blank" rel="noreferrer" className="border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-white hover:bg-zinc-800">Maps →</a>
                 </div>
-                <div className="mt-6 aspect-[16/9] border border-zinc-800 bg-zinc-900 flex items-center justify-center font-mono text-[11px] uppercase tracking-wide text-zinc-600">
-                  [ Map Embed Placeholder — Google Maps iframe ]
+                <div className="mt-6 overflow-hidden border border-zinc-800 bg-zinc-900">
+                  <iframe
+                    title="Archbishop Stepinac High School — 950 Mamaroneck Ave, White Plains, NY"
+                    src="https://www.google.com/maps?q=Archbishop%20Stepinac%20High%20School,%20950%20Mamaroneck%20Ave,%20White%20Plains,%20NY%2010605&z=16&output=embed"
+                    className="aspect-[16/9] w-full"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                  <div className="flex items-center justify-between border-t border-zinc-800 bg-zinc-950 px-3 py-2 font-mono text-[11px] uppercase tracking-wide text-zinc-500">
+                    <span>Archbishop Stepinac — White Plains</span>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Archbishop%20Stepinac%20High%20School%20950%20Mamaroneck%20Ave%20White%20Plains%20NY%2010605" target="_blank" rel="noreferrer" className="text-zinc-300 hover:text-white">Open in Maps →</a>
+                  </div>
                 </div>
               </div>
 
