@@ -16,6 +16,7 @@ import Media from "./pages/Media";
 import Resources from "./pages/Resources";
 import Contact from "./pages/Contact";
 import Newsletter from "./pages/Newsletter";
+import NewsletterSignup from "./pages/NewsletterSignup";
 import Sponsors from "./pages/Sponsors";
 import NotFound from "./pages/NotFound";
 
@@ -45,6 +46,7 @@ export default function App() {
           <Route path="resources" element={<Resources />} />
           <Route path="contact" element={<Contact />} />
           <Route path="newsletter" element={<Newsletter />} />
+          <Route path="newsletter/signup" element={<NewsletterSignup />} />
           <Route path="sponsors" element={<Sponsors />} />
           <Route path="*" element={<NotFound />} />
         </Route>

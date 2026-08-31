@@ -35,14 +35,14 @@ export default function Newsletter() {
               <h2 className="text-sm font-black uppercase tracking-[0.08em] text-white">Subscribe</h2>
               <p className="mt-2 text-sm text-zinc-400">Get the next issue when we publish — usually the first Monday of each month.</p>
               <div className="mt-6">
-                <a
-                  href="mailto:engineeringclub@stepinac.org?subject=Newsletter%20Signup"
+                <Link
+                  to="/newsletter/signup"
                   className="flex w-full items-center justify-center bg-red-600 px-6 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-red-700"
                 >
-                  Subscribe by Email →
-                </a>
+                  Subscribe via Form →
+                </Link>
               </div>
-              <p className="mt-3 font-mono text-[11px] leading-relaxed text-zinc-500">Email engineeringclub@stepinac.org — no trackers, unsubscribe anytime.</p>
+              <p className="mt-3 font-mono text-[11px] leading-relaxed text-zinc-500">Private signup — just email, subject “Newsletter signup”. No trackers.</p>
             </div>
 
             <div className="mt-10">
