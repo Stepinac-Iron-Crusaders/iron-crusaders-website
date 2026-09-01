@@ -1,11 +1,48 @@
+import { useLayoutEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { gsap } from "../lib/gsap";
 
 export function Footer() {
+  const ref = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    const footer = ref.current;
+    if (!footer) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const ctx = gsap.context(() => {
+      gsap.from("[data-footer-col]", {
+        y: 18,
+        autoAlpha: 0,
+        duration: 0.7,
+        stagger: 0.08,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: footer,
+          start: "top 92%",
+          once: true,
+        },
+      });
+      gsap.from("[data-footer-bottom]", {
+        autoAlpha: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: footer,
+          start: "top 88%",
+          once: true,
+        },
+      });
+    }, footer);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <footer className="border-t border-zinc-800 bg-zinc-950">
+    <footer ref={ref} className="border-t border-zinc-800 bg-zinc-950">
       <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr] lg:gap-16">
-          <div>
+          <div data-footer-col className="will-change-transform">
             <div className="text-lg font-black uppercase tracking-[0.02em] text-white">Iron Crusaders</div>
             <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-zinc-500">Archbishop Stepinac High School • FIRST Robotics</div>
             <p className="mt-4 max-w-[36ch] text-sm leading-relaxed text-zinc-400">
@@ -40,7 +77,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div>
+          <div data-footer-col className="will-change-transform">
             <h3 className="text-xs font-bold uppercase tracking-[0.14em] text-white">Explore</h3>
             <ul className="mt-4 space-y-2.5 text-sm text-zinc-400">
               {[
@@ -60,7 +97,7 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div data-footer-col className="will-change-transform">
             <h3 className="text-xs font-bold uppercase tracking-[0.14em] text-white">Contact</h3>
             <ul className="mt-4 space-y-2.5 text-sm text-zinc-400">
               <li>950 Mamaroneck Ave</li>
@@ -74,7 +111,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-zinc-800 pt-6 text-center sm:flex-row sm:text-left">
+        <div data-footer-bottom className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-zinc-800 pt-6 text-center sm:flex-row sm:text-left will-change-transform">
           <p className="font-mono text-xs text-zinc-500">© {new Date().getFullYear()} Iron Crusaders • Archbishop Stepinac High School. All rights reserved.</p>
           <p className="font-mono text-[11px] uppercase tracking-wide text-zinc-600">Built for competition • Designed for community</p>
         </div>
