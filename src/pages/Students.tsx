@@ -21,14 +21,14 @@ const SUBTEAMS = [
 ];
 
 const ROSTER = [
-  { n: "Jace Reyna", role: "Coding Team, Finance Team, Marketing/Social Media Team", yr: "Junior" },
-  { n: "Aston Seravo", role: "Design/Build Team, Coding Team, Finance Team", yr: "Sophomore" },
-  { n: "Joseph Uthuppan", role: "Design/Build Team, Coding Team", yr: "Junior" },
-  { n: "Joseph Alex", role: "Design/Build Team, Coding Team, Finance Team, Marketing/Social Media Team", yr: "Sophomore" },
-  { n: "Julian Reiff", role: "Design/Build Team, Coding Team", yr: "Sophomore" },
-  { n: "Michael Yordan", role: "Design/Build Team, Finance Team", yr: "Sophomore" },
-  { n: "Michael Peyton", role: "Coding Team, Finance Team", yr: "Sophomore" },
-  { n: "Oisin Stack", role: "Finance Team, Marketing/Social Media Team", yr: "Junior"}
+  { n: "Jace Reyna", email: "jace@example.com", role: "Coding Team, Finance Team, Marketing/Social Media Team", yr: "Junior" },
+  { n: "Aston Seravo", email: "aston@example.com", role: "Design/Build Team, Coding Team, Finance Team", yr: "Sophomore" },
+  { n: "Joseph Uthuppan", email: "joseph@example.com", role: "Design/Build Team, Coding Team", yr: "Junior" },
+  { n: "Joseph Alex", email: "joseph@example.com", role: "Design/Build Team, Coding Team, Finance Team, Marketing/Social Media Team", yr: "Sophomore" },
+  { n: "Julian Reiff", email: "julian@example.com", role: "Design/Build Team, Coding Team", yr: "Sophomore" },
+  { n: "Michael Yordan", email: "michael@example.com", role: "Design/Build Team, Finance Team", yr: "Sophomore" },
+  { n: "Michael Peyton", email: "michael@example.com", role: "Coding Team, Finance Team", yr: "Sophomore" },
+  { n: "Oisin Stack", email: "oisin@example.com", role: "Finance Team, Marketing/Social Media Team", yr: "Junior" }
 ];
 
 export default function Students() {
@@ -81,8 +81,16 @@ export default function Students() {
               <div key={m.n} className="border border-zinc-800 bg-zinc-900 p-5">
                 <StudentPhoto name={m.n} />
                 <div className="mt-4 text-sm font-bold text-white">{m.n}</div>
+                <a
+                  href={`mailto:${m.email}`}
+                  className="mt-1 block text-xs text-zinc-500 hover:text-blue-500"
+                >
+                  {m.email}
+                </a>
                 <div className="text-xs leading-relaxed text-zinc-400">{m.role}</div>
-                <div className="mt-2 inline-flex border border-zinc-800 bg-zinc-950 px-2 py-1 font-mono text-[11px] uppercase tracking-wide text-zinc-500">{m.yr}</div>
+                <div className="mt-2 inline-flex border border-zinc-800 bg-zinc-950 px-2 py-1 font-mono text-[11px] uppercase tracking-wide text-zinc-500">
+                  {m.yr}
+                </div>
               </div>
             ))}
           </div>
