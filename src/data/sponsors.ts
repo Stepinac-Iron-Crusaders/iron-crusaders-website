@@ -18,7 +18,7 @@ export const TIERS = [
       "Shoutout on social media",
     ],
     accent: "bg-red-600 text-white",
-    logoSize: "max-h-28",
+    logoSize: "max-h-32",
   },
   {
     name: "Knight",
@@ -31,7 +31,7 @@ export const TIERS = [
       "Medium logo on team shirt",
     ],
     accent: "bg-blue-600 text-white",
-    logoSize: "max-h-22",
+    logoSize: "max-h-24",
   },
   {
     name: "Paladin",
@@ -44,7 +44,7 @@ export const TIERS = [
       "Small logo on team presentations",
     ],
     accent: "bg-zinc-800 text-white",
-    logoSize: "max-h-18",
+    logoSize: "max-h-16",
   },
   {
     name: "Squire",
@@ -56,14 +56,14 @@ export const TIERS = [
       "Small logo on team presentations",
     ],
     accent: "bg-gray-300 text-black",
-    logoSize: "max-h-12",
+    logoSize: "max-h-10",
   },
   {
     name: "Ally",
     price: "$250",
     perks: ["Named on team website", "Named on team presentations", "Social media shoutout", "*Donations under $250 will only receive the first two benefits"],
     accent: "bg-purple-300 text-black",
-    logoSize: "max-h-8",
+    logoSize: "max-h-6",
   },
 ];
 
