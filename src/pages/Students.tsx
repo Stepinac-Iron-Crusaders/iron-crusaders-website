@@ -5,11 +5,11 @@ function StudentPhoto({ name }: { name: string }) {
   const [failed, setFailed] = useState(false);
   const [phFailed, setPhFailed] = useState(false);
   if (failed) {
-    if (phFailed) return <div className="h-12 w-12 border border-zinc-700 bg-zinc-800" aria-hidden="true" />;
-    return <img src={`${import.meta.env.BASE_URL}students/placeholder.jpg`} alt="placeholder" className="h-12 w-12 border border-zinc-700 bg-zinc-800 object-cover" onError={() => setPhFailed(true)} loading="lazy" />;
+    if (phFailed) return <div className="h-12 w-12 rounded-full border border-zinc-700 bg-zinc-800" aria-hidden="true" />;
+    return <img src={`${import.meta.env.BASE_URL}students/placeholder.jpg`} alt="placeholder" className="h-12 w-12 rounded-full border border-zinc-700 bg-zinc-800 object-cover" onError={() => setPhFailed(true)} loading="lazy" />;
   }
   const src = `${import.meta.env.BASE_URL}students/${encodeURIComponent(name)}.jpg`;
-  return <img src={src} alt={name} className="h-12 w-12 border border-zinc-700 bg-zinc-800 object-cover" onError={() => setFailed(true)} loading="lazy" />;
+  return <img src={src} alt={name} className="h-12 w-12 rounded-full border border-zinc-700 bg-zinc-800 object-cover" onError={() => setFailed(true)} loading="lazy" />;
 }
 
 const SUBTEAMS = [
