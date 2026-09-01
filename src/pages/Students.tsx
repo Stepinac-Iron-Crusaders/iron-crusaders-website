@@ -71,7 +71,7 @@ export default function Students() {
       <section className="border-b border-zinc-800 bg-zinc-950">
         <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-14">
           <h2 className="font-mono text-xs font-bold uppercase tracking-[0.12em] text-white">Roster</h2>
-          <p className="mt-2 text-sm text-zinc-400">Current roster — 4 members • Add photos as <span className="font-mono text-xs text-zinc-500">public/students/&lt;Name&gt;.jpg</span> (e.g. “Jace Reyna.jpg”) — shows placeholder until file exists.</p>
+          <p className="mt-2 text-sm text-zinc-400">Current roster — 4 members.</p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {ROSTER.map((m) => (
               <div key={m.n} className="border border-zinc-800 bg-zinc-900 p-5">
