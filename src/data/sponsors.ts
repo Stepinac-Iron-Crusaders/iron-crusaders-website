@@ -5,14 +5,15 @@ export type Sponsor = {
 };
 
 import SendCutSendLogo from "../assets/sendcutsend_logo.png";
-
+import iFixitLogo from "../assets/iFixit_logo.png"
+  
 export const TIERS = [
   {
     name: "Crusader",
     price: "$5,000+",
     perks: [
       "Large logo on robot chassis",
-      "Logo on team banner at competitions",
+      "Large Logo on team banner at competitions",
       "Large logo on team website & all social media",
       "Shoutout on social media",
     ],
@@ -60,7 +61,7 @@ export const TIERS = [
   {
     name: "Ally",
     price: "$250",
-    perks: ["Named on team website", "Named on team presentations", "Social media shoutout"],
+    perks: ["Named on team website", "Named on team presentations", "Social media shoutout", "*Donations under $250 will only receive the first two benefits"],
     accent: "bg-purple-300 text-black",
     logoSize: "max-h-10",
   },
@@ -68,7 +69,7 @@ export const TIERS = [
 
 export const SPONSORS: Sponsor[] = [
   { name: "SendCutSend", tier: "Paladin", logo: SendCutSendLogo },
-  { name: "[Your Logo Here]", tier: "Ally", logo: null },
+  { name: "iFixit", tier: "Squire", logo: iFixitLogo },
 ];
 
 export const DEFAULT_LOGO_SIZES: Record<string, string> = {
