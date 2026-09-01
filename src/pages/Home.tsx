@@ -112,11 +112,11 @@ export default function Home() {
 
                 <div className="flex items-center gap-2">
                   <span
-                    className="h-2 w-2 rounded-full bg-emerald-500"
+                    className="h-2 w-2 rounded-full bg-red-500"
                     aria-hidden="true"
                   />
 
-                  <span className="font-mono text-xs uppercase tracking-wide text-zinc-400">Biocore build season active</span>
+                  <span className="font-mono text-xs uppercase tracking-wide text-zinc-400">Biocore build season inactive</span>
                 </div>
               </div>
             </div>
@@ -189,7 +189,7 @@ export default function Home() {
               <ul className="mt-8 grid gap-3 border-t border-zinc-800 pt-6 sm:grid-cols-2">
                 {[
                   "Student-led design & fabrication",
-                  "Java/C++ & WPILib autonomy",
+                  "Python/C++ & SSLAM autonomy",
                   "Community STEM outreach",
                   "Professional mentorship",
                 ].map((item) => (
@@ -265,7 +265,7 @@ export default function Home() {
                   </div>
 
                   <div className="font-mono text-xs text-zinc-500">
-                    FRC • FTC • Outreach
+                    Outreach
                   </div>
                 </div>
               </div>
