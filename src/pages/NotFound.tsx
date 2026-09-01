@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import { AnimatedPage } from "../components/AnimatedPage";
 
 export default function NotFound() {
   return (
-    <section className="border-b border-zinc-800 bg-zinc-950">
+        <AnimatedPage>
+<section className="border-b border-zinc-800 bg-zinc-950">
       <div className="mx-auto max-w-[1280px] px-4 py-24 lg:px-8 lg:py-32 text-center">
         <div className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-red-500">404 • Not Found</div>
         <h1 className="mt-4 text-[42px] font-black uppercase tracking-[-0.02em] text-white">Lost in the shop?</h1>
@@ -13,5 +15,6 @@ export default function NotFound() {
         </div>
       </div>
     </section>
+    </AnimatedPage>
   );
 }

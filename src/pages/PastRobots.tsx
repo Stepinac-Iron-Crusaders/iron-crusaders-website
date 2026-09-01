@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import { AnimatedPage } from "../components/AnimatedPage";
 
 export default function PastRobots() {
   return (
-    <>
+        <AnimatedPage>
+<>
       <section className="relative border-b border-zinc-800 bg-zinc-950">
         <div aria-hidden="true" className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-red-600/30 to-transparent" />
         <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-16">
@@ -59,5 +61,6 @@ export default function PastRobots() {
         </div>
       </section>
     </>
+    </AnimatedPage>
   );
 }

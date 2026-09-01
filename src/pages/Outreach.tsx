@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import { AnimatedPage } from "../components/AnimatedPage";
 // import { PlaceholderImage } from "../components/PlaceholderImage";
 
 export default function Outreach() {
   return (
-    <>
+        <AnimatedPage>
+<>
       {/* ===================================== HEADER ===================================== */}
       <section className="border-b border-zinc-800 bg-zinc-950">
         <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-16">
@@ -284,5 +286,6 @@ export default function Outreach() {
       ===================================== END ORIGINAL PAGE =====================================
       */}
     </>
+    </AnimatedPage>
   );
 }
