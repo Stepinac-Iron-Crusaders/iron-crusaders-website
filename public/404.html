@@ -5,13 +5,10 @@
     <title>Iron Crusaders — Redirecting…</title>
     <script>
       (function () {
-        var base = "";
-        // Support both custom domain (/) and github.io subpath
-        var ghBase = "/iron-crusaders-website";
+        var base = "/iron-crusaders-website";
         var path = window.location.pathname;
-        if (path.indexOf(ghBase) === 0) {
-          path = path.slice(ghBase.length);
-          base = ghBase;
+        if (path.indexOf(base) === 0) {
+          path = path.slice(base.length);
         }
         if (path.charAt(0) !== "/") {
           path = "/" + path;
