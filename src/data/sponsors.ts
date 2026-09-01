@@ -73,11 +73,11 @@ export const SPONSORS: Sponsor[] = [
 ];
 
 export const DEFAULT_LOGO_SIZES: Record<string, string> = {
-  Crusader: "max-h-28",
-  Knight: "max-h-22",
-  Paladin: "max-h-18",
-  Squire: "max-h-12",
-  Ally: "max-h-8",
+  Crusader: "max-h-32",
+  Knight: "max-h-24",
+  Paladin: "max-h-16",
+  Squire: "max-h-10",
+  Ally: "max-h-6",
 };
 
 export const getLogoClass = (tierName?: string) => {
