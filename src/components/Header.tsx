@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { gsap, ScrollTrigger } from "../lib/gsap";
 
 type DropdownKey = "robots" | "team" | "more" | null;
 
@@ -53,6 +54,67 @@ export function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const location = useLocation();
 
+  // GSAP: header entrance + scroll compact + nav stagger
+  useLayoutEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const ctx = gsap.context(() => {
+      const logo = header.querySelector("[data-header-logo]") as HTMLElement | null;
+      const wordmark = header.querySelector("[data-header-wordmark]") as HTMLElement | null;
+      const navItems = header.querySelectorAll<HTMLElement>("[data-header-nav]");
+      const headerInner = header.querySelector("[data-header-inner]") as HTMLElement | null;
+
+      // entrance timeline
+      const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+      if (logo) tl.from(logo, { y: -18, autoAlpha: 0, duration: 0.9, ease: "power3.out" }, 0);
+      if (wordmark) tl.from(wordmark, { y: -12, autoAlpha: 0, duration: 0.85, ease: "power3.out" }, 0.08);
+      if (navItems.length) {
+        tl.from(
+          navItems,
+          {
+            y: -10,
+            autoAlpha: 0,
+            duration: 0.6,
+            stagger: 0.06,
+            ease: "power3.out",
+          },
+          0.18
+        );
+      }
+
+      // scroll: subtle shrink + add shadow + deepen bg opacity
+      if (headerInner) {
+        ScrollTrigger.create({
+          start: "top top",
+          end: 99999,
+          onUpdate: (self) => {
+            const progress = Math.min(self.scroll() / 140, 1);
+            gsap.to(header, {
+              backgroundColor: progress > 0.5 ? "rgba(9,9,11,0.92)" : "rgba(9,9,11,0.78)",
+              boxShadow:
+                progress > 0.08
+                  ? "0 8px 32px rgba(0,0,0,0.45), 0 1px 0 rgba(39,39,42,1)"
+                  : "0 0 0 rgba(0,0,0,0)",
+              borderColor: progress > 0.08 ? "rgb(39 39 42)" : "rgb(39 39 42)",
+              duration: 0.35,
+              overwrite: true,
+            });
+            gsap.to(headerInner, {
+              paddingTop: progress > 0.12 ? "0.35rem" : "0.5rem",
+              paddingBottom: progress > 0.12 ? "0.35rem" : "0.5rem",
+              duration: 0.35,
+              overwrite: true,
+            });
+          },
+        });
+      }
+    }, header);
+
+    return () => ctx.revert();
+  }, []);
+
   const isRobotsActive = location.pathname.startsWith("/robots");
   const isTeamActive = location.pathname.startsWith("/team");
   const isMoreActive = ["/outreach", "/events", "/awards", "/media", "/resources", "/contact"].some((p) => location.pathname.startsWith(p));
@@ -101,13 +163,13 @@ export function Header() {
       ref={headerRef}
       className="sticky top-0 z-50 border-b border-zinc-800 bg-zinc-950/95 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/80"
     >
-      <div className="mx-auto flex max-w-[1280px] items-center justify-between pl-2 pr-4 py-2 md:pl-3 md:pr-6 lg:pl-3 lg:pr-8">
+      <div data-header-inner className="mx-auto flex max-w-[1280px] items-center justify-between pl-2 pr-4 py-2 md:pl-3 md:pr-6 lg:pl-3 lg:pr-8">
         {/* LEFT — logo pushed left, transparent, spanning header top→bottom; social pushed over Iron Crusaders */}
         <div className="flex items-center gap-3 md:gap-4">
-          <Link to="/" className="group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950" aria-label="Home">
+          <Link data-header-logo to="/" className="group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950" aria-label="Home">
             <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Iron Crusaders logo" className="h-[64px] w-[64px] shrink-0 object-contain drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] transition-transform duration-300 group-hover:scale-[1.04] md:h-[78px] md:w-[78px] lg:h-[84px] lg:w-[84px]" />
           </Link>
-          <div className="flex flex-col gap-0.5">
+          <div data-header-wordmark className="flex flex-col gap-0.5">
             <div className="flex flex-wrap items-center gap-2.5 md:gap-3">
               <Link to="/" className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950">
                 <div className="font-sans text-[22px] font-black uppercase leading-none tracking-[0.02em] text-white md:text-[26px]">
@@ -152,6 +214,7 @@ export function Header() {
         {/* RIGHT - Desktop nav */}
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
           <NavLink
+            data-header-nav
             to="/"
             end
             className={({ isActive }) =>
@@ -162,7 +225,7 @@ export function Header() {
           </NavLink>
 
           {/* Robots dropdown */}
-          <div className="relative">
+          <div data-header-nav className="relative">
             <button
               type="button"
               aria-expanded={openDropdown === "robots"}
@@ -192,7 +255,7 @@ export function Header() {
           </div>
 
           {/* The Team dropdown */}
-          <div className="relative">
+          <div data-header-nav className="relative">
             <button
               type="button"
               aria-expanded={openDropdown === "team"}
@@ -222,6 +285,7 @@ export function Header() {
           </div>
 
           <NavLink
+            data-header-nav
             to="/newsletter"
             className={({ isActive }) =>
               `px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 ${isActive ? "text-white" : "text-zinc-400"}`
@@ -231,6 +295,7 @@ export function Header() {
           </NavLink>
 
           <Link
+            data-header-nav
             to="/sponsors"
             className="ml-2 bg-red-600 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.14em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-red-700 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:translate-y-0 active:bg-red-800"
           >
@@ -238,7 +303,7 @@ export function Header() {
           </Link>
 
           {/* More dropdown */}
-          <div className="relative ml-1">
+          <div data-header-nav className="relative ml-1">
             <button
               type="button"
               aria-expanded={openDropdown === "more"}
