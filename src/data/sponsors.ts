@@ -4,6 +4,7 @@ export type Sponsor = {
   logo?: string | null;
 };
 
+
 import SendCutSendLogo from "../assets/sendcutsend_logo.png";
 import iFixitLogo from "../assets/iFixit_logo.png"
 import DigiKeyLogo from "../assets/Digikey_logo.png"
