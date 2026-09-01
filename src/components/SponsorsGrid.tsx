@@ -5,7 +5,7 @@ export default function SponsorsGrid({ sponsors }: { sponsors: Sponsor[] }) {
   return (
     <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
       {sponsors.map((s) => (
-        <div key={s.name} className="flex items-center justify-center p-1">
+        <div key={s.name} data-sponsor-item className="flex items-center justify-center p-1">
           {s.logo ? (
             <img
               src={s.logo}
