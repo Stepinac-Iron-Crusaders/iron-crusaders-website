@@ -7,7 +7,7 @@ export type Sponsor = {
 
 import SendCutSendLogo from "../assets/sendcutsend_logo.png";
 import iFixitLogo from "../assets/iFixit_logo.png"
-import DigiKeyLogo from "../assets/Digikey_logo.png"
+import DigiKeyLogo from "../assets/Digikey_Logo.png"
   
 export const TIERS = [
   {
