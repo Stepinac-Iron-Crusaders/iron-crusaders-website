@@ -386,8 +386,8 @@ export default function Home() {
                     </h3>
 
                     <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-                      Limelight 3 + PhotonVision. 4-piece auto with on-the-fly
-                      path replanning via PathPlanner.
+                      STALLION - Stereo computer vision and SLAM for
+                      on-the-go pathfinding. Powered by the Arduino Uno Q.
                     </p>
                   </div>
                 </div>
