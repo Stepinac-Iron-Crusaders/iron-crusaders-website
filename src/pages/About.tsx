@@ -70,14 +70,10 @@ export default function About() {
               <h3 className="font-mono text-xs font-bold uppercase tracking-[0.12em] text-white">Timeline</h3>
               <div className="mt-6 space-y-0 border-l border-zinc-800 pl-6">
                 {[
-                  { yr: "2014", t: "Team Founded", d: "Stepinac 1.0 — Power Up dreams, Woodie Flowers mindset." },
-                  { yr: "2018", t: "First FRC Robot", d: "Crusader Mk. I competes at Hudson Valley." },
-                  { yr: "2020", t: "Shop Expansion", d: "Move to dedicated engineering lab; fundraising milestone." },
-                  { yr: "2023", t: "Swerve Transition", d: "Full swerve adoption; autonomous leap." },
-                  { yr: "2025", t: "Reefscape — Mk. VII", d: "Fastest cycle yet; 30+ active students." },
+                  { yr: "2026", t: "Team Founded", d: "Iron Crusaders rookie season — first build, first bot, first competition at Archbishop Stepinac." },
                 ].map((e) => (
                   <div key={e.yr} className="relative pb-8 last:pb-0">
-                    <span className="absolute -left-[25px] top-1 h-2 w-2 bg-red-600" />
+                    <span className="absolute -left-[25px] top-1 h-2 w-2 rounded-full bg-red-600" />
                     <div className="font-mono text-xs font-bold text-red-500">{e.yr}</div>
                     <div className="mt-1 text-sm font-bold text-white">{e.t}</div>
                     <div className="text-sm leading-relaxed text-zinc-400">{e.d}</div>
