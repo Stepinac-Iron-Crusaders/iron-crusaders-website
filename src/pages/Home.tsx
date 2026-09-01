@@ -274,7 +274,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===================================== 3. OUR ROBOT ===================================== */}
+      {/* ===================================== 3. OUR ROBOT ===================================== 
       <section
         id="robot"
         className="border-b border-zinc-800 bg-zinc-950"
@@ -411,6 +411,52 @@ export default function Home() {
 
               <p className="mt-4 text-center font-mono text-[11px] uppercase tracking-wide text-zinc-600">
                 CAD • Code • Reveal video available
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      */}
+
+      {/* ===================================== OUR ROBOT — IN PROGRESS ===================================== */}
+      <section className="border-b border-zinc-800 bg-zinc-950">
+        <div className="mx-auto max-w-[1280px] px-4 py-16 lg:px-8 lg:py-20">
+          <div className="flex min-h-[300px] items-center justify-center border border-zinc-800 bg-zinc-900">
+            <div className="max-w-xl px-6 py-12 text-center">
+              <div className="mb-6 flex justify-center">
+                <div className="inline-flex items-center gap-2 border border-zinc-700 bg-zinc-950 px-4 py-2">
+                  <span className="h-2 w-2 animate-pulse bg-blue-600" />
+                  <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-400">
+                    Page In Progress
+                  </span>
+                </div>
+              </div>
+      
+              <div className="mb-3 flex items-center justify-center gap-3">
+                <span className="h-px w-8 bg-blue-600" />
+                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-blue-500">
+                  Current Machine
+                </span>
+                <span className="h-px w-8 bg-blue-600" />
+              </div>
+      
+              <h2 className="text-[30px] font-black uppercase tracking-[-0.02em] text-white sm:text-[38px]">
+                Our Robot
+              </h2>
+      
+              <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+                We’re currently documenting our competition robot, including its
+                drivetrain, mechanisms, electronics, software, and autonomous
+                systems.
+              </p>
+      
+              <div className="mx-auto mt-6 h-1 w-48 bg-zinc-800">
+                <div className="h-1 w-[45%] bg-blue-600" />
+              </div>
+      
+              <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-600">
+                Robot documentation in progress
               </p>
             </div>
           </div>
@@ -651,7 +697,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===================================== 6. OUTREACH ===================================== */}
+      {/* ===================================== 6. OUTREACH ===================================== 
       <section className="border-b border-zinc-800 bg-zinc-900">
         <div className="mx-auto max-w-[1280px] px-4 py-16 lg:px-8 lg:py-20">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
@@ -742,6 +788,55 @@ export default function Home() {
               View All Outreach{" "}
               <span aria-hidden="true">→</span>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      */}
+
+      {/* ===================================== OUTREACH — IN PROGRESS ===================================== */}
+      <section className="border-b border-zinc-800 bg-zinc-900">
+        <div className="mx-auto max-w-[1280px] px-4 py-16 lg:px-8 lg:py-20">
+          <div className="flex min-h-[300px] items-center justify-center border border-zinc-800 bg-zinc-950">
+            <div className="max-w-xl px-6 py-12 text-center">
+      
+              <div className="mb-6 flex justify-center">
+                <div className="inline-flex items-center gap-2 border border-zinc-700 bg-zinc-900 px-4 py-2">
+                  <span className="h-2 w-2 animate-pulse bg-blue-600" />
+                  <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-400">
+                    Page In Progress
+                  </span>
+                </div>
+              </div>
+      
+              <div className="mb-3 flex items-center justify-center gap-3">
+                <span className="h-px w-8 bg-blue-600" />
+      
+                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-blue-500">
+                  Beyond the Field
+                </span>
+      
+                <span className="h-px w-8 bg-blue-600" />
+              </div>
+      
+              <h2 className="text-[30px] font-black uppercase tracking-[-0.02em] text-white sm:text-[38px]">
+                Outreach
+              </h2>
+      
+              <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+                We’re currently building our outreach section to showcase STEM
+                programs, school visits, workshops, community events, and mentorship.
+              </p>
+      
+              <div className="mx-auto mt-6 h-1 w-48 bg-zinc-800">
+                <div className="h-1 w-[45%] bg-blue-600" />
+              </div>
+      
+              <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-600">
+                Outreach system in progress
+              </p>
+      
+            </div>
           </div>
         </div>
       </section>
@@ -882,7 +977,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===================================== 9. NEWS ===================================== */}
+      {/* ===================================== 9. NEWS ===================================== 
       <section className="border-b border-zinc-800 bg-zinc-950">
         <div className="mx-auto max-w-[1280px] px-4 py-16 lg:px-8 lg:py-20">
           <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
@@ -985,6 +1080,59 @@ export default function Home() {
         </div>
       </section>
 
+      */}
+
+      
+      {/* ===================================== LATEST NEWS — IN PROGRESS ===================================== */}
+      <section className="border-b border-zinc-800 bg-zinc-950">
+        <div className="mx-auto max-w-[1280px] px-4 py-16 lg:px-8 lg:py-20">
+          <div className="flex min-h-[300px] items-center justify-center border border-zinc-800 bg-zinc-900">
+            <div className="max-w-xl px-6 py-12 text-center">
+      
+              <div className="mb-6 flex justify-center">
+                <div className="inline-flex items-center gap-2 border border-zinc-700 bg-zinc-950 px-4 py-2">
+                  <span className="h-2 w-2 animate-pulse bg-blue-600" />
+      
+                  <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-400">
+                    Page In Progress
+                  </span>
+                </div>
+              </div>
+      
+              <div className="mb-3 flex items-center justify-center gap-3">
+                <span className="h-px w-8 bg-zinc-700" />
+      
+                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-zinc-500">
+                  Updates
+                </span>
+      
+                <span className="h-px w-8 bg-zinc-700" />
+              </div>
+      
+              <h2 className="text-[30px] font-black uppercase tracking-[-0.02em] text-white sm:text-[38px]">
+                Latest News
+              </h2>
+      
+              <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+                We’re preparing our news and media system. Team updates, competition
+                reports, project announcements, and community stories will appear
+                here.
+              </p>
+      
+              <div className="mx-auto mt-6 h-1 w-48 bg-zinc-800">
+                <div className="h-1 w-[45%] bg-blue-600" />
+              </div>
+      
+              <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-600">
+                News system in progress
+              </p>
+      
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
       {/* ===================================== 10. FINAL CTA ===================================== */}
       <section
         className="relative overflow-hidden bg-red-600"
