@@ -21,14 +21,14 @@ const SUBTEAMS = [
 ];
 
 const ROSTER = [
-  { n: "Jace Reyna", email: "jace@example.com", role: "Coding Team, Finance Team, Marketing/Social Media Team", yr: "Junior" },
-  { n: "Aston Seravo", email: "aston@example.com", role: "Design/Build Team, Coding Team, Finance Team", yr: "Sophomore" },
-  { n: "Joseph Uthuppan", email: "joseph@example.com", role: "Design/Build Team, Coding Team", yr: "Junior" },
-  { n: "Joseph Alex", email: "joseph@example.com", role: "Design/Build Team, Coding Team, Finance Team, Marketing/Social Media Team", yr: "Sophomore" },
-  { n: "Julian Reiff", email: "julian@example.com", role: "Design/Build Team, Coding Team", yr: "Sophomore" },
-  { n: "Michael Yordan", email: "michael@example.com", role: "Design/Build Team, Finance Team", yr: "Sophomore" },
-  { n: "Michael Peyton", email: "michael@example.com", role: "Coding Team, Finance Team", yr: "Sophomore" },
-  { n: "Oisin Stack", email: "oisin@example.com", role: "Finance Team, Marketing/Social Media Team", yr: "Junior" }
+  { n: "Jace Reyna", email: "jacereyna228@stepinac.org", role: "Coding Team, Finance Team, Marketing/Social Media Team", yr: "Junior" },
+  { n: "Aston Seravo", email: "astonseravo509@stepinac.org", role: "Design/Build Team, Coding Team, Finance Team", yr: "Sophomore" },
+  { n: "Joseph Uthuppan", email: "josephuthuppan930@stepinac.org", role: "Design/Build Team, Coding Team", yr: "Junior" },
+  { n: "Joseph Alex", email: "josephalex823@stepinac.org", role: "Design/Build Team, Coding Team, Finance Team, Marketing/Social Media Team", yr: "Sophomore" },
+  { n: "Julian Reiff", email: "julianreiff995@stepinac.org", role: "Design/Build Team, Coding Team", yr: "Sophomore" },
+  { n: "Michael Yordan", email: "michaelyordan408@stepinac.org", role: "Design/Build Team, Finance Team", yr: "Sophomore" },
+  { n: "Michael Peyton", email: "michaelpeyton872@stepinac.org", role: "Coding Team, Finance Team", yr: "Sophomore" },
+  { n: "Oisin Stack", email: "oisinstack354@stepinac.org", role: "Finance Team, Marketing/Social Media Team", yr: "Junior" }
 ];
 
 export default function Students() {
