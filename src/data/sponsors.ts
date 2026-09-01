@@ -31,7 +31,7 @@ export const TIERS = [
       "Medium logo on team shirt",
     ],
     accent: "bg-blue-600 text-white",
-    logoSize: "max-h-20",
+    logoSize: "max-h-22",
   },
   {
     name: "Paladin",
@@ -44,7 +44,7 @@ export const TIERS = [
       "Small logo on team presentations",
     ],
     accent: "bg-zinc-800 text-white",
-    logoSize: "max-h-16",
+    logoSize: "max-h-18",
   },
   {
     name: "Squire",
@@ -63,7 +63,7 @@ export const TIERS = [
     price: "$250",
     perks: ["Named on team website", "Named on team presentations", "Social media shoutout", "*Donations under $250 will only receive the first two benefits"],
     accent: "bg-purple-300 text-black",
-    logoSize: "max-h-10",
+    logoSize: "max-h-8",
   },
 ];
 
@@ -74,10 +74,10 @@ export const SPONSORS: Sponsor[] = [
 
 export const DEFAULT_LOGO_SIZES: Record<string, string> = {
   Crusader: "max-h-28",
-  Knight: "max-h-20",
-  Paladin: "max-h-16",
+  Knight: "max-h-22",
+  Paladin: "max-h-18",
   Squire: "max-h-12",
-  Ally: "max-h-10",
+  Ally: "max-h-8",
 };
 
 export const getLogoClass = (tierName?: string) => {
