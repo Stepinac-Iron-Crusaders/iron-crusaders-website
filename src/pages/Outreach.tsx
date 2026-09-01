@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { PlaceholderImage } from "../components/PlaceholderImage";
+// import { PlaceholderImage } from "../components/PlaceholderImage";
 
 export default function Outreach() {
   return (
