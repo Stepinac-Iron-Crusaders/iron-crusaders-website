@@ -25,8 +25,8 @@ const ROSTER = [
   { n: "Aston Seravo", role: "Design/Build Team, Coding Team, Finance Team", yr: "Sophomore" },
   { n: "Joseph Uthuppan", role: "Design/Build Team, Coding Team", yr: "Junior" },
   { n: "Joseph Alex", role: "Design/Build Team, Coding Team, Finance Team, Marketing/Social Media Team", yr: "Sophomore" },
-  { n: "Julian Reiff", role: "Design/Build Team, Coding Team", yr: "Sophomore" }
-  { n: "Michael Yordan", role: "Design/Build Team, Finance Team", yr: "Sophomore" }
+  { n: "Julian Reiff", role: "Design/Build Team, Coding Team", yr: "Sophomore" },
+  { n: "Michael Yordan", role: "Design/Build Team, Finance Team", yr: "Sophomore" },
   { n: "Michael Peyton", role: "Coding Team, Finance Team", yr: "Sophomore" }
 ];
 
