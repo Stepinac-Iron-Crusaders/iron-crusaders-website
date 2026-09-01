@@ -2,12 +2,8 @@ import { Link } from "react-router-dom";
 import { PlaceholderImage } from "../components/PlaceholderImage";
 
 const MENTORS = [
-  { n: "Mr. James O’Connell", role: "Lead Mentor — Mechanical", bg: "Sr. Mech. Engineer, Westchester Manufacturing", years: "9 yrs" },
-  { n: "Ms. Elena Ruiz", role: "Software Mentor", bg: "Robotics Engineer — PhotonVision contributor", years: "5 yrs" },
-  { n: "Mr. David Chen", role: "Electrical & Controls", bg: "Controls Engineer, ConEd", years: "7 yrs" },
-  { n: "Ms. Priya Desai", role: "Strategy & Outreach", bg: "Stepinac Faculty — Physics", years: "4 yrs" },
-  { n: "Mr. Torres (Alum ’19)", role: "Alum Mentor — Drive", bg: "WPI Mech-E • Former Drive Captain", years: "3 yrs" },
-  { n: "Ms. Alvarez", role: "Business & Sponsorship", bg: "Parent volunteer • Non-profit ops", years: "6 yrs" },
+  { n: "Mr. Alex Estrella", role: "Lead Mentor", bg: "Faculty - Computer Science and Engineering", years: "5 yrs" },
+  { n: "Dr. Samantha Asche-Godin", role: "Outreach", bg: "Faculty - Science Department", years: "4 yrs" },
 ];
 
 export default function Mentors() {
