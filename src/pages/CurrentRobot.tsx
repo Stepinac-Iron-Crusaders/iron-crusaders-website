@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import { AnimatedPage } from "../components/AnimatedPage";
 import { PlaceholderImage } from "../components/PlaceholderImage";
 
 export default function CurrentRobot() {
   return (
-    <>
+        <AnimatedPage>
+<>
       {/* Header */}
       <section className="relative overflow-hidden border-b border-zinc-800 bg-zinc-950">
         <div aria-hidden="true" className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-600/40 to-transparent" />
@@ -206,5 +208,6 @@ export default function CurrentRobot() {
         </div>
       </section>
     </>
+    </AnimatedPage>
   );
 }

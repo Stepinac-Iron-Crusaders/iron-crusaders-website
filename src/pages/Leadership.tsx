@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { AnimatedPage } from "../components/AnimatedPage";
 import { PlaceholderImage } from "../components/PlaceholderImage";
 
 const LEADS = [
@@ -12,7 +13,8 @@ const LEADS = [
 
 export default function Leadership() {
   return (
-    <>
+        <AnimatedPage>
+<>
       <section className="border-b border-zinc-800 bg-zinc-950">
         <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-16">
           <div className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-zinc-500">
@@ -69,5 +71,6 @@ export default function Leadership() {
         </div>
       </section>
     </>
+    </AnimatedPage>
   );
 }
