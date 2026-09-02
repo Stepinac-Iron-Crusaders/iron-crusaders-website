@@ -14,11 +14,10 @@ function StudentPhoto({ name }: { name: string }) {
 }
 
 const SUBTEAMS = [
-  { name: "Mechanical", lead: "Lead: Alex R. • 8 members", desc: "CAD, fabrication, assembly — from sheet metal to carbon." },
-  { name: "Electrical", lead: "Lead: Jayden T. • 6 members", desc: "Harnessing, pneumatics, battery, CAN — reliability wins matches." },
-  { name: "Software", lead: "Lead: Priya M. • 7 members", desc: "WPILib, vision, autos — Java with AdvantageKit." },
-  { name: "Strategy & Drive", lead: "Lead: Marco D. • 5 members", desc: "Scouting, game theory, driver practice." },
-  { name: "Business & Media", lead: "Lead: Sofia L. • 6 members", desc: "Sponsors, newsletter, outreach, video." },
+  { name: "Building/Design", lead: "Lead: TBD • TBD members", desc: "Leads design of robot systems." },
+  { name: "Coding", lead: "Lead: TBD • TBD members", desc: "Autonomous, vision, robot control." },
+  { name: "Finance", lead: "Lead: TBD • TBD members", desc: "Creates and implements business plan" },
+  { name: "Media & Marketing", lead: "Lead: TBD • TBD members", desc: "Outreach, handles sponsor benefits, video" },
 ];
 
 const ROSTER = [
