@@ -34,7 +34,8 @@ const ROSTER = [
   { n: "Thomas Munchoff", email: "thomasmunchoff469@stepinac.org", role: "Finance Team", yr: "Sophomore" },
   { n: "Viggo McCartney", email: "viggomccartney945@stepinac.org", role: "Design/Build Team, Finance Team", yr: "Sophomore" },
   { n: "Anthony MacDonald", email: "anthonymacdonald775@stepinac.org", role: "Design/Build Team", yr: "Sophomore" },
-  { n: "Robert Geib", email: "robertgeib429@stepinac.org", role: "Coding Team", yr: "Junior" }
+  { n: "Robert Geib", email: "robertgeib429@stepinac.org", role: "Coding Team", yr: "Junior" },
+  { n: "Subash Jonnalagadda", email: "sjonnalagadda555@stepinac.org", role: "Design/Build Team, Coding Team, Finance Team, Marketing/Social Media Team", yr: "Sophomore" }
 ];
 
 export default function Students() {
@@ -54,7 +55,7 @@ export default function Students() {
             <div>
               <div className="mb-3 flex items-center gap-3">
                 <span className="h-px w-8 bg-red-600" aria-hidden="true" />
-                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-red-500">4 Members • Grades 9–12 • Rookie 2026-2027</span>
+                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-red-500">{ROSTER.length} Members • Grades 9–12 • Rookie 2026-2027</span>
               </div>
               <h1 className="text-[36px] font-black uppercase tracking-[-0.02em] text-white sm:text-[48px]">Students</h1>
               <p className="mt-3 max-w-[52ch] text-sm leading-relaxed text-zinc-400">Students own the robot. Mentors guide, but student hands hold the tools, the commits, and the match strategy.</p>
@@ -82,7 +83,7 @@ export default function Students() {
       <section className="border-b border-zinc-800 bg-zinc-950">
         <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-14">
           <h2 className="font-mono text-xs font-bold uppercase tracking-[0.12em] text-white">Roster</h2>
-          <p className="mt-2 text-sm text-zinc-400">Current roster — 21 members.</p>
+          <p className="mt-2 text-sm text-zinc-400">Current roster — {ROSTER.length} members.</p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {ROSTER.map((m) => (
               <div key={m.n} className="border border-zinc-800 bg-zinc-900 p-5">
