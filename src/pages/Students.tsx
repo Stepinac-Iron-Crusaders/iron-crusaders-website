@@ -31,6 +31,11 @@ const ROSTER = [
   { n: "Michael Peyton", email: "michaelpeyton872@stepinac.org", role: "Coding Team, Finance Team", yr: "Sophomore" },
   { n: "Oisin Stack", email: "oisinstack354@stepinac.org", role: "Finance Team, Marketing/Social Media Team", yr: "Junior" },
   { n: "Xavi Gonzalez", email: "xavigonzalez336@stepinac.org", role: "Design/Build Team", yr: "Sophomore" },
+  { n: "Martin Kilcoyne", email: "martinkilcoyne337@stepinac.org", role: "Design/Build Team, Finance Team", yr: "Sophomore" },
+  { n: "Thomas Munchoff", email: "thomasmunchoff469@stepinac.org", role: "Finance Team, Marketing/Social Media Team", yr: "Sophomore" },
+  { n: "Viggo McCartney", email: "viggomccartney945@stepinac.org", role: "Design/Build Team, Finance Team", yr: "Sophomore" },
+  { n: "Anthony MacDonald", email: "anthonymacdonald775@stepinac.org", role: "Design/Build Team", yr: "Sophomore" },
+  { n: "Robert Geib", email: "robertgeib429@stepinac.org", role: "Coding Team", yr: "Junior" }
 ];
 
 export default function Students() {
