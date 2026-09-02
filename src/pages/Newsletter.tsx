@@ -15,7 +15,7 @@ export default function Newsletter() {
           <div className="mt-6 max-w-3xl">
             <div className="mb-3 flex items-center gap-3">
               <span className="h-px w-8 bg-red-600" aria-hidden="true" />
-              <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-red-500">Monthly • 1,200+ subscribers</span>
+              <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-red-500">Monthly • 0 subscribers • You can change that!</span>
             </div>
             <h1 className="text-[36px] font-black uppercase tracking-[-0.02em] text-white sm:text-[52px]">Newsletter</h1>
             <p className="mt-4 text-[15px] leading-relaxed text-zinc-400">Build logs, match film notes, and outreach recaps — straight from student leads. No spam, unsubscribe anytime.</p>
