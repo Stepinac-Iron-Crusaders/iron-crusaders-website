@@ -836,17 +836,31 @@ export default function Home() {
 
                   <div className="mt-6 flex items-center gap-3 border-t border-zinc-800 pt-4">
                     <div className="flex -space-x-2">
-                      {[0, 1, 2].map((i) => (
-                        <div
-                          key={i}
-                          className="h-8 w-8 rounded-full border-2 border-zinc-950 bg-zinc-800"
-                          style={{
-                            background: "linear-gradient(135deg, #27272a 0%, #3f3f46 100%)",
-                          }}
-                          aria-hidden="true"
-                        />
-                      ))}
+                      {card.title === "Students" &&
+                        ["Joseph Alex", "Julian Reiff", "Oisin Stack"].map((name) => (
+                          <img
+                            key={name}
+                            src={`/students/${encodeURIComponent(name)}.jpg`}
+                            alt=""
+                            className="h-8 w-8 rounded-full border-2 border-zinc-950 object-cover"
+                          />
+                        ))}
+                  
+                      {card.title === "Mentors" &&
+                        ["Mr. Alex Estrella", "Dr. Samantha Asche-Godin"].map((name) => (
+                          <img
+                            key={name}
+                            src={`/Mentors/${encodeURIComponent(name)}.jpg`}
+                            alt=""
+                            className="h-8 w-8 rounded-full border-2 border-zinc-950 object-cover"
+                          />
+                        ))}
                     </div>
+                  
+                    <span className="font-mono text-xs text-zinc-500">
+                      Meet the crew →
+                    </span>
+                  </div>
 
                     <span className="font-mono text-xs text-zinc-500">Meet the crew →</span>
                   </div>
