@@ -777,14 +777,14 @@ export default function Home() {
                 title: "Mentors",
                 to: "/team/mentors",
                 desc: "Professional engineers and educators who teach process, safety, and high-level competitive thinking.",
-                count: "12 Mentors",
+                count: "2 Mentors",
                 accent: "blue",
               },
               {
                 title: "Leadership",
                 to: "/team/leadership",
                 desc: "Captains and leads who set build timelines, run reviews, and hold the standard on quality.",
-                count: "6 Leads",
+                count: "4 Leads",
                 accent: "zinc",
               },
             ].map((card) => (
