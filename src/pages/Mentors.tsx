@@ -170,14 +170,8 @@ export default function Mentors() {
               </h3>
 
               <blockquote className="mt-3 border-l-2 border-blue-600 pl-4 text-sm italic leading-relaxed text-zinc-300">
-                “Watching a freshman who barely knew CAD lead the elevator
-                review as a junior — that’s the whole point.” — Mr. O’Connell
+                “We’re a rookie team — nothing is inherited. We stay because we’re building the culture, the shop, and the builders from the ground up, together.” — Mr. Estrella
               </blockquote>
-
-              <p className="mt-3 text-sm text-zinc-500">
-                6 alumni now mentor. 4 mentors are Stepinac parents. All
-                volunteer evenings and weekends Jan–April.
-              </p>
             </div>
           </div>
         </div>
