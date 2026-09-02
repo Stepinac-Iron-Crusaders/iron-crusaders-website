@@ -560,12 +560,42 @@ export default function Home() {
               />
               <div
                 data-hero-image
-                className="relative overflow-hidden will-change-transform"
+                className="relative overflow-hidden border border-zinc-800 bg-zinc-900 will-change-transform"
                 style={{ clipPath: "inset(0 0% 0 0)" }}
               >
-                <PlaceholderImage label="HERO IMAGE PLACEHOLDER" className="aspect-[16/10] lg:aspect-[4/3] rounded-none" />
+                {/* subtle grid + glow behind logo */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 opacity-[0.04]"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)",
+                    backgroundSize: "32px 32px",
+                  }}
+                />
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-red-600/12 blur-[60px]"
+                />
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -left-16 -bottom-16 h-64 w-64 rounded-full bg-blue-600/10 blur-[60px]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-950" />
+                <img
+                  src={`${import.meta.env.BASE_URL}wordless_logo.png`}
+                  alt="Iron Crusaders wordless logo"
+                  className="relative aspect-[16/10] lg:aspect-[4/3] w-full object-contain p-10 md:p-14 lg:p-12 drop-shadow-[0_20px_60px_rgba(0,0,0,0.6)] will-change-transform"
+                  loading="eager"
+                  decoding="async"
+                />
                 {/* gloss */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-white/[0.08] opacity-0 transition-opacity duration-700 hover:opacity-100" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.03] to-white/[0.06] opacity-0 transition-opacity duration-700 hover:opacity-100" />
+                {/* corner accents */}
+                <span className="pointer-events-none absolute left-0 top-0 h-3 w-3 border-l border-t border-zinc-700" aria-hidden="true" />
+                <span className="pointer-events-none absolute right-0 top-0 h-3 w-3 border-r border-t border-zinc-700" aria-hidden="true" />
+                <span className="pointer-events-none absolute bottom-0 left-0 h-3 w-3 border-b border-l border-zinc-700" aria-hidden="true" />
+                <span className="pointer-events-none absolute bottom-0 right-0 h-3 w-3 border-b border-r border-zinc-700" aria-hidden="true" />
               </div>
 
               <div
@@ -573,10 +603,10 @@ export default function Home() {
                 className="flex items-center justify-between border-x border-b border-zinc-800 bg-zinc-900 px-4 py-3 will-change-transform"
               >
                 <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-zinc-500">
-                  Pit • Competition Floor • 2025
+                  Iron Crusaders • Wordless Mark
                 </span>
 
-                <span className="font-mono text-[11px] text-zinc-600">IMG_001 — 3840×2160</span>
+                <span className="font-mono text-[11px] text-zinc-600">wordless_logo.png • 2048×2048</span>
               </div>
             </div>
           </div>
