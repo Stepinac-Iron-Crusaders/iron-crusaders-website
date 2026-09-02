@@ -6,8 +6,8 @@ const LEADS = [
   { n: "TBD", title: "Team Captain", yr: "TBD", focus: "Owns season timeline, design reviews, pit ops." },
   { n: "TBD", title: "Building/Design Lead", yr: "TBD", focus: "Leads design of robot systems" },
   { n: "TBD", title: "Coding Lead", yr: "TBD", focus: "Autonomous, vision, robot control." },
-  { n: "TBD", title: "Finance Lead", yr: "TBD", focus: "Creates business plan" },
-  { n: "TBD", title: "Media & Marketing Lead", yr: "TBD", focus: "Outreach, handles sponsor benefits" }
+  { n: "TBD", title: "Finance Lead", yr: "TBD", focus: "Creates an implements business plan" },
+  { n: "TBD", title: "Media & Marketing Lead", yr: "TBD", focus: "Outreach, handles sponsor benefits, video" }
 ];
 
 export default function Leadership() {
