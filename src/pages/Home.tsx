@@ -175,7 +175,7 @@ function SponsorCountdown() {
       </div>
 
       <p className="mt-2 text-center font-mono text-[9px] uppercase tracking-wide text-zinc-600">
-        Sponsorship registration closes November 17, 2026 • 5:00 PM ET
+        Priority Sponsorship registration closes November 17, 2026 • 5:00 PM ET
       </p>
     </div>
   );
