@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { gsap, ScrollTrigger } from "../lib/gsap";
+import { MagneticWrap } from "./MagneticButton";
 
 type DropdownKey = "robots" | "team" | "more" | null;
 
@@ -79,6 +80,7 @@ export function Header() {
             duration: 0.6,
             stagger: 0.06,
             ease: "power3.out",
+            clearProps: "transform",
           },
           0.18
         );
@@ -294,13 +296,17 @@ export function Header() {
             Newsletter
           </NavLink>
 
-          <Link
-            data-header-nav
-            to="/sponsors"
-            className="ml-2 bg-red-600 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.14em] text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-red-700 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:translate-y-0 active:bg-red-800"
-          >
-            Sponsor Us
-          </Link>
+          <div data-header-nav className="ml-2">
+            <MagneticWrap strength={0.32}>
+              <Link
+                to="/sponsors"
+                data-cursor="hover"
+                className="inline-flex items-center justify-center bg-red-600 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_4px_14px_rgba(220,38,38,0.35)] transition-colors duration-200 hover:bg-red-700 hover:shadow-[0_8px_24px_rgba(220,38,38,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 active:bg-red-800 will-change-transform"
+              >
+                Sponsor Us
+              </Link>
+            </MagneticWrap>
+          </div>
 
           {/* More dropdown */}
           <div data-header-nav className="relative ml-1">

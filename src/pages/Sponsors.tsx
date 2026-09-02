@@ -3,6 +3,7 @@ import { AnimatedPage } from "../components/AnimatedPage";
 import { PlaceholderImage } from "../components/PlaceholderImage";
 import SponsorsGrid from "../components/SponsorsGrid";
 import { SPONSORS, TIERS } from "../data/sponsors";
+import { MagneticWrap, MagneticButton } from "../components/MagneticButton";
 
 export default function Sponsors() {
   return (
@@ -33,16 +34,23 @@ export default function Sponsors() {
                 Every dollar goes to materials, machining, travel, and outreach — directly into student learning. Join 18 companies and families funding the 2025–26 season.
               </p>
               <div className="mt-6 flex gap-3">
-                <Link to="/contact?subject=Sponsorship" className="bg-red-600 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700">
-                  Sponsor via Form →
-                </Link>
-                <button
-                  type="button"
-                  onClick={() => document.getElementById("tiers")?.scrollIntoView({ behavior: "smooth" })}
-                  className="border border-zinc-700 bg-zinc-900 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-zinc-800"
-                >
-                  View Tiers
-                </button>
+                <MagneticWrap>
+                  <Link
+                    to="/contact?subject=Sponsorship"
+                    data-cursor="hover"
+                    className="inline-flex items-center justify-center bg-red-600 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_6px_20px_rgba(220,38,38,0.35)] transition-colors hover:bg-red-700"
+                  >
+                    Sponsor via Form →
+                  </Link>
+                </MagneticWrap>
+                <MagneticWrap strength={0.28}>
+                  <MagneticButton
+                    onClick={() => document.getElementById("tiers")?.scrollIntoView({ behavior: "smooth" })}
+                    className="border border-zinc-700 bg-zinc-900 px-7 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-zinc-800 hover:border-zinc-600"
+                  >
+                    View Tiers
+                  </MagneticButton>
+                </MagneticWrap>
               </div>
               <p className="mt-4 font-mono text-[11px] uppercase tracking-wide text-zinc-600">W-9 + receipt on request • Contact: engineeringclub@stepinac.org</p>
             </div>
@@ -88,12 +96,15 @@ export default function Sponsors() {
                   </ul>
                 </div>
                 <div className="p-6 pt-0">
-                  <Link
-                    to={`/contact?tier=${encodeURIComponent(t.name)}`}
-                    className="block w-full border border-zinc-700 bg-zinc-900 py-3 text-center text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-zinc-800"
-                  >
-                    Choose {t.name}
-                  </Link>
+                  <MagneticWrap className="w-full">
+                    <Link
+                      to={`/contact?tier=${encodeURIComponent(t.name)}`}
+                      data-cursor="hover"
+                      className="block w-full border border-zinc-700 bg-zinc-900 py-3 text-center text-xs font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-zinc-800 hover:border-zinc-600"
+                    >
+                      Choose {t.name}
+                    </Link>
+                  </MagneticWrap>
                 </div>
               </div>
             ))}
@@ -106,7 +117,15 @@ export default function Sponsors() {
           <div className="mx-auto max-w-2xl border border-zinc-800 bg-zinc-900 p-6 text-center lg:p-8">
             <h2 className="text-sm font-black uppercase tracking-[0.08em] text-white">Ready to Sponsor?</h2>
             <p className="mt-2 text-sm leading-relaxed text-zinc-400">Email us with the subject "Sponsorship — (tier)" and we'll follow up within 24 hours with a W-9, receipt, and next steps.</p>
-            <Link to="/contact?subject=Sponsorship%20%E2%80%94%20Tier%20Inquiry" className="mt-6 inline-flex bg-red-600 px-8 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:bg-red-700">Contact via Form →</Link>
+            <MagneticWrap>
+              <Link
+                to="/contact?subject=Sponsorship%20%E2%80%94%20Tier%20Inquiry"
+                data-cursor="hover"
+                className="mt-6 inline-flex items-center justify-center bg-red-600 px-8 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_8px_24px_rgba(220,38,38,0.35)] transition-colors hover:bg-red-700"
+              >
+                Contact via Form →
+              </Link>
+            </MagneticWrap>
           </div>
         </div>
       </section>
@@ -119,7 +138,15 @@ export default function Sponsors() {
           </div>
           <div className="mt-10 flex flex-col items-center gap-3">
             <p className="text-sm text-zinc-400">Want to see your logo here next season?</p>
-            <Link to="/contact?tier=Crusader" className="inline-flex bg-white px-8 py-3 text-xs font-black uppercase tracking-[0.14em] text-zinc-900">Become a Sponsor</Link>
+            <MagneticWrap>
+              <Link
+                to="/contact?tier=Crusader"
+                data-cursor="hover"
+                className="inline-flex items-center justify-center bg-white px-8 py-3 text-xs font-black uppercase tracking-[0.14em] text-zinc-900 shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition-colors hover:bg-zinc-100"
+              >
+                Become a Sponsor
+              </Link>
+            </MagneticWrap>
           </div>
         </div>
       </section>

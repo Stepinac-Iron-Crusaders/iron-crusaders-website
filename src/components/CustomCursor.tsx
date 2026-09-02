@@ -114,8 +114,9 @@ export function CustomCursor() {
     const refreshHover = () => {
       const el = document.elementFromPoint(mouseX, mouseY) as HTMLElement | null;
       const hoverEl = el?.closest?.(hoverSelector) as HTMLElement | null;
+      const magneticEl = el?.closest?.("[data-magnetic]") as HTMLElement | null;
       const nextHover = !!hoverEl;
-      const nextMag = hoverEl?.hasAttribute("data-magnetic") ?? false;
+      const nextMag = !!magneticEl;
       if (nextHover !== isHovering || nextMag !== isMagneticHover) {
         isHovering = nextHover;
         isMagneticHover = nextMag;
