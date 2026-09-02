@@ -54,13 +54,16 @@ export default function About() {
               <h2 className="text-[24px] font-black uppercase tracking-[-0.02em] text-white">Our Story</h2>
               <div className="mt-6 space-y-4 text-sm leading-7 text-zinc-300">
                 <p>
-                  Founded in 2014 by a handful of Stepinac students and two faculty mentors, the Iron Crusaders began in a single classroom with a KoP chassis and a drill press. Year by year we earned shop space, sponsors, and district banners.
+                  Founded in 2026 by a group of Stepinac students and faculty mentors, the Iron Crusaders are a rookie FIRST Robotics Competition (FRC) team built around a shared passion for engineering, robotics, and community.
                 </p>
                 <p className="text-zinc-400">
-                  Today we operate a full machine shop — mills, lathes, Markforged, laser — and a controls lab with vision rigs and swerve calibration jigs. Students own every subsystem from CAD lock to pit repair.
+                  As a new team, we are starting from the ground up — learning how to design, build, program, and compete while developing the skills and resources needed to grow into a successful robotics program. Our students take ownership of every aspect of the team, from CAD and mechanical design to electrical systems, programming, fundraising, and outreach.
                 </p>
                 <p className="text-zinc-400">
-                  Competition is the forcing function. Community is the purpose. We host Westchester STEM nights, mentor FLL teams, and run summer workshops for middle schoolers.
+                  For us, competition is the challenge that drives us to improve, while community is the purpose behind what we do. We aim to introduce more students to STEM, support younger robotics teams, and create opportunities for students in our community to gain hands-on experience in engineering and technology.
+                </p>
+                <p className="text-zinc-400">
+                  The Iron Crusaders are not defined by what we have built yet, but by what we are building together.
                 </p>
               </div>
               <div className="mt-8 flex gap-3">
