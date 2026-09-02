@@ -21,8 +21,8 @@ const SUBTEAMS = [
 ];
 
 const ROSTER = [
+  { n: "Subash Jonnalagadda", email: "sjonnalagadda555@stepinac.org", role: "Design/Build Team, Coding Team, Finance Team, Marketing/Social Media Team", yr: "Sophomore" },
   { n: "Jace Reyna", email: "jacereyna228@stepinac.org", role: "Coding Team, Finance Team, Marketing/Social Media Team", yr: "Junior" },
-  { n: "Aston Seravo", email: "astonseravo509@stepinac.org", role: "Design/Build Team, Coding Team, Finance Team", yr: "Sophomore" },
   { n: "Joseph Uthuppan", email: "josephuthuppan930@stepinac.org", role: "Design/Build Team, Coding Team", yr: "Junior" },
   { n: "Joseph Alex", email: "josephalex823@stepinac.org", role: "Design/Build Team, Coding Team, Finance Team, Marketing/Social Media Team", yr: "Sophomore" },
   { n: "Julian Reiff", email: "julianreiff995@stepinac.org", role: "Design/Build Team, Coding Team", yr: "Sophomore" },
@@ -35,7 +35,7 @@ const ROSTER = [
   { n: "Viggo McCartney", email: "viggomccartney945@stepinac.org", role: "Design/Build Team, Finance Team", yr: "Sophomore" },
   { n: "Anthony MacDonald", email: "anthonymacdonald775@stepinac.org", role: "Design/Build Team", yr: "Sophomore" },
   { n: "Robert Geib", email: "robertgeib429@stepinac.org", role: "Coding Team", yr: "Junior" },
-  { n: "Subash Jonnalagadda", email: "sjonnalagadda555@stepinac.org", role: "Design/Build Team, Coding Team, Finance Team, Marketing/Social Media Team", yr: "Sophomore" }
+  { n: "Aston Seravo", email: "astonseravo509@stepinac.org", role: "Design/Build Team, Coding Team, Finance Team", yr: "Sophomore" }
 ];
 
 export default function Students() {
