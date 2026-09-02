@@ -3,12 +3,11 @@ import { AnimatedPage } from "../components/AnimatedPage";
 import { PlaceholderImage } from "../components/PlaceholderImage";
 
 const LEADS = [
-  { n: "Alex Rivera", title: "Team Captain", yr: "Senior", focus: "Owns season timeline, design reviews, pit ops." },
-  { n: "Priya Mehta", title: "Vice Captain — Software", yr: "Senior", focus: "Autonomous, vision, code release process." },
-  { n: "Marco Diaz", title: "Drive Team Lead", yr: "Senior", focus: "Strategy, scouting, driver training." },
-  { n: "Sofia Li", title: "Outreach & Media Lead", yr: "Junior", focus: "STEM nights, sponsors, newsletter." },
-  { n: "Jayden Torres", title: "Electrical Lead", yr: "Junior", focus: "Harness, CAN, battery fleet, pit power." },
-  { n: "Nora Kim", title: "Manufacturing Lead", yr: "Junior", focus: "Shop schedule, quality, BOM." },
+  { n: "TBD", title: "Team Captain", yr: "TBD", focus: "Owns season timeline, design reviews, pit ops." },
+  { n: "TBD", title: "Building/Design Lead", yr: "TBD", focus: "Leads design of robot systems" },
+  { n: "TBD", title: "Coding Lead", yr: "TBD", focus: "Autonomous, vision, robot control." },
+  { n: "TBD", title: "Finance Lead", yr: "TBD", focus: "Creates business plan" },
+  { n: "TBD", title: "Media & Marketing Lead", yr: "TBD", focus: "Outreach, handles sponsor benefits" }
 ];
 
 export default function Leadership() {
