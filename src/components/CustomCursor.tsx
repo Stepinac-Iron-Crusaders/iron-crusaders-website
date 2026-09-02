@@ -11,10 +11,10 @@ export function CustomCursor() {
     const ring = ringRef.current;
     if (!dot || !ring) return;
 
-    const isCoarse = window.matchMedia("(pointer: coarse)").matches;
-    const hasHover = window.matchMedia("(hover: hover)").matches;
-    const anyFine = window.matchMedia("(any-pointer: fine)").matches;
-    const isTouchOnly = isCoarse && !hasHover && !anyFine;
+    const coarseMql = window.matchMedia("(pointer: coarse)");
+    const hoverMql = window.matchMedia("(hover: hover)");
+    const anyFineMql = window.matchMedia("(any-pointer: fine)");
+    const isTouchOnly = coarseMql.matches && !hoverMql.matches && !anyFineMql.matches;
 
     if (isTouchOnly) {
       dot.style.display = "none";
@@ -25,6 +25,35 @@ export function CustomCursor() {
     document.documentElement.classList.add("has-custom-cursor");
     dot.style.display = "block";
     ring.style.display = "block";
+
+    // --- dynamic touch vs mouse switching (hybrid laptops) ---
+    let usingTouch = false;
+    let lastTouchTime = 0;
+
+    const enableTouchMode = () => {
+      if (usingTouch) return;
+      usingTouch = true;
+      lastTouchTime = Date.now();
+      // hide red dot, restore native cursor
+      gsap.to([dot, ring], { autoAlpha: 0, duration: 0.2, overwrite: "auto" });
+      document.documentElement.classList.remove("has-custom-cursor");
+      visible = false;
+    };
+
+    const enableMouseMode = () => {
+      // ignore emulated mousemove right after touch (300ms grace)
+      if (Date.now() - lastTouchTime < 500) return;
+      if (!usingTouch) return;
+      usingTouch = false;
+      // re-check if device is touch-only now
+      if (coarseMql.matches && !hoverMql.matches && !anyFineMql.matches) return;
+      dot.style.display = "block";
+      ring.style.display = "block";
+      gsap.set([dot, ring], { x: mouseX, y: mouseY });
+      gsap.to([dot, ring], { autoAlpha: 1, duration: 0.2, overwrite: "auto" });
+      document.documentElement.classList.add("has-custom-cursor");
+      visible = true;
+    };
 
     gsap.set([dot, ring], { xPercent: -50, yPercent: -50, force3D: true });
 
@@ -125,12 +154,24 @@ export function CustomCursor() {
     };
 
     const onMove = (e: MouseEvent) => {
+      enableMouseMode();
+      if (usingTouch) return;
       mouseX = e.clientX;
       mouseY = e.clientY;
       xDot(mouseX);
       yDot(mouseY);
       show();
       refreshHover();
+    };
+
+    const onTouchStart = () => enableTouchMode();
+    const onPointerDown = (e: PointerEvent) => {
+      if (e.pointerType === "touch" || e.pointerType === "pen") enableTouchMode();
+      else if (e.pointerType === "mouse") enableMouseMode();
+    };
+    const onMqlChange = () => {
+      if (coarseMql.matches && !hoverMql.matches && !anyFineMql.matches) enableTouchMode();
+      else if (anyFineMql.matches) enableMouseMode();
     };
 
     const onLeave = () => hide();
@@ -184,6 +225,11 @@ export function CustomCursor() {
     window.addEventListener("dragend", onPointerCancel);
     window.addEventListener("blur", onBlur);
     window.addEventListener("focus", onFocus);
+    window.addEventListener("touchstart", onTouchStart, { passive: true } as AddEventListenerOptions);
+    window.addEventListener("pointerdown", onPointerDown as EventListener);
+    coarseMql.addEventListener("change", onMqlChange);
+    hoverMql.addEventListener("change", onMqlChange);
+    anyFineMql.addEventListener("change", onMqlChange);
 
     const safety = window.setTimeout(() => show(), 280);
 
@@ -205,6 +251,11 @@ export function CustomCursor() {
       window.removeEventListener("dragend", onPointerCancel);
       window.removeEventListener("blur", onBlur);
       window.removeEventListener("focus", onFocus);
+      window.removeEventListener("touchstart", onTouchStart as EventListener);
+      window.removeEventListener("pointerdown", onPointerDown as EventListener);
+      coarseMql.removeEventListener("change", onMqlChange);
+      hoverMql.removeEventListener("change", onMqlChange);
+      anyFineMql.removeEventListener("change", onMqlChange);
       gsap.killTweensOf([dot, ring]);
     };
   }, []);
