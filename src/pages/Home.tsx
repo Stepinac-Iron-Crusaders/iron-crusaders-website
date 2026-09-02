@@ -862,9 +862,6 @@ export default function Home() {
                     </span>
                   </div>
 
-                    <span className="font-mono text-xs text-zinc-500">Meet the crew →</span>
-                  </div>
-
                   <Link
                     to={card.to}
                     className="mt-4 inline-flex text-xs font-semibold uppercase tracking-[0.1em] text-zinc-300 transition-colors group-hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-red-600"
