@@ -18,7 +18,8 @@ export function AnimatedPage({ children, className }: Props) {
       // --- Hero (first section) entrance ---
       const hero = page.querySelector("section") as HTMLElement | null;
       if (hero) {
-        const breadcrumb = hero.querySelectorAll<HTMLElement>("a, span.font-mono");
+        const breadcrumbEl = hero.querySelector("div.flex.flex-wrap.gap-2") as HTMLElement | null;
+        const breadcrumb = breadcrumbEl ? breadcrumbEl.querySelectorAll<HTMLElement>("a, span") : hero.querySelectorAll<HTMLElement>("span.font-mono");
         if (breadcrumb.length) {
           gsap.from(breadcrumb, {
             y: 10,
@@ -65,7 +66,7 @@ export function AnimatedPage({ children, className }: Props) {
           });
         }
 
-        const heroCtas = hero.querySelectorAll<HTMLElement>("a, button");
+        const heroCtas = hero.querySelectorAll<HTMLElement>("a.bg-blue-600, a.bg-red-600, a.bg-white, a.bg-zinc-900, a.border, button");
         if (heroCtas.length) {
           gsap.from(heroCtas, {
             y: 12,
@@ -74,6 +75,7 @@ export function AnimatedPage({ children, className }: Props) {
             stagger: 0.06,
             ease: "back.out(1.2)",
             delay: 0.36,
+            clearProps: "transform,opacity",
           });
         }
 
