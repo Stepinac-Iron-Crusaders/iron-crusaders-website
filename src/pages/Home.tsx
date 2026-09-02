@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { PlaceholderImage } from "../components/PlaceholderImage";
 import SponsorsGrid from "../components/SponsorsGrid";
@@ -108,6 +108,76 @@ function KickoffCountdown() {
         </div>
       </div>
     </section>
+  );
+}
+
+function SponsorCountdown() {
+  const deadline = new Date("2026-11-17T17:00:00-05:00").getTime();
+
+  const getTimeLeft = () => {
+    const difference = deadline - Date.now();
+
+    if (difference <= 0) {
+      return {
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+      };
+    }
+
+    return {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / (1000 * 60)) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
+  };
+
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setTimeLeft(getTimeLeft());
+    }, 1000);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const units = [
+    { label: "Days", value: timeLeft.days },
+    { label: "Hours", value: timeLeft.hours },
+    { label: "Minutes", value: timeLeft.minutes },
+    { label: "Seconds", value: timeLeft.seconds },
+  ];
+
+  return (
+    <div className="mt-5 w-full max-w-xl border border-red-900/50 bg-red-950/20 px-4 py-3">
+      <div className="mb-2 text-center font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-red-500">
+        Time Left to Sponsor
+      </div>
+
+      <div className="grid grid-cols-4 gap-2">
+        {units.map((unit) => (
+          <div
+            key={unit.label}
+            className="border border-zinc-800 bg-zinc-950 px-2 py-2 text-center"
+          >
+            <div className="font-mono text-lg font-bold tabular-nums text-white">
+              {String(unit.value).padStart(2, "0")}
+            </div>
+
+            <div className="mt-0.5 font-mono text-[7px] uppercase tracking-[0.12em] text-zinc-500">
+              {unit.label}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p className="mt-2 text-center font-mono text-[9px] uppercase tracking-wide text-zinc-600">
+        Sponsorship registration closes November 17, 2026 • 5:00 PM ET
+      </p>
+    </div>
   );
 }
 
@@ -1025,11 +1095,14 @@ export default function Home() {
             </div>
           </div>
 
-          <div data-reveal-line className="mt-10 flex flex-col items-center gap-4 border-t border-zinc-800 pt-10 will-change-transform">
+          <div
+            data-reveal-line
+            className="mt-10 flex flex-col items-center gap-4 border-t border-zinc-800 pt-10 will-change-transform"
+          >
             <p className="max-w-[48ch] text-center text-sm leading-relaxed text-zinc-400">
               Want your logo here? Sponsor a competitive, student-led engineering program with proven community impact.
             </p>
-
+          
             <MagneticWrap>
               <Link
                 to="/sponsors"
@@ -1039,7 +1112,9 @@ export default function Home() {
                 Become a Sponsor
               </Link>
             </MagneticWrap>
-
+          
+            <SponsorCountdown />
+          
             <span className="font-mono text-[11px] uppercase tracking-wide text-zinc-600">
               501(c)(3) • Tax-deductible • Tier packages available
             </span>
