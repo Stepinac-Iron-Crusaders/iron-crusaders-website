@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { AnimatedPage } from "../components/AnimatedPage";
-import { PlaceholderImage } from "../components/PlaceholderImage";
+// import { PlaceholderImage } from "../components/PlaceholderImage";
 
 export default function CurrentRobot() {
   return (
