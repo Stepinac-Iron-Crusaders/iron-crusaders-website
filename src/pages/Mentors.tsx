@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatedPage } from "../components/AnimatedPage";
 import { PlaceholderImage } from "../components/PlaceholderImage";
+import { MagneticWrap } from "../components/MagneticButton";
 
 function MentorPhoto({ name }: { name: string }) {
   const [failed, setFailed] = useState(false);
@@ -76,14 +77,19 @@ export default function Mentors() {
                 the robot — then hold them to a professional standard.
               </p>
 
-              <div className="mt-6 inline-flex border border-zinc-800 bg-zinc-900 px-4 py-3 font-mono text-xs text-zinc-300">
-                Interested in mentoring?
-                <Link
-                  to="/contact"
-                  className="ml-2 font-bold text-white underline decoration-zinc-600 underline-offset-4 hover:decoration-white"
-                >
-                  Get in touch
-                </Link>
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <div className="inline-flex items-center border border-zinc-800 bg-zinc-900 px-4 py-3 font-mono text-xs text-zinc-300">
+                  Interested in mentoring?
+                </div>
+                <MagneticWrap>
+                  <Link
+                    to="/contact"
+                    data-cursor="hover"
+                    className="inline-flex items-center justify-center bg-blue-600 px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white shadow-[0_6px_20px_rgba(37,99,235,0.35)] transition-colors hover:bg-blue-700"
+                  >
+                    Contact Us →
+                  </Link>
+                </MagneticWrap>
               </div>
             </div>
 
