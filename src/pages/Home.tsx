@@ -603,7 +603,7 @@ export default function Home() {
                 title: "Students",
                 to: "/team/students",
                 desc: "Design, fabrication, programming, and strategy — students own every subsystem and every match.",
-                count: "30+ Members",
+                count: "20+ Members",
                 accent: "red",
               },
               {
