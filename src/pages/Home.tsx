@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { PlaceholderImage } from "../components/PlaceholderImage";
 import SponsorsGrid from "../components/SponsorsGrid";
@@ -16,6 +16,101 @@ const STATS = {
   competitions: "ROOKIE",
   founded: "2026",
 } as const;
+
+function KickoffCountdown() {
+  const kickoff = new Date("2027-01-09T12:00:00-05:00").getTime();
+
+  const getTimeLeft = () => {
+    const difference = kickoff - Date.now();
+
+    if (difference <= 0) {
+      return {
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+      };
+    }
+
+    return {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / (1000 * 60)) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
+  };
+
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
+
+  useLayoutEffect(() => {
+    const timer = window.setInterval(() => {
+      setTimeLeft(getTimeLeft());
+    }, 1000);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const units = [
+    { label: "Days", value: timeLeft.days },
+    { label: "Hours", value: timeLeft.hours },
+    { label: "Minutes", value: timeLeft.minutes },
+    { label: "Seconds", value: timeLeft.seconds },
+  ];
+
+  return (
+    <section className="relative overflow-hidden border-b border-zinc-800 bg-zinc-950">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.035]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-[1280px] px-4 py-6 lg:px-8">
+        <div className="flex flex-col items-center justify-between gap-5 sm:flex-row">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-red-600" />
+
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-red-500">
+                2027 FRC Season
+              </span>
+            </div>
+
+            <h2 className="mt-1 text-sm font-black uppercase tracking-[0.08em] text-white">
+              Countdown to Kickoff
+            </h2>
+
+            <p className="mt-1 font-mono text-[10px] uppercase tracking-wide text-zinc-500">
+              January 9, 2027 • 12:00 PM ET
+            </p>
+          </div>
+
+          <div className="grid grid-cols-4 gap-2 sm:gap-3">
+            {units.map((unit) => (
+              <div
+                key={unit.label}
+                className="min-w-[58px] border border-zinc-800 bg-zinc-900 px-2 py-2.5 text-center sm:min-w-[72px] sm:px-3"
+              >
+                <div className="font-mono text-xl font-bold tabular-nums text-white sm:text-2xl">
+                  {String(unit.value).padStart(2, "0")}
+                </div>
+
+                <div className="mt-1 font-mono text-[8px] uppercase tracking-[0.12em] text-zinc-500">
+                  {unit.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 export default function Home() {
   const pageRef = useRef<HTMLDivElement>(null);
@@ -247,6 +342,8 @@ export default function Home() {
 
   return (
     <div ref={pageRef} className="overflow-x-clip">
+      <KickoffCountdown />
+      
       {/* ===================================== 1. HERO ===================================== */}
       <section
         ref={heroRef}
