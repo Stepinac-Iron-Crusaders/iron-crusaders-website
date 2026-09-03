@@ -4,7 +4,7 @@ import { AnimatedPage } from "../components/AnimatedPage";
 import SponsorsGrid from "../components/SponsorsGrid";
 import { SPONSORS, TIERS } from "../data/sponsors";
 import { MagneticWrap, MagneticButton } from "../components/MagneticButton";
-import { GoFundMeEmbed } from "../components/GoFundMeEmbed";
+// import { GoFundMeEmbed } from "../components/GoFundMeEmbed";
 
 
 export default function Sponsors() {
@@ -147,7 +147,11 @@ export default function Sponsors() {
             </div>
       
             <div className="mt-8 flex justify-center">
-              <GoFundMeEmbed />
+              <iframe
+                src="https://www.gofundme.com/f/help-the-iron-crusaders-make-robotics-accessible-4-all-teams/widget/medium"
+                className="w-full max-w-[600px] min-h-[700px] border-0"
+                title="Support the Iron Crusaders on GoFundMe"
+              />
             </div>
           </div>
         </div>
