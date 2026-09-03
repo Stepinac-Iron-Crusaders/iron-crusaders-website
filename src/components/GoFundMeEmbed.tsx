@@ -1,29 +1,40 @@
 import { useEffect, useRef } from "react";
 
+const GOFUNDME_URL =
+  "https://www.gofundme.com/f/help-the-iron-crusaders-make-robotics-accessible-4-all-teams/widget/medium?attribution_id=sl%3A18a7c5cd-45ad-4808-973b-3950a2641673";
+
 export function GoFundMeEmbed() {
-  const embedRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const embed = embedRef.current;
+    const container = containerRef.current;
 
-    if (!embed) return;
+    if (!container) return;
 
+    // Create the GoFundMe embed element
+    const embed = document.createElement("div");
+    embed.className = "gfm-embed";
+    embed.setAttribute("data-url", GOFUNDME_URL);
+
+    container.appendChild(embed);
+
+    // Load GoFundMe's embed script
     const script = document.createElement("script");
     script.src = "https://www.gofundme.com/static/js/embed.js";
-    script.defer = true;
+    script.async = true;
 
     document.body.appendChild(script);
 
     return () => {
       script.remove();
+      container.innerHTML = "";
     };
   }, []);
 
   return (
     <div
-      ref={embedRef}
-      className="gfm-embed"
-      data-url="https://www.gofundme.com/f/help-the-iron-crusaders-make-robotics-accessible-4-all-teams/widget/medium?attribution_id=sl%3A18a7c5cd-45ad-4808-973b-3950a2641673"
+      ref={containerRef}
+      className="w-full max-w-[600px] min-h-[500px]"
     />
   );
 }
