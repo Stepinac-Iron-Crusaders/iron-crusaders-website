@@ -117,8 +117,6 @@ Go to your GitHub fork — it should say `1 commit ahead of...`. Open a pull req
 - **Iron Crusaders** — Archbishop Stepinac High School FRC Team
 - Subash Jonnalagadda — Lead
 - Joseph Alex — Lead
-- Contributors via [Stepinac-Iron-Crusaders](https://github.com/Stepinac-Iron-Crusaders)
-
 ---
 
 ## License
