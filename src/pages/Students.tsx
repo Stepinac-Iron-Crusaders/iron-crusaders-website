@@ -61,7 +61,7 @@ export default function Students() {
               <h1 className="text-[36px] font-black uppercase tracking-[-0.02em] text-white sm:text-[48px]">Students</h1>
               <p className="mt-3 max-w-[52ch] text-sm leading-relaxed text-zinc-400">Students own the robot. Mentors guide, but student hands hold the tools, the commits, and the match strategy.</p>
             </div>
-            <Link to="/team/leadership" className="border border-zinc-700 bg-zinc-900 px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-zinc-800">View Leadership →</Link>
+            <Link to="/team/mentors" className="border border-zinc-700 bg-zinc-900 px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-zinc-800">View Mentors →</Link>
           </div>
         </div>
       </section>
