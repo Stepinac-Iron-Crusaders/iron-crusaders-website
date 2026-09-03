@@ -30,9 +30,7 @@ export default function Resources() {
               <h2 className="text-xs font-black uppercase tracking-[0.12em] text-white">GitHub</h2>
               <p className="mt-2 text-sm leading-relaxed text-zinc-400">Java • WPILib • AdvantageKit • PathPlanner. Every commit tagged by event.</p>
               <ul className="mt-4 space-y-2 font-mono text-xs">
-                <li><a href="https://github.com" target="_blank" rel="noreferrer" className="flex items-center justify-between border border-zinc-800 bg-zinc-900 px-3 py-2 text-zinc-300 hover:text-white">2025 — Reefscape <span>→</span></a></li>
-                <li><a href="https://github.com" target="_blank" rel="noreferrer" className="flex items-center justify-between border border-zinc-800 bg-zinc-900 px-3 py-2 text-zinc-300 hover:text-white">2024 — Crescendo <span>→</span></a></li>
-                <li><a href="https://github.com" target="_blank" rel="noreferrer" className="flex items-center justify-between border border-zinc-800 bg-zinc-900 px-3 py-2 text-zinc-300 hover:text-white">Library — Swerve Base <span>→</span></a></li>
+                <li><a href="https://github.com/Stepinac-Iron-Crusaders" target="_blank" rel="noreferrer" className="flex items-center justify-between border border-zinc-800 bg-zinc-900 px-3 py-2 text-zinc-300 hover:text-white">github.com/Stepinac-Iron-Crusaders <span>→</span></a></li>
               </ul>
             </div>
             <div className="border border-zinc-800 bg-zinc-950 p-6">
