@@ -134,25 +134,54 @@ export default function Sponsors() {
 
       <section className="border-b border-zinc-800 bg-zinc-950">
         <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-14">
-          <div className="mx-auto max-w-3xl">
+          <div className="mx-auto max-w-4xl">
+            
             <div className="text-center">
-              <h2 className="text-[28px] font-black uppercase tracking-[-0.02em] text-white">
+              <div className="mb-3 flex items-center justify-center gap-3">
+                <span className="h-px w-8 bg-red-600" aria-hidden="true" />
+                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-red-500">
+                  Individual Support
+                </span>
+                <span className="h-px w-8 bg-red-600" aria-hidden="true" />
+              </div>
+      
+              <h2 className="text-[28px] font-black uppercase tracking-[-0.02em] text-white sm:text-[34px]">
                 Support the Iron Crusaders
               </h2>
       
-              <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-zinc-400">
-                Can't sponsor us as a company? You can still help fund our robot,
-                competition costs, and STEM outreach through our GoFundMe.
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-zinc-400">
+                Not a company? You can still help us build our robot, compete,
+                and bring STEM opportunities to our community.
               </p>
             </div>
       
-            <div className="mt-8 flex justify-center">
-              <iframe
-                src="https://www.gofundme.com/f/help-the-iron-crusaders-make-robotics-accessible-4-all-teams/widget/medium"
-                className="w-full max-w-[600px] min-h-[700px] border-0"
-                title="Support the Iron Crusaders on GoFundMe"
-              />
+            {/* GoFundMe */}
+            <div className="mx-auto mt-8 max-w-[650px] overflow-hidden border border-zinc-800 bg-zinc-900 shadow-2xl">
+              <div className="border-b border-zinc-800 bg-zinc-950 px-5 py-3">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-500">
+                    FUNDRAISING CAMPAIGN
+                  </span>
+      
+                  <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-red-500">
+                    #11815
+                  </span>
+                </div>
+              </div>
+      
+              <div className="flex justify-center bg-white p-2 sm:p-4">
+                <iframe
+                  src="https://www.gofundme.com/f/help-the-iron-crusaders-make-robotics-accessible-4-all-teams/widget/medium"
+                  className="h-[650px] w-full max-w-[600px] border-0"
+                  title="Support the Iron Crusaders on GoFundMe"
+                />
+              </div>
             </div>
+      
+            <p className="mt-4 text-center font-mono text-[10px] uppercase tracking-[0.1em] text-zinc-600">
+              Donations processed securely through GoFundMe
+            </p>
+      
           </div>
         </div>
       </section>
