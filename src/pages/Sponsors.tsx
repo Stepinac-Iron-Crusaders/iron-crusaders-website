@@ -172,7 +172,7 @@ export default function Sponsors() {
               <div className="flex justify-center bg-white p-2 sm:p-4">
                 <iframe
                   src="https://www.gofundme.com/f/help-the-iron-crusaders-make-robotics-accessible-4-all-teams/widget/medium"
-                  className="h-[650px] w-full max-w-[600px] border-0"
+                  className="h-[450px] w-full max-w-[600px] border-0"
                   title="Support the Iron Crusaders on GoFundMe"
                 />
               </div>
