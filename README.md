@@ -1,48 +1,135 @@
-# React + TypeScript + Vite
+# Iron Crusaders Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**Status: Active**
 
-Currently, two official plugins are available:
+This repository contains the content served at [ironcrusaders.me](https://ironcrusaders.me) and [https://stepinac-iron-crusaders.github.io/iron-crusaders-website/](https://stepinac-iron-crusaders.github.io/iron-crusaders-website/).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This website is built with **Vite + React + TypeScript** and is hosted as a **GitHub Pages** site via GitHub Actions.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Dependencies
 
-## Expanding the Oxlint configuration
+- **Node.js** 18+ (20 recommended)
+- **npm** 9+
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+Check versions:
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+node --version
+npm --version
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+---
 
-## Iron Crusaders — FRC Team Site
+## Setup
 
-Static React + Vite site for Archbishop Stepinac's FRC team. All forms (newsletter, contact, sponsorship) are `mailto:` links to **engineeringclub@stepinac.org**.
+While in the cloned folder, run:
 
-### Run locally
-
-```sh
+```bash
 npm install
-npm run dev      # Vite dev server on http://localhost:5173
-npm run build    # typecheck + production build to ./dist
 ```
 
-### Deploy to GitHub Pages
+Then, to start the dev server, run:
 
-Pushing to `main` triggers [the Actions workflow](.github/workflows/deploy.yml), which builds the site and deploys it to GitHub Pages (source: **GitHub Actions**).
+```bash
+npm run dev
+```
+
+Navigate to `http://localhost:5173` to view the site. The dev server supports HMR.
+
+To create a production build, run:
+
+```bash
+npm run build
+```
+
+Output is generated to `./dist`. Preview the build with:
+
+```bash
+npm run preview
+```
+
+Lint:
+
+```bash
+npm run lint
+```
+
+---
+
+## Pushing
+
+After implementing all the changes necessary, you will need to push to your GitHub fork.
+
+To add your repository fork, run:
+
+```bash
+git remote add origin https://github.com/Stepinac-Iron-Crusaders/iron-crusaders-website.git
+```
+
+To stage your updated code, run:
+
+```bash
+git add .
+```
+
+or to stage a specific file:
+
+```bash
+git add src/pages/Home.tsx
+```
+
+To commit your push, run:
+
+```bash
+git commit -m "describe what you did"
+```
+
+Finally to push to your forked repository, run:
+
+```bash
+git push
+```
+
+Go to your GitHub fork — it should say `1 commit ahead of...`. Open a pull request to `main` on `Stepinac-Iron-Crusaders/iron-crusaders-website`.
+
+**Deploy:** Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds and deploys to GitHub Pages (source: **GitHub Actions**).
+
+---
+
+## Troubleshooting
+
+- **Install fails / `npm install` errors:** Delete `node_modules` and `package-lock.json`, then retry:
+  ```bash
+  rm -rf node_modules package-lock.json
+  npm install
+  ```
+
+- **Type errors on build (`tsc -b`):** Ensure you’re on Node 18+ and run `npm run build` again. If types are stale, restart the TS server in your editor.
+
+- **Port in use (`5173`):** Vite will prompt for another port, or run `npm run dev -- --port 3000`.
+
+---
+
+## Authors
+
+- **Iron Crusaders** — Archbishop Stepinac High School FRC Team
+- Subash Jonnalagadda — Lead
+- Joseph Alex — Lead
+- Contributors via [Stepinac-Iron-Crusaders](https://github.com/Stepinac-Iron-Crusaders)
+
+---
+
+## License
+
+This software is protected under the **MIT license**. Basically, do whatever you want as long as you give credit where credit is due and don't hold us liable for anything that happens. More information can be found in `LICENSE`.
+
+---
+
+### Tech Stack
+
+- [Vite](https://vitejs.dev/) + [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/) (via `@tailwindcss/vite`)
+- [GSAP](https://gsap.com/) + ScrollTrigger for motion
+- [React Router](https://reactrouter.com/) (HashRouter)
