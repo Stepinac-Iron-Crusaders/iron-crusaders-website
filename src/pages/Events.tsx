@@ -99,7 +99,9 @@ export default function Events() {
                 </p>
               </div>
               <a
-                href="#"
+                href="https://calendar.google.com/calendar/ical/c_ed3a2a85960503a52f813aaec08fd19e16f912a4756842a51caf08ddbbb8dfc7%40group.calendar.google.com/public/basic.ics"
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex border border-zinc-800 bg-zinc-900 px-5 py-3 font-mono text-xs font-bold uppercase tracking-[0.12em] text-white hover:bg-zinc-800"
               >
                 Add to Calendar • ICS
