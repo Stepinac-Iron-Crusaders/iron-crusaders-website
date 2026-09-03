@@ -37,7 +37,6 @@ export default function Newsletter() {
                   Subscribe via Form →
                 </Link>
               </div>
-              <p className="mt-3 font-mono text-[11px] leading-relaxed text-zinc-500">Private signup — just email, subject “Newsletter signup”. No trackers.</p>
             </div>
 
             <div className="mt-10 border border-dashed border-zinc-700 bg-zinc-950 p-10 text-center">
