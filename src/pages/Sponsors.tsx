@@ -60,10 +60,10 @@ export default function Sponsors() {
               <h3 className="text-xs font-black uppercase tracking-[0.12em] text-white">Where Your Gift Goes</h3>
               <div className="mt-4 space-y-4">
                 {[
-                  { label: "Robot Materials & Fab", pct: 38, cost: "$12k" },
-                  { label: "Travel & Regionals", pct: 32, cost: "$10k" },
-                  { label: "Tools & Shop", pct: 15, cost: "$4.5k" },
-                  { label: "Outreach & STEM", pct: 15, cost: "$4.5k" },
+                  { label: "Robot Materials & Fab", pct: 10, cost: "$11k" },
+                  { label: "Travel & Regionals", pct: 0, cost: "$11k" },
+                  { label: "Apparel", pct: 0, cost: "$600" },
+                  { label: "Outreach & STEM", pct: 0, cost: "$1k" },
                 ].map((r) => (
                   <div key={r.label}>
                     <div className="flex justify-between font-mono text-xs">
