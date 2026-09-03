@@ -35,7 +35,8 @@ const ROSTER = [
   { n: "Viggo McCartney", email: "viggomccartney945@stepinac.org", role: "Design/Build Team, Finance Team", yr: "Sophomore" },
   { n: "Anthony MacDonald", email: "anthonymacdonald775@stepinac.org", role: "Design/Build Team", yr: "Sophomore" },
   { n: "Robert Geib", email: "robertgeib429@stepinac.org", role: "Coding Team", yr: "Junior" },
-  { n: "Aston Seravo", email: "astonseravo509@stepinac.org", role: "Design/Build Team, Coding Team, Finance Team", yr: "Sophomore" }
+  { n: "Aston Seravo", email: "astonseravo509@stepinac.org", role: "Design/Build Team, Coding Team, Finance Team", yr: "Sophomore" },
+  { n: "Mathew Kulapurathazhe", email: "mathewkulapurat628@stepinac.org", role: "Design/Build Team, Finance Team", yr: "Sophomore" }
 ];
 
 export default function Students() {
