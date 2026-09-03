@@ -4,6 +4,8 @@ import { PlaceholderImage } from "../components/PlaceholderImage";
 import SponsorsGrid from "../components/SponsorsGrid";
 import { SPONSORS, TIERS } from "../data/sponsors";
 import { MagneticWrap, MagneticButton } from "../components/MagneticButton";
+import { GoFundMeEmbed } from "../components/GoFundMeEmbed";
+
 
 export default function Sponsors() {
   return (
@@ -132,6 +134,27 @@ export default function Sponsors() {
 
       <section className="border-b border-zinc-800 bg-zinc-950">
         <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-14">
+          <div className="mx-auto max-w-3xl">
+            <div className="text-center">
+              <h2 className="text-[28px] font-black uppercase tracking-[-0.02em] text-white">
+                Support the Iron Crusaders
+              </h2>
+      
+              <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-zinc-400">
+                Can't sponsor us as a company? You can still help fund our robot,
+                competition costs, and STEM outreach through our GoFundMe.
+              </p>
+            </div>
+      
+            <div className="mt-8 flex justify-center">
+              <GoFundMeEmbed />
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <section className="border-b border-zinc-800 bg-zinc-950">
+        <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-14">
           <h2 className="text-center font-mono text-xs font-bold uppercase tracking-[0.12em] text-zinc-500">Our Sponsors</h2>
           <div className="mt-8">
             <SponsorsGrid sponsors={SPONSORS} />
@@ -151,11 +174,14 @@ export default function Sponsors() {
         </div>
       </section>
 
+      {/*
       <section className="bg-zinc-900">
         <div className="mx-auto max-w-[1280px] px-4 py-8 lg:px-8">
           <PlaceholderImage label="SPONSOR BANNER & ROBOT LOGO PREVIEW PLACEHOLDER" className="aspect-[3/1]" />
         </div>
       </section>
+      */}
+  
     </>
     </AnimatedPage>
   );
