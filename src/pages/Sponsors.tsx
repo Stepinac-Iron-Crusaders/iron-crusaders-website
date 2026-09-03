@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { AnimatedPage } from "../components/AnimatedPage";
-import { PlaceholderImage } from "../components/PlaceholderImage";
+// import { PlaceholderImage } from "../components/PlaceholderImage";
 import SponsorsGrid from "../components/SponsorsGrid";
 import { SPONSORS, TIERS } from "../data/sponsors";
 import { MagneticWrap, MagneticButton } from "../components/MagneticButton";
