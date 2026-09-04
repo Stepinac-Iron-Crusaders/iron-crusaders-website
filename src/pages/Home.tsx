@@ -586,7 +586,7 @@ export default function Home() {
                   <span className="pointer-events-none absolute -left-1 -bottom-1 h-2 w-2 border-b border-l border-zinc-400" aria-hidden="true" />
                   <MagneticWrap strength={0.38}>
                     <a
-                      href="https://www.gofundme.com/f/iron-crusaders-support-our-2026-rookie-season"
+                      href="https://www.gofundme.com/f/help-the-iron-crusaders-make-robotics-accessible-4-all-teams/donate?utm_campaign=unknown&utm_medium=undefined&utm_source=undefined"
                       target="_blank"
                       rel="noreferrer"
                       data-cursor="hover"
