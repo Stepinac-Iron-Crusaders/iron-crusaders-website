@@ -2,6 +2,7 @@ export type Sponsor = {
   name: string;
   tier?: string;
   logo?: string | null;
+  website?: string;
 };
 
 
@@ -70,9 +71,9 @@ export const TIERS = [
 ];
 
 export const SPONSORS: Sponsor[] = [
-  { name: "SendCutSend - Paladin", tier: "Paladin", logo: SendCutSendLogo },
-  { name: "iFixit - Knight", tier: "Knight", logo: iFixitLogo },
-  { name: "DigiKey - Ally", tier: "Ally", logo: DigiKeyLogo },
+  { name: "SendCutSend - Paladin", tier: "Paladin", logo: SendCutSendLogo, website: "https://sendcutsend.com/" },
+  { name: "iFixit - Knight", tier: "Knight", logo: iFixitLogo, website: "https://www.ifixit.com/" },
+  { name: "DigiKey - Ally", tier: "Ally", logo: DigiKeyLogo, website: "https://www.digikey.com/" },
 ];
 
 export const DEFAULT_LOGO_SIZES: Record<string, string> = {
