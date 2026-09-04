@@ -1,7 +1,5 @@
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "./components/Layout";
-import TeamLogin from "./pages/TeamLogin";
-import TeamDashboard from "./pages/TeamDashboard";
 
 import Home from "./pages/Home";
 import CurrentRobot from "./pages/CurrentRobot";
@@ -22,18 +20,28 @@ import NewsletterSignup from "./pages/NewsletterSignup";
 import Sponsors from "./pages/Sponsors";
 import NotFound from "./pages/NotFound";
 
+import TeamLogin from "./pages/TeamLogin";
+import TeamDashboard from "./pages/TeamDashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
+
 export default function App() {
   return (
     <HashRouter>
       <Routes>
         <Route element={<Layout />}>
+
+          {/* Home */}
           <Route index element={<Home />} />
+
+          {/* Robots */}
           <Route path="robots">
             <Route index element={<Navigate to="current" replace />} />
             <Route path="current" element={<CurrentRobot />} />
             <Route path="past" element={<PastRobots />} />
             <Route path="archive" element={<RobotArchive />} />
           </Route>
+
+          {/* Public Team Pages */}
           <Route path="team">
             <Route index element={<Navigate to="about" replace />} />
             <Route path="about" element={<About />} />
@@ -41,6 +49,23 @@ export default function App() {
             <Route path="mentors" element={<Mentors />} />
             <Route path="leadership" element={<Leadership />} />
           </Route>
+
+          {/* Private Team Portal */}
+          <Route
+            path="team/portal/login"
+            element={<TeamLogin />}
+          />
+
+          <Route
+            path="team/portal/dashboard"
+            element={
+              <ProtectedRoute>
+                <TeamDashboard />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Other Pages */}
           <Route path="outreach" element={<Outreach />} />
           <Route path="events" element={<Events />} />
           <Route path="awards" element={<Awards />} />
@@ -48,12 +73,15 @@ export default function App() {
           <Route path="resources" element={<Resources />} />
           <Route path="contact" element={<Contact />} />
           <Route path="newsletter" element={<Newsletter />} />
-          <Route path="newsletter/signup" element={<NewsletterSignup />} />
+          <Route
+            path="newsletter/signup"
+            element={<NewsletterSignup />}
+          />
           <Route path="sponsors" element={<Sponsors />} />
+
+          {/* 404 */}
           <Route path="*" element={<NotFound />} />
-          
-          <Route path="team/portal/login" element={<TeamLogin />} />
-          <Route path="team/portal/dashboard" element={<TeamDashboard />} />
+
         </Route>
       </Routes>
     </HashRouter>
