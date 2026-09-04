@@ -299,7 +299,7 @@ export function Header() {
           <div data-header-nav className="ml-2 flex items-center gap-2">
             {/* Team Sign In */}
             <Link
-              to="/team/login"
+              to="/team/portal/login"
               data-cursor="hover"
               className="inline-flex items-center justify-center border border-zinc-700 bg-zinc-900 px-4 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-zinc-300 transition-colors duration-200 hover:border-zinc-500 hover:bg-zinc-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
             >
@@ -449,7 +449,7 @@ export function Header() {
           </div>
 
           <Link
-            to="/team/login"
+            to="/team/portal/login"
             className="mt-6 border border-zinc-700 bg-zinc-800 px-5 py-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-zinc-300 transition-colors hover:border-zinc-500 hover:bg-zinc-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600"
           >
             Team Sign In
