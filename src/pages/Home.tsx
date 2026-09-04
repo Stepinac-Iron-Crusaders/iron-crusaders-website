@@ -216,7 +216,24 @@ export default function Home() {
           { clipPath: "inset(0 0% 0 0)", scale: 1, duration: 1.15, ease: "expo.out" },
           0.32
         )
-        .from("[data-hero-caption]", { y: 10, autoAlpha: 0, duration: 0.5 }, 1.0);
+        .from("[data-hero-caption]", { y: 10, autoAlpha: 0, duration: 0.5 }, 1.0)
+        .from("[data-hero-donate]", { y: -16, autoAlpha: 0, rotation: 3, duration: 0.75, ease: "back.out(1.6)" }, 1.05);
+
+      // donate widget float — best button
+      gsap.to("[data-hero-donate]", {
+        y: -5,
+        duration: 1.9,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
+      gsap.to("[data-hero-donate] a", {
+        boxShadow: "0 18px 50px rgba(0,185,100,0.35), 0 8px 20px rgba(0,0,0,0.25)",
+        duration: 1.8,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
 
       // parallax on hero grid + orb
       gsap.to("[data-hero-grid]", {
@@ -558,6 +575,44 @@ export default function Home() {
                 aria-hidden="true"
                 className="pointer-events-none absolute -right-3 -top-3 hidden h-24 w-24 border border-red-600/20 lg:block"
               />
+              {/* ——— Donate GoFundMe widget — best button ——— */}
+              <div
+                data-hero-donate
+                className="absolute -right-2 top-4 z-20 will-change-transform md:right-3 md:top-5"
+                style={{ transform: "rotate(1.4deg)" }}
+              >
+                <div className="relative border border-zinc-700 bg-white p-1 shadow-[0_16px_50px_rgba(0,0,0,0.5)]">
+                  <span className="pointer-events-none absolute -right-1 -top-1 h-2 w-2 bg-red-600" aria-hidden="true" />
+                  <span className="pointer-events-none absolute -left-1 -bottom-1 h-2 w-2 border-b border-l border-zinc-400" aria-hidden="true" />
+                  <MagneticWrap strength={0.38}>
+                    <a
+                      href="https://www.gofundme.com/f/iron-crusaders-support-our-2026-rookie-season"
+                      target="_blank"
+                      rel="noreferrer"
+                      data-cursor="hover"
+                      data-magnetic
+                      className="group relative flex items-center gap-3 overflow-hidden bg-gradient-to-br from-[#00b964] to-[#00914d] px-4 py-3 pr-5 text-white will-change-transform"
+                    >
+                      <span className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true" />
+                      <span className="relative flex h-9 w-9 shrink-0 items-center justify-center bg-white text-[#00b964] shadow-inner">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                          <path d="M12 21s-6.5-4.3-8.2-8.1A4.5 4.5 0 0 1 12 7.2a4.5 4.5 0 0 1 8.2 5.7C18.5 16.7 12 21 12 21z" />
+                          <path d="M12 7.5v4l2.2 1.3" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                      <span className="relative flex flex-col text-left leading-none">
+                        <span className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-white/90">Support the Team • 501(c)(3)</span>
+                        <span className="mt-1 flex items-center gap-1.5 text-xs font-black uppercase tracking-[0.02em]">
+                          Donate through GoFundMe
+                          <span className="transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true">→</span>
+                        </span>
+                      </span>
+                    </a>
+                  </MagneticWrap>
+                </div>
+                <div className="pointer-events-none absolute -bottom-4 left-1/2 h-4 w-px -translate-x-1/2 bg-zinc-700/60" aria-hidden="true" />
+                <div className="mt-2 text-center font-mono text-[10px] uppercase tracking-[0.12em] text-zinc-500">Secure • GoFundMe</div>
+              </div>
               <div
                 data-hero-image
                 className="relative overflow-hidden will-change-transform"
