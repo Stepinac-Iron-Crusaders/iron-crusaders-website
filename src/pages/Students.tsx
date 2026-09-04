@@ -22,9 +22,9 @@ const SUBTEAMS = [
 
 const ROSTER = [
   { n: "Subash Jonnalagadda", email: "sjonnalagadda555@stepinac.org", role: "Design/Build Team, Coding Team, Finance Team, Marketing/Social Media Team", yr: "Junior" },
+  { n: "Joseph Alex", email: "josephalex823@stepinac.org", role: "Design/Build Team, Coding Team, Finance Team, Marketing/Social Media Team", yr: "Sophomore" },
   { n: "Jace Reyna", email: "jacereyna228@stepinac.org", role: "Coding Team, Finance Team, Marketing/Social Media Team", yr: "Junior" },
   { n: "Joseph Uthuppan", email: "josephuthuppan930@stepinac.org", role: "Design/Build Team, Coding Team", yr: "Junior" },
-  { n: "Joseph Alex", email: "josephalex823@stepinac.org", role: "Design/Build Team, Coding Team, Finance Team, Marketing/Social Media Team", yr: "Sophomore" },
   { n: "Julian Reiff", email: "julianreiff995@stepinac.org", role: "Design/Build Team, Coding Team", yr: "Sophomore" },
   { n: "Michael Yordan", email: "michaelyordan408@stepinac.org", role: "Design/Build Team, Finance Team", yr: "Sophomore" },
   { n: "Michael Peyton", email: "michaelpeyton872@stepinac.org", role: "Coding Team, Finance Team", yr: "Sophomore" },
