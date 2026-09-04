@@ -1,5 +1,7 @@
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "./components/Layout";
+import TeamLogin from "./pages/TeamLogin";
+import TeamDashboard from "./pages/TeamDashboard";
 
 import Home from "./pages/Home";
 import CurrentRobot from "./pages/CurrentRobot";
@@ -49,6 +51,9 @@ export default function App() {
           <Route path="newsletter/signup" element={<NewsletterSignup />} />
           <Route path="sponsors" element={<Sponsors />} />
           <Route path="*" element={<NotFound />} />
+          
+          <Route path="team/portal/login" element={<TeamLogin />} />
+          <Route path="team/portal/dashboard" element={<TeamDashboard />} />
         </Route>
       </Routes>
     </HashRouter>
