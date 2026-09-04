@@ -25,4 +25,8 @@ dist-ssr
 
 .env
 .env.local
+<<<<<<< HEAD
 .env.*.local
+=======
+.env.*.local
+>>>>>>> 6edc32fb6dab788227f02c1ad160368bb0a040e5
