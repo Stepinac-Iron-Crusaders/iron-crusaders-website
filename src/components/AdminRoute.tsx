@@ -27,10 +27,14 @@ export default function AdminRoute({ children }: Props) {
         .eq("id", user.id)
         .single();
 
+      console.log("AUTH USER:", user);
+      console.log("PROFILE:", profile);
+      console.log("PROFILE ERROR:", error);
+      
       if (!error && profile?.role === "admin" && profile.active) {
         setIsAdmin(true);
       }
-
+      
       setLoading(false);
     };
 
