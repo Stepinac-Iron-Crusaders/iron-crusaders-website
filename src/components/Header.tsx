@@ -296,7 +296,17 @@ export function Header() {
             Newsletter
           </NavLink>
 
-          <div data-header-nav className="ml-2">
+          <div data-header-nav className="ml-2 flex items-center gap-2">
+            {/* Team Sign In */}
+            <Link
+              to="/team/portal/login"
+              data-cursor="hover"
+              className="inline-flex items-center justify-center border border-zinc-700 bg-zinc-900 px-4 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-zinc-300 transition-colors duration-200 hover:border-zinc-500 hover:bg-zinc-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+            >
+              Team Sign In
+            </Link>
+          
+            {/* Sponsor Us */}
             <MagneticWrap strength={0.32}>
               <Link
                 to="/sponsors"
@@ -439,8 +449,15 @@ export function Header() {
           </div>
 
           <Link
+            to="/team/portal/login"
+            className="mt-6 border border-zinc-700 bg-zinc-800 px-5 py-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-zinc-300 transition-colors hover:border-zinc-500 hover:bg-zinc-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600"
+          >
+            Team Sign In
+          </Link>
+          
+          <Link
             to="/sponsors"
-            className="mt-6 bg-red-600 px-5 py-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-red-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white active:bg-red-800"
+            className="mt-2 bg-red-600 px-5 py-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-red-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white active:bg-red-800"
           >
             Sponsor Us
           </Link>
