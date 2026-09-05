@@ -40,11 +40,12 @@ export default function TeamLogin() {
     });
 
     if (error) {
-      setError("Invalid email or password.");
+      console.error("Supabase login error:", error);
+      setError(error.message);
       setLoading(false);
       return;
     }
-
+    
     const from =
       (location.state as { from?: { pathname?: string } } | null)?.from
         ?.pathname || "/team/portal/dashboard";
