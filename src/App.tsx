@@ -23,6 +23,8 @@ import NotFound from "./pages/NotFound";
 import TeamLogin from "./pages/TeamLogin";
 import TeamDashboard from "./pages/TeamDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminRoute from "./components/AdminRoute";
 
 export default function App() {
   return (
@@ -51,11 +53,12 @@ export default function App() {
           </Route>
 
           {/* Private Team Portal */}
+          
           <Route
             path="team/portal/login"
             element={<TeamLogin />}
           />
-
+          
           <Route
             path="team/portal/dashboard"
             element={
@@ -64,7 +67,16 @@ export default function App() {
               </ProtectedRoute>
             }
           />
-
+          
+          <Route
+            path="team/portal/admin"
+            element={
+              <AdminRoute>
+                <AdminDashboard />
+              </AdminRoute>
+            }
+          />
+          
           {/* Other Pages */}
           <Route path="outreach" element={<Outreach />} />
           <Route path="events" element={<Events />} />
