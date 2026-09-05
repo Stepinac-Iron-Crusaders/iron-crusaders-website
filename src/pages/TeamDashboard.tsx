@@ -7,40 +7,26 @@ type User = {
   email?: string;
 };
 
-const schedule = [
-  {
-    date: "SEP 08",
-    day: "Tuesday",
-    title: "Team Meeting",
-    time: "3:30 PM – 5:00 PM",
-    location: "Engineering Lab",
-  },
-  {
-    date: "SEP 10",
-    day: "Thursday",
-    title: "Build Session",
-    time: "3:30 PM – 6:00 PM",
-    location: "Engineering Lab",
-  },
-  {
-    date: "SEP 12",
-    day: "Saturday",
-    title: "Outreach Event",
-    time: "10:00 AM – 2:00 PM",
-    location: "TBD",
-  },
-  {
-    date: "SEP 15",
-    day: "Tuesday",
-    title: "CAD / Programming",
-    time: "3:30 PM – 5:30 PM",
-    location: "Engineering Lab",
-  },
-];
+type TeamEvent = {
+  id: number;
+  title: string;
+  description: string | null;
+  location: string | null;
+  start_time: string;
+};
 
 export default function TeamDashboard() {
   const [user, setUser] = useState<User | null>(null);
+  const [schedule, setSchedule] = useState<TeamEvent[]>([]);
+
+  const [loadingSchedule, setLoadingSchedule] = useState(true);
+  const [scheduleError, setScheduleError] = useState("");
+
   const [loggingOut, setLoggingOut] = useState(false);
+
+  // --------------------------------------------------
+  // Get logged-in user
+  // --------------------------------------------------
 
   useEffect(() => {
     const getUser = async () => {
@@ -58,6 +44,41 @@ export default function TeamDashboard() {
     getUser();
   }, []);
 
+  // --------------------------------------------------
+  // Load team schedule from Supabase
+  // --------------------------------------------------
+
+  useEffect(() => {
+    const loadSchedule = async () => {
+      setLoadingSchedule(true);
+      setScheduleError("");
+
+      const now = new Date().toISOString();
+
+      const { data, error } = await supabase
+        .from("team_schedule")
+        .select("id, title, description, location, start_time")
+        .gte("start_time", now)
+        .order("start_time", { ascending: true });
+
+      if (error) {
+        console.error("Failed to load team schedule:", error);
+        setScheduleError("Unable to load the team schedule.");
+        setLoadingSchedule(false);
+        return;
+      }
+
+      setSchedule(data ?? []);
+      setLoadingSchedule(false);
+    };
+
+    loadSchedule();
+  }, []);
+
+  // --------------------------------------------------
+  // Logout
+  // --------------------------------------------------
+
   const handleLogout = async () => {
     setLoggingOut(true);
 
@@ -65,6 +86,50 @@ export default function TeamDashboard() {
 
     window.location.href = "#/team/portal/login";
   };
+
+  // --------------------------------------------------
+  // Format event date
+  // --------------------------------------------------
+
+  const formatEventDate = (dateString: string) => {
+    const date = new Date(dateString);
+
+    return {
+      month: date
+        .toLocaleDateString("en-US", {
+          month: "short",
+        })
+        .toUpperCase(),
+
+      day: date.toLocaleDateString("en-US", {
+        day: "2-digit",
+      }),
+
+      weekday: date
+        .toLocaleDateString("en-US", {
+          weekday: "long",
+        })
+        .toUpperCase(),
+    };
+  };
+
+  // --------------------------------------------------
+  // Format event time
+  // --------------------------------------------------
+
+  const formatEventTime = (dateString: string) => {
+    const date = new Date(dateString);
+
+    return date.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    });
+  };
+
+  // --------------------------------------------------
+  // Render
+  // --------------------------------------------------
 
   return (
     <AnimatedPage>
@@ -123,40 +188,98 @@ export default function TeamDashboard() {
                   </p>
                 </div>
 
-                <div className="space-y-3">
-                  {schedule.map((event) => (
-                    <div
-                      key={`${event.date}-${event.title}`}
-                      className="flex gap-5 border border-zinc-800 bg-zinc-950 p-5 transition-colors hover:border-zinc-700"
+                {/* Loading */}
+                {loadingSchedule && (
+                  <div className="border border-zinc-800 bg-zinc-950 p-6">
+                    <p className="font-mono text-xs uppercase tracking-[0.12em] text-zinc-600">
+                      Loading schedule...
+                    </p>
+                  </div>
+                )}
+
+                {/* Error */}
+                {!loadingSchedule && scheduleError && (
+                  <div className="border border-red-900/60 bg-red-950/20 p-6">
+                    <p className="font-mono text-xs uppercase tracking-[0.12em] text-red-400">
+                      {scheduleError}
+                    </p>
+
+                    <button
+                      onClick={() => window.location.reload()}
+                      className="mt-4 border border-red-900/60 px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-red-400 transition-colors hover:bg-red-950/40"
                     >
-                      {/* Date */}
-                      <div className="flex w-16 shrink-0 flex-col items-center justify-center border-r border-zinc-800 pr-5">
-                        <span className="font-mono text-xs font-bold text-red-500">
-                          {event.date}
-                        </span>
+                      Try Again
+                    </button>
+                  </div>
+                )}
 
-                        <span className="mt-1 font-mono text-[9px] uppercase text-zinc-600">
-                          {event.day}
-                        </span>
-                      </div>
+                {/* No upcoming events */}
+                {!loadingSchedule &&
+                  !scheduleError &&
+                  schedule.length === 0 && (
+                    <div className="border border-zinc-800 bg-zinc-950 p-8 text-center">
+                      <p className="font-mono text-xs uppercase tracking-[0.12em] text-zinc-600">
+                        No upcoming events.
+                      </p>
 
-                      {/* Details */}
-                      <div>
-                        <h3 className="text-sm font-bold uppercase tracking-wide text-white">
-                          {event.title}
-                        </h3>
-
-                        <p className="mt-2 text-xs text-zinc-500">
-                          {event.time}
-                        </p>
-
-                        <p className="mt-1 font-mono text-[10px] uppercase tracking-wide text-zinc-700">
-                          {event.location}
-                        </p>
-                      </div>
+                      <p className="mt-2 text-sm text-zinc-700">
+                        Check back later for new team events.
+                      </p>
                     </div>
-                  ))}
-                </div>
+                  )}
+
+                {/* Events */}
+                {!loadingSchedule &&
+                  !scheduleError &&
+                  schedule.length > 0 && (
+                    <div className="space-y-3">
+                      {schedule.map((event) => {
+                        const date = formatEventDate(event.start_time);
+                        const time = formatEventTime(event.start_time);
+
+                        return (
+                          <div
+                            key={event.id}
+                            className="flex gap-5 border border-zinc-800 bg-zinc-950 p-5 transition-colors hover:border-zinc-700"
+                          >
+                            {/* Date */}
+                            <div className="flex w-20 shrink-0 flex-col items-center justify-center border-r border-zinc-800 pr-5">
+                              <span className="font-mono text-xs font-bold text-red-500">
+                                {date.month} {date.day}
+                              </span>
+
+                              <span className="mt-1 font-mono text-[9px] uppercase text-zinc-600">
+                                {date.weekday}
+                              </span>
+                            </div>
+
+                            {/* Details */}
+                            <div className="min-w-0">
+                              <h3 className="text-sm font-bold uppercase tracking-wide text-white">
+                                {event.title}
+                              </h3>
+
+                              <p className="mt-2 text-xs text-zinc-500">
+                                {time}
+                              </p>
+
+                              {event.location && (
+                                <p className="mt-1 font-mono text-[10px] uppercase tracking-wide text-zinc-700">
+                                  {event.location}
+                                </p>
+                              )}
+
+                              {event.description && (
+                                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-600">
+                                  {event.description}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
               </div>
 
               {/* Quick links */}
