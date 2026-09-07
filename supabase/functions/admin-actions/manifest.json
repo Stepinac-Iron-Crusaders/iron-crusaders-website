@@ -1,0 +1,6 @@
+{
+  "name": "admin-actions",
+  "description": "Admin-only auth operations (create user, set password, toggle active, request reset) using the service role key.",
+  "verify_jwt": true,
+  "importMap": true
+}

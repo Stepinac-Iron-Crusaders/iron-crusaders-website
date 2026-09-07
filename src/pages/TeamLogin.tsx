@@ -14,6 +14,12 @@ export default function TeamLogin() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // Forgot password state
+  const [showForgot, setShowForgot] = useState(false);
+  const [resetEmail, setResetEmail] = useState("");
+  const [resetLoading, setResetLoading] = useState(false);
+  const [resetMsg, setResetMsg] = useState("");
+
   useEffect(() => {
     const checkExistingSession = async () => {
       const {
@@ -45,12 +51,27 @@ export default function TeamLogin() {
       setLoading(false);
       return;
     }
-    
+
     const from =
       (location.state as { from?: { pathname?: string } } | null)?.from
         ?.pathname || "/team/portal/dashboard";
 
     navigate(from, { replace: true });
+  };
+
+  const handleForgotPassword = async (e: FormEvent) => {
+    e.preventDefault();
+    setResetLoading(true);
+    setResetMsg("");
+    try {
+      await supabase.auth.resetPasswordForEmail(resetEmail.trim(), {
+        redirectTo: `${window.location.origin}/#/team/portal/login`,
+      });
+      setResetMsg("Check your email for a password reset link.");
+    } catch (err: any) {
+      setResetMsg(err.message ?? "Failed to send reset link.");
+    }
+    setResetLoading(false);
   };
 
   return (
@@ -144,6 +165,21 @@ export default function TeamLogin() {
                 </div>
               )}
 
+              {/* Forgot password */}
+              <div className="text-right">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowForgot(true);
+                    setResetEmail(email);
+                    setResetMsg("");
+                  }}
+                  className="font-mono text-[10px] uppercase tracking-[0.12em] text-zinc-600 transition-colors hover:text-red-400"
+                >
+                  Forgot password?
+                </button>
+              </div>
+
               {/* Submit */}
               <button
                 type="submit"
@@ -173,6 +209,52 @@ export default function TeamLogin() {
           </div>
         </div>
       </section>
+
+      {/* Forgot Password Modal */}
+      {showForgot && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/70" onClick={() => setShowForgot(false)} />
+          <div className="relative w-full max-w-md border border-zinc-800 bg-zinc-900 p-6 shadow-2xl">
+            <div className="mb-5 flex items-center justify-between">
+              <h3 className="font-mono text-xs font-bold uppercase tracking-[0.12em] text-white">Reset Password</h3>
+              <button type="button" onClick={() => setShowForgot(false)} className="text-zinc-500 hover:text-white">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 4l8 8M12 4l-8 8" /></svg>
+              </button>
+            </div>
+
+            <form onSubmit={handleForgotPassword} className="space-y-4">
+              <div>
+                <label htmlFor="reset-email" className="mb-2 block font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-zinc-500">
+                  Your Email
+                </label>
+                <input
+                  id="reset-email"
+                  type="email"
+                  required
+                  value={resetEmail}
+                  onChange={(e) => setResetEmail(e.target.value)}
+                  className="w-full border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-700 focus:border-red-600"
+                  placeholder="you@example.com"
+                />
+              </div>
+
+              {resetMsg && (
+                <div className="border border-zinc-800 bg-zinc-950 px-4 py-3">
+                  <p className="font-mono text-xs text-zinc-400">{resetMsg}</p>
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={resetLoading}
+                className="w-full bg-red-600 px-6 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {resetLoading ? "Sending..." : "Send Reset Link →"}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </AnimatedPage>
   );
 }

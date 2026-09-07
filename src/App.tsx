@@ -1,5 +1,6 @@
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "./components/Layout";
+import { AuthProvider } from "./contexts/AuthContext";
 
 import Home from "./pages/Home";
 import CurrentRobot from "./pages/CurrentRobot";
@@ -22,68 +23,100 @@ import NotFound from "./pages/NotFound";
 
 import TeamLogin from "./pages/TeamLogin";
 import TeamDashboard from "./pages/TeamDashboard";
+import AdminDashboard from "./pages/AdminDashboard";
+import TeamLeadDashboard from "./pages/TeamLeadDashboard";
+import MemberDashboard from "./pages/MemberDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
   return (
     <HashRouter>
-      <Routes>
-        <Route element={<Layout />}>
+      <AuthProvider>
+        <Routes>
+          <Route element={<Layout />}>
 
-          {/* Home */}
-          <Route index element={<Home />} />
+            {/* Home */}
+            <Route index element={<Home />} />
 
-          {/* Robots */}
-          <Route path="robots">
-            <Route index element={<Navigate to="current" replace />} />
-            <Route path="current" element={<CurrentRobot />} />
-            <Route path="past" element={<PastRobots />} />
-            <Route path="archive" element={<RobotArchive />} />
+            {/* Robots */}
+            <Route path="robots">
+              <Route index element={<Navigate to="current" replace />} />
+              <Route path="current" element={<CurrentRobot />} />
+              <Route path="past" element={<PastRobots />} />
+              <Route path="archive" element={<RobotArchive />} />
+            </Route>
+
+            {/* Public Team Pages */}
+            <Route path="team">
+              <Route index element={<Navigate to="about" replace />} />
+              <Route path="about" element={<About />} />
+              <Route path="students" element={<Students />} />
+              <Route path="mentors" element={<Mentors />} />
+              <Route path="leadership" element={<Leadership />} />
+            </Route>
+
+            {/* Private Team Portal */}
+            <Route
+              path="team/portal/login"
+              element={<TeamLogin />}
+            />
+
+            <Route
+              path="team/portal/dashboard"
+              element={
+                <ProtectedRoute>
+                  <TeamDashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="team/portal/admin"
+              element={
+                <ProtectedRoute allowedRoles={["admin"]}>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="team/portal/lead"
+              element={
+                <ProtectedRoute allowedRoles={["admin", "team_lead"]}>
+                  <TeamLeadDashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="team/portal/member"
+              element={
+                <ProtectedRoute>
+                  <MemberDashboard />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Other Pages */}
+            <Route path="outreach" element={<Outreach />} />
+            <Route path="events" element={<Events />} />
+            <Route path="awards" element={<Awards />} />
+            <Route path="media" element={<Media />} />
+            <Route path="resources" element={<Resources />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="newsletter" element={<Newsletter />} />
+            <Route
+              path="newsletter/signup"
+              element={<NewsletterSignup />}
+            />
+            <Route path="sponsors" element={<Sponsors />} />
+
+            {/* 404 */}
+            <Route path="*" element={<NotFound />} />
+
           </Route>
-
-          {/* Public Team Pages */}
-          <Route path="team">
-            <Route index element={<Navigate to="about" replace />} />
-            <Route path="about" element={<About />} />
-            <Route path="students" element={<Students />} />
-            <Route path="mentors" element={<Mentors />} />
-            <Route path="leadership" element={<Leadership />} />
-          </Route>
-
-          {/* Private Team Portal */}
-          <Route
-            path="team/portal/login"
-            element={<TeamLogin />}
-          />
-
-          <Route
-            path="team/portal/dashboard"
-            element={
-              <ProtectedRoute>
-                <TeamDashboard />
-              </ProtectedRoute>
-            }
-          />
-
-          {/* Other Pages */}
-          <Route path="outreach" element={<Outreach />} />
-          <Route path="events" element={<Events />} />
-          <Route path="awards" element={<Awards />} />
-          <Route path="media" element={<Media />} />
-          <Route path="resources" element={<Resources />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="newsletter" element={<Newsletter />} />
-          <Route
-            path="newsletter/signup"
-            element={<NewsletterSignup />}
-          />
-          <Route path="sponsors" element={<Sponsors />} />
-
-          {/* 404 */}
-          <Route path="*" element={<NotFound />} />
-
-        </Route>
-      </Routes>
+        </Routes>
+      </AuthProvider>
     </HashRouter>
   );
 }

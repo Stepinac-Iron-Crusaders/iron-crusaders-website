@@ -5,6 +5,7 @@ import { ScrollToTop } from "./ScrollToTop";
 import { CustomCursor } from "./CustomCursor";
 import { ScrollProgress } from "./ScrollProgress";
 import { RouteTransition } from "./RouteTransition";
+import { FloatingDashboardButton } from "./FloatingDashboardButton";
 
 export function Layout() {
   return (
@@ -20,6 +21,7 @@ export function Layout() {
           </RouteTransition>
         </main>
         <Footer />
+        <FloatingDashboardButton />
       </div>
     </>
   );

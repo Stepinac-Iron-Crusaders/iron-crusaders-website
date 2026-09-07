@@ -1,54 +1,20 @@
-import { useEffect, useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { supabase } from "../lib/supabaseClient";
+import { useAuth } from "../contexts/AuthContext";
 
 type Props = {
   children: React.ReactNode;
+  allowedRoles?: string[];
 };
 
-export default function ProtectedRoute({ children }: Props) {
-  const [loading, setLoading] = useState(true);
-  const [authenticated, setAuthenticated] = useState(false);
-
+export default function ProtectedRoute({ children, allowedRoles }: Props) {
+  const { user, profile, role, isActive, loading } = useAuth();
   const location = useLocation();
-
-  useEffect(() => {
-    let mounted = true;
-
-    const checkAuth = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-
-      if (!mounted) return;
-
-      setAuthenticated(!!session);
-      setLoading(false);
-    };
-
-    checkAuth();
-
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event: any, session: any) => {
-      if (!mounted) return;
-
-      setAuthenticated(!!session);
-      setLoading(false);
-    });
-
-    return () => {
-      mounted = false;
-      subscription.unsubscribe();
-    };
-  }, []);
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-zinc-950">
+      <div className="flex min-h-[calc(100vh-64px)] items-center justify-center bg-zinc-950">
         <div className="text-center">
           <div className="mx-auto h-8 w-8 animate-spin border-2 border-zinc-700 border-t-red-600" />
-
           <p className="mt-4 font-mono text-xs uppercase tracking-[0.15em] text-zinc-500">
             Verifying Access
           </p>
@@ -57,7 +23,7 @@ export default function ProtectedRoute({ children }: Props) {
     );
   }
 
-  if (!authenticated) {
+  if (!user || !profile || !isActive) {
     return (
       <Navigate
         to="/team/portal/login"
@@ -65,6 +31,17 @@ export default function ProtectedRoute({ children }: Props) {
         state={{ from: location }}
       />
     );
+  }
+
+  if (allowedRoles && !allowedRoles.includes(role)) {
+    // Redirect to the correct dashboard for the user's role
+    const redirect =
+      role === "admin"
+        ? "/team/portal/admin"
+        : role === "team_lead"
+          ? "/team/portal/lead"
+          : "/team/portal/member";
+    return <Navigate to={redirect} replace />;
   }
 
   return <>{children}</>;
