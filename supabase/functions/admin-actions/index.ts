@@ -146,6 +146,31 @@ serve(async (req) => {
       }
 
       // -----------------------------------------------------------------
+      // set-role  { target_user_id, role }
+      // -----------------------------------------------------------------
+      case "set-role": {
+        const { target_user_id, role } = rest;
+        if (!target_user_id || !role) throw new Error("target_user_id and role are required");
+        const { error } = await supabaseAdmin
+          .from("profiles")
+          .update({ role })
+          .eq("id", target_user_id);
+        if (error) throw error;
+
+        await supabaseAdmin.from("audit_logs").insert({
+          actor_id: actor,
+          action: "role_changed",
+          target_user_id,
+          details: { new_role: role },
+        });
+
+        return new Response(JSON.stringify({ success: true }), {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+
+      // -----------------------------------------------------------------
       // toggle-active  { target_user_id, active }
       // -----------------------------------------------------------------
       case "toggle-active": {

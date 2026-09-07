@@ -27,6 +27,8 @@ export default function AdminDashboard() {
 
   // Modals
   const [showCreateTeam, setShowCreateTeam] = useState(false);
+  const [showCreateMember, setShowCreateMember] = useState(false);
+  const [newMember, setNewMember] = useState({ email: "", password: "", full_name: "", role: "member" });
   const [newTeamName, setNewTeamName] = useState("");
   const [newTeamDesc, setNewTeamDesc] = useState("");
   const [editTeam, setEditTeam] = useState<Team | null>(null);
@@ -112,6 +114,24 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleCreateMember = async () => {
+    if (!newMember.email.trim() || !newMember.password.trim()) return;
+    try {
+      await adminAction({
+        action: "create-user",
+        email: newMember.email.trim(),
+        password: newMember.password,
+        full_name: newMember.full_name.trim(),
+        role: newMember.role,
+      });
+      setNewMember({ email: "", password: "", full_name: "", role: "member" });
+      setShowCreateMember(false);
+      await load();
+    } catch (e: any) {
+      setError(e.message ?? "Failed to create member");
+    }
+  };
+
   return (
     <DashboardLayout>
       {error && (
@@ -175,9 +195,28 @@ export default function AdminDashboard() {
         <div>
           <div className="mb-6 flex items-center justify-between">
             <h2 className="text-2xl font-black uppercase tracking-[-0.02em] text-white">Members</h2>
+            <button
+              type="button"
+              onClick={() => setShowCreateMember(true)}
+              className="bg-red-600 px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-red-700"
+            >
+              + Add Member
+            </button>
           </div>
           {members.length === 0 ? (
-            <EmptyState title="No members" description="Members will appear once they sign up." />
+            <EmptyState
+              title="No members"
+              description="Add your first team member."
+              action={
+                <button
+                  type="button"
+                  onClick={() => setShowCreateMember(true)}
+                  className="bg-red-600 px-5 py-2.5 font-mono text-[10px] font-bold uppercase text-white hover:bg-red-700"
+                >
+                  Add Member
+                </button>
+              }
+            />
           ) : (
             <div className="space-y-2">
               {members.map((m) => (
@@ -366,6 +405,59 @@ export default function AdminDashboard() {
         onCancel={() => setConfirmDelete(null)}
         danger
       />
+
+      {/* Create Member Modal */}
+      <Modal open={showCreateMember} onClose={() => setShowCreateMember(false)} title="Add Member">
+        <div className="space-y-4">
+          <div>
+            <label className="mb-2 block font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-zinc-500">Email</label>
+            <input
+              type="email"
+              value={newMember.email}
+              onChange={(e) => setNewMember({ ...newMember, email: e.target.value })}
+              className="w-full border border-zinc-700 bg-zinc-950 px-4 py-2.5 text-sm text-white outline-none focus:border-red-600"
+              placeholder="member@example.com"
+              autoFocus
+            />
+          </div>
+          <div>
+            <label className="mb-2 block font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-zinc-500">Password</label>
+            <input
+              type="password"
+              value={newMember.password}
+              onChange={(e) => setNewMember({ ...newMember, password: e.target.value })}
+              className="w-full border border-zinc-700 bg-zinc-950 px-4 py-2.5 text-sm text-white outline-none focus:border-red-600"
+              placeholder="Min 6 characters"
+            />
+          </div>
+          <div>
+            <label className="mb-2 block font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-zinc-500">Full Name</label>
+            <input
+              type="text"
+              value={newMember.full_name}
+              onChange={(e) => setNewMember({ ...newMember, full_name: e.target.value })}
+              className="w-full border border-zinc-700 bg-zinc-950 px-4 py-2.5 text-sm text-white outline-none focus:border-red-600"
+              placeholder="Jane Smith"
+            />
+          </div>
+          <div>
+            <label className="mb-2 block font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-zinc-500">Role</label>
+            <select
+              value={newMember.role}
+              onChange={(e) => setNewMember({ ...newMember, role: e.target.value })}
+              className="w-full border border-zinc-700 bg-zinc-950 px-4 py-2.5 text-sm text-white outline-none focus:border-red-600"
+            >
+              <option value="member">Member</option>
+              <option value="team_lead">Team Lead</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+          <div className="flex justify-end gap-3 pt-2">
+            <button type="button" onClick={() => setShowCreateMember(false)} className="border border-zinc-700 bg-zinc-950 px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-zinc-300 hover:text-white">Cancel</button>
+            <button type="button" onClick={handleCreateMember} className="bg-red-600 px-5 py-2.5 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-white hover:bg-red-700">Create</button>
+          </div>
+        </div>
+      </Modal>
     </DashboardLayout>
   );
 }
