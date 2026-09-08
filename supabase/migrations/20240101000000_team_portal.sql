@@ -17,44 +17,8 @@
 -- ============================================================================
 
 -- ----------------------------------------------------------------------------
--- 0. Helper functions
--- ----------------------------------------------------------------------------
--- is_admin(): is the requesting user an ACTIVE admin?
---   Safe vs. RLS recursion: it only inspects the requester's OWN profile row
---   (id = auth.uid()), which is always permitted by the "self" SELECT policy.
-create or replace function public.is_admin()
-returns boolean language sql stable as $$
-  select exists (
-    select 1 from public.profiles
-    where id = auth.uid() and role = 'admin' and is_active = true
-  );
-$$;
-
--- touch_updated_fn(): stamp updated_at on INSERT/UPDATE (used by triggers).
-create or replace function public.touch_updated_fn()
-returns trigger language plpgsql as $$
-begin
-  if tg_op = 'INSERT' then
-    if new.updated_at is null then new.updated_at := now(); end if;
-    return new;
-  end if;
-  new.updated_at := now();
-  return new;
-end;
-$$;
-
--- audit_log(): write an audit entry as the SECURITY DEFINER trigger owner,
--- using an EXPLICIT actor (never trusts client-supplied actor).
-create or replace function public.audit_log(p_actor uuid, p_action text, p_target uuid default null, p_details jsonb default null)
-returns void language plpgsql security definer as $$
-begin
-  insert into public.audit_logs (actor_id, action, target_user_id, details, created_at)
-  values (p_actor, p_action, p_target, p_details, now());
-end;
-$$;
-
--- ----------------------------------------------------------------------------
 -- 1. EXTEND SCHEMA (additive; safe on already-populated tables)
+--    Must run BEFORE helper functions so is_admin() can reference is_active.
 -- ----------------------------------------------------------------------------
 alter table public.profiles
   add column if not exists is_active boolean not null default true,
@@ -109,6 +73,43 @@ create index if not exists task_assignments_task_idx   on public.task_assignment
 revoke update on public.profiles from public;
 grant update (full_name, updated_at) on public.profiles to authenticated;
 
+-- ----------------------------------------------------------------------------
+-- 0. Helper functions (created AFTER columns exist)
+-- ----------------------------------------------------------------------------
+-- is_admin(): is the requesting user an ACTIVE admin?
+--   Safe vs. RLS recursion: it only inspects the requester's OWN profile row
+--   (id = auth.uid()), which is always permitted by the "self" SELECT policy.
+create or replace function public.is_admin()
+returns boolean language sql stable as $$
+  select exists (
+    select 1 from public.profiles
+    where id = auth.uid() and role = 'admin' and is_active = true
+  );
+$$;
+
+-- touch_updated_fn(): stamp updated_at on INSERT/UPDATE (used by triggers).
+create or replace function public.touch_updated_fn()
+returns trigger language plpgsql as $$
+begin
+  if tg_op = 'INSERT' then
+    if new.updated_at is null then new.updated_at := now(); end if;
+    return new;
+  end if;
+  new.updated_at := now();
+  return new;
+end;
+$$;
+
+-- audit_log(): write an audit entry as the SECURITY DEFINER trigger owner,
+-- using an EXPLICIT actor (never trusts client-supplied actor).
+create or replace function public.audit_log(p_actor uuid, p_action text, p_target uuid default null, p_details jsonb default null)
+returns void language plpgsql security definer as $$
+begin
+  insert into public.audit_logs (actor_id, action, target_user_id, details, created_at)
+  values (p_actor, p_action, p_target, p_details, now());
+end;
+$$;
+
 -- ============================================================================
 -- ROW LEVEL SECURITY
 -- ============================================================================
@@ -161,7 +162,6 @@ create policy "profiles delete admin"
 -- TEAMS
 -- ----------------------------------------------------------------------------
 drop policy if exists "teams select member"  on public.teams;
-drop policy if exists "teams modify admin"   on public.teams;
 
 create policy "teams select member"
   on public.teams for select using (
@@ -184,8 +184,6 @@ create policy "teams delete admin"
 -- TEAM_MEMBERS (many-to-many users <-> teams)
 -- ----------------------------------------------------------------------------
 drop policy if exists "team_members select member"  on public.team_members;
-drop policy if exists "team_members modify admin"   on public.team_members;
-drop policy if exists "team_members modify lead"    on public.team_members;
 
 create policy "team_members select member"
   on public.team_members for select using (
@@ -227,8 +225,6 @@ create policy "team_members delete lead"
 drop policy if exists "tasks select admin"    on public.tasks;
 drop policy if exists "tasks select lead"     on public.tasks;
 drop policy if exists "tasks select assignee" on public.tasks;
-drop policy if exists "tasks modify admin"    on public.tasks;
-drop policy if exists "tasks modify lead"     on public.tasks;
 
 create policy "tasks select admin"
   on public.tasks for select using (is_admin());
