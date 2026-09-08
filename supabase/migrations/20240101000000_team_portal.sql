@@ -171,8 +171,14 @@ create policy "teams select member"
     )
   );
 
-create policy "teams modify admin"
-  on public.teams for insert, update, delete using (is_admin()) with check (is_admin());
+create policy "teams insert admin"
+  on public.teams for insert with check (is_admin());
+
+create policy "teams update admin"
+  on public.teams for update using (is_admin()) with check (is_admin());
+
+create policy "teams delete admin"
+  on public.teams for delete using (is_admin());
 
 -- ----------------------------------------------------------------------------
 -- TEAM_MEMBERS (many-to-many users <-> teams)
@@ -189,13 +195,29 @@ create policy "team_members select member"
     or exists (select 1 from public.teams t where t.lead_id = auth.uid() and t.id = team_members.team_id)
   );
 
-create policy "team_members modify admin"
-  on public.team_members for insert, update, delete using (is_admin()) with check (is_admin());
+create policy "team_members insert admin"
+  on public.team_members for insert with check (is_admin());
 
-create policy "team_members modify lead"
-  on public.team_members for insert, update, delete using (
+create policy "team_members update admin"
+  on public.team_members for update using (is_admin()) with check (is_admin());
+
+create policy "team_members delete admin"
+  on public.team_members for delete using (is_admin());
+
+create policy "team_members insert lead"
+  on public.team_members for insert with check (
+    exists (select 1 from public.teams t where t.lead_id = auth.uid() and t.id = team_members.team_id)
+  );
+
+create policy "team_members update lead"
+  on public.team_members for update using (
     exists (select 1 from public.teams t where t.lead_id = auth.uid() and t.id = team_members.team_id)
   ) with check (
+    exists (select 1 from public.teams t where t.lead_id = auth.uid() and t.id = team_members.team_id)
+  );
+
+create policy "team_members delete lead"
+  on public.team_members for delete using (
     exists (select 1 from public.teams t where t.lead_id = auth.uid() and t.id = team_members.team_id)
   );
 
@@ -221,13 +243,29 @@ create policy "tasks select assignee"
     exists (select 1 from public.task_assignments ta where ta.task_id = tasks.id and ta.member_id = auth.uid())
   );
 
-create policy "tasks modify admin"
-  on public.tasks for insert, update, delete using (is_admin()) with check (is_admin());
+create policy "tasks insert admin"
+  on public.tasks for insert with check (is_admin());
 
-create policy "tasks modify lead"
-  on public.tasks for insert, update, delete using (
+create policy "tasks update admin"
+  on public.tasks for update using (is_admin()) with check (is_admin());
+
+create policy "tasks delete admin"
+  on public.tasks for delete using (is_admin());
+
+create policy "tasks insert lead"
+  on public.tasks for insert with check (
+    exists (select 1 from public.teams t where t.id = tasks.team_id and t.lead_id = auth.uid())
+  );
+
+create policy "tasks update lead"
+  on public.tasks for update using (
     exists (select 1 from public.teams t where t.id = tasks.team_id and t.lead_id = auth.uid())
   ) with check (
+    exists (select 1 from public.teams t where t.id = tasks.team_id and t.lead_id = auth.uid())
+  );
+
+create policy "tasks delete lead"
+  on public.tasks for delete using (
     exists (select 1 from public.teams t where t.id = tasks.team_id and t.lead_id = auth.uid())
   );
 
