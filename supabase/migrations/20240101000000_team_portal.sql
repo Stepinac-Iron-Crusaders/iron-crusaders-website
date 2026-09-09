@@ -125,7 +125,7 @@ begin
     'authenticated',
     'authenticated',
     p_email,
-    crypt(p_password, gen_salt('bf')),
+    crypt(p_password, extensions.gen_salt('bf')),
     now(),
     jsonb_build_object('full_name', p_full_name),
     now(),
@@ -165,7 +165,7 @@ set search_path = public
 as $$
 begin
   update auth.users
-  set encrypted_password = crypt(p_password, gen_salt('bf')),
+  set encrypted_password = crypt(p_password, extensions.gen_salt('bf')),
       updated_at = now()
   where id = p_user_id;
 end;
