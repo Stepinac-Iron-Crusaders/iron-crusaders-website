@@ -23,10 +23,18 @@ export function FloatingDashboardButton() {
   return (
     <Link
       to={path}
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-red-600 px-5 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_4px_20px_rgba(220,38,38,0.4)] transition-all duration-200 hover:bg-red-700 hover:shadow-[0_8px_30px_rgba(220,38,38,0.5)] hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
       aria-label={label}
+      className="group fixed bottom-6 right-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-red-600 text-white shadow-[0_4px_20px_rgba(220,38,38,0.4)] transition-all duration-300 ease-out hover:h-12 hover:w-auto hover:rounded-full hover:px-5 hover:gap-2 hover:shadow-[0_8px_30px_rgba(220,38,38,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
     >
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        className="shrink-0"
+      >
         {user ? (
           <path d="M2 13V3h12v10H2zM6 7v6M10 5v8M14 1h-2M4 1H2" strokeLinecap="round" />
         ) : (
@@ -36,7 +44,9 @@ export function FloatingDashboardButton() {
           </>
         )}
       </svg>
-      {label}
+      <span className="hidden whitespace-nowrap text-xs font-bold uppercase tracking-[0.14em] group-hover:inline">
+        {label}
+      </span>
     </Link>
   );
 }

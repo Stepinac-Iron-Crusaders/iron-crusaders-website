@@ -440,13 +440,6 @@ export function Header() {
           </div>
 
           <Link
-            to="/team/portal/login"
-            className="mt-6 border border-zinc-700 bg-zinc-800 px-5 py-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-zinc-300 transition-colors hover:border-zinc-500 hover:bg-zinc-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600"
-          >
-            Team Circle
-          </Link>
-          
-          <Link
             to="/sponsors"
             className="mt-2 bg-red-600 px-5 py-3 text-center text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-red-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white active:bg-red-800"
           >
