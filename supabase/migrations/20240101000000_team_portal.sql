@@ -97,8 +97,8 @@ create or replace function public.create_member(
 returns jsonb
 language plpgsql
 security definer
-set search_path = public
-as $$
+set search_path = public, extensions
+as $
 declare
   new_user_id uuid;
   result jsonb;
@@ -125,7 +125,7 @@ begin
     'authenticated',
     'authenticated',
     p_email,
-    crypt(p_password, extensions.gen_salt('bf')),
+    extensions.crypt(p_password, extensions.gen_salt('bf')),
     now(),
     jsonb_build_object('full_name', p_full_name),
     now(),
@@ -161,11 +161,11 @@ create or replace function public.set_member_password(
 returns void
 language plpgsql
 security definer
-set search_path = public
-as $$
+set search_path = public, extensions
+as $
 begin
   update auth.users
-  set encrypted_password = crypt(p_password, extensions.gen_salt('bf')),
+  set encrypted_password = extensions.crypt(p_password, extensions.gen_salt('bf')),
       updated_at = now()
   where id = p_user_id;
 end;
@@ -179,8 +179,8 @@ create or replace function public.toggle_member_active(
 returns void
 language plpgsql
 security definer
-set search_path = public
-as $$
+set search_path = public, extensions
+as $
 begin
   update public.profiles
   set is_active = p_active, updated_at = now()
@@ -202,8 +202,8 @@ create or replace function public.set_member_role(
 returns void
 language plpgsql
 security definer
-set search_path = public
-as $$
+set search_path = public, extensions
+as $
 begin
   update public.profiles
   set role = p_role, updated_at = now()
