@@ -77,8 +77,7 @@ export async function getMyTeams(): Promise<UserTeam[]> {
 }
 
 // ---------------------------------------------------------------------------
-// Admin auth operations (delegated to the secure admin-actions edge function
-// which holds the SERVICE_ROLE key — NEVER exposed to the frontend).
+// Admin operations (via RPC SECURITY DEFINER functions)
 // ---------------------------------------------------------------------------
 export type AdminAction =
   | { action: "create-user"; email: string; password: string; full_name: string; role: string; team_id?: number }
@@ -88,11 +87,49 @@ export type AdminAction =
   | { action: "request-reset"; email: string };
 
 export async function adminAction(payload: AdminAction) {
-  const { data, error } = await supabase.functions.invoke("admin-actions", {
-    body: payload,
-  });
-  if (error) throw error;
-  return data;
+  switch (payload.action) {
+    case "create-user": {
+      const { data, error } = await supabase.rpc("create_member", {
+        p_email: payload.email,
+        p_password: payload.password,
+        p_full_name: payload.full_name,
+        p_role: payload.role,
+      });
+      if (error) throw error;
+      return data;
+    }
+    case "set-password": {
+      const { error } = await supabase.rpc("set_member_password", {
+        p_user_id: payload.target_user_id,
+        p_password: payload.password,
+      });
+      if (error) throw error;
+      return { success: true };
+    }
+    case "toggle-active": {
+      const { error } = await supabase.rpc("toggle_member_active", {
+        p_user_id: payload.target_user_id,
+        p_active: payload.active,
+      });
+      if (error) throw error;
+      return { success: true };
+    }
+    case "set-role": {
+      const { error } = await supabase.rpc("set_member_role", {
+        p_user_id: payload.target_user_id,
+        p_role: payload.role,
+      });
+      if (error) throw error;
+      return { success: true };
+    }
+    case "request-reset": {
+      const { error } = await supabase.auth.resetPasswordForEmail(payload.email, {
+        redirectTo: `${window.location.origin}/#/team/portal/login`,
+      });
+      if (error) throw error;
+      return { success: true };
+    }
+  }
 }
 
 // Public password-reset link (anon key, sent directly by Supabase Auth).
