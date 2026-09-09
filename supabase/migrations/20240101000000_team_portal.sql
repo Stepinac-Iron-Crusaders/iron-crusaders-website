@@ -3,6 +3,9 @@
 -- Run this in the Supabase SQL Editor
 -- ============================================================================
 
+-- Enable pgcrypto for gen_salt/crypt
+create extension if not exists "pgcrypto" with schema extensions;
+
 -- 1. Drop ALL existing policies (clean slate)
 DO $$
 DECLARE
