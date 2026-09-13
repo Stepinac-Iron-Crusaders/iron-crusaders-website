@@ -255,17 +255,39 @@ export default function SponsorsGrid({
           className="flex items-center justify-center p-4 will-change-transform"
         >
           {s.logo ? (
-            <img
-              src={s.logo}
-              alt={s.name}
-              title={s.name}
-              className={`${getLogoClass(
-                s.tier
-              )} object-contain`}
-              style={{
-                width: "auto",
-              }}
-            />
+            s.website ? (
+              <a
+                href={s.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit ${s.name} website`}
+                className="block cursor-pointer"
+              >
+                <img
+                  src={s.logo}
+                  alt={s.name}
+                  title={`Visit ${s.name}`}
+                  className={`${getLogoClass(
+                    s.tier
+                  )} object-contain`}
+                  style={{
+                    width: "auto",
+                  }}
+                />
+              </a>
+            ) : (
+              <img
+                src={s.logo}
+                alt={s.name}
+                title={s.name}
+                className={`${getLogoClass(
+                  s.tier
+                )} object-contain`}
+                style={{
+                  width: "auto",
+                }}
+              />
+            )
           ) : (
             <span className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-zinc-500">
               {s.name}
