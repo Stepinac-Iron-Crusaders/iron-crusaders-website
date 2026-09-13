@@ -71,8 +71,8 @@ export const TIERS = [
 ];
 
 export const SPONSORS: Sponsor[] = [
+  { name: "iFixit - Squire", tier: "Squire", logo: iFixitLogo, website: "https://www.ifixit.com/" },
   { name: "SendCutSend - Paladin", tier: "Paladin", logo: SendCutSendLogo, website: "https://sendcutsend.com/" },
-  { name: "iFixit - Knight", tier: "Knight", logo: iFixitLogo, website: "https://www.ifixit.com/" },
   { name: "DigiKey - Ally", tier: "Ally", logo: DigiKeyLogo, website: "https://www.digikey.com/" },
 ];
 
