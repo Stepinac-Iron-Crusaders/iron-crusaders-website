@@ -9,7 +9,7 @@ import { TiltCard } from "../components/TiltCard";
 import { MagneticWrap } from "../components/MagneticButton";
 import { CountUp } from "../components/CountUp";
 import { Marquee } from "../components/Marquee";
-import { TeamPhoto } from "../assets/Robotics_Team_Photo.jpeg"
+import { TeamPhoto } from "../assets/Robotics_Team_Photo"
 
 const STATS = {
   students: "20+",
