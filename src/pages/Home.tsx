@@ -9,6 +9,7 @@ import { TiltCard } from "../components/TiltCard";
 import { MagneticWrap } from "../components/MagneticButton";
 import { CountUp } from "../components/CountUp";
 import { Marquee } from "../components/Marquee";
+import { TeamPhoto } from "../assets/Robotics_Team_Photo.jpeg"
 
 const STATS = {
   students: "20+",
@@ -568,7 +569,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div ref={heroImageRef} className="relative will-change-transform">
+            <div ref={TeamPhoto} className="relative will-change-transform">
               <div className="absolute -inset-1 hidden border border-zinc-800 lg:block" aria-hidden="true" />
               {/* subtle floating ring */}
               <div
