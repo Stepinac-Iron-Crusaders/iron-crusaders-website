@@ -9,7 +9,7 @@ import { TiltCard } from "../components/TiltCard";
 import { MagneticWrap } from "../components/MagneticButton";
 import { CountUp } from "../components/CountUp";
 import { Marquee } from "../components/Marquee";
-import { TeamPhoto } from "../assets/Robotics_Team_Photo"
+import TeamPhoto from "../assets/Robotics_Team_Photo.jpeg"
 
 const STATS = {
   students: "20+",
@@ -569,7 +569,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div ref={TeamPhoto} className="relative will-change-transform">
+            <div ref={heroImageRef} className="relative will-change-transform">
               <div className="absolute -inset-1 hidden border border-zinc-800 lg:block" aria-hidden="true" />
               {/* subtle floating ring */}
               <div
@@ -619,7 +619,11 @@ export default function Home() {
                 className="relative overflow-hidden will-change-transform"
                 style={{ clipPath: "inset(0 0% 0 0)" }}
               >
-                <PlaceholderImage label="HERO IMAGE PLACEHOLDER" className="aspect-[16/10] lg:aspect-[4/3] rounded-none" />
+                <img
+                  src={TeamPhoto}
+                  alt="Iron Crusaders robotics team"
+                  className="aspect-[16/10] w-full object-cover lg:aspect-[4/3]"
+                />
                 {/* gloss */}
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-white/[0.08] opacity-0 transition-opacity duration-700 hover:opacity-100" />
               </div>
