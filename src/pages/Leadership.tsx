@@ -3,11 +3,11 @@ import { AnimatedPage } from "../components/AnimatedPage";
 import { PlaceholderImage } from "../components/PlaceholderImage";
 
 const LEADS = [
-  { n: "TBD", title: "Team Captain", yr: "TBD", focus: "Owns season timeline, design reviews, pit ops." },
-  { n: "TBD", title: "Building/Design Lead", yr: "TBD", focus: "Leads design of robot systems" },
-  { n: "TBD", title: "Coding Lead", yr: "TBD", focus: "Autonomous, vision, robot control." },
-  { n: "TBD", title: "Finance Lead", yr: "TBD", focus: "Creates an implements business plan" },
-  { n: "TBD", title: "Media & Marketing Lead", yr: "TBD", focus: "Outreach, handles sponsor benefits, video" }
+  { n: "Subash Jonnalagadda & Joseph Alex", title: "Team Captains", yr: "Junior & Sophomore", focus: "Owns season timeline, design reviews, pit ops." },
+  { n: "Subash Jonnalagadda & Joseph Alex", title: "Building/Design Leads", yr: "Junior & Sophomore", focus: "Leads design of robot systems" },
+  { n: "Julian Reiff", title: "Coding Lead", yr: "Sophomore", focus: "Autonomous, vision, robot control." },
+  { n: "Mathew Kulapurathazhe & Thomas Munchoff", title: "Finance Leads", yr: "Sophomore", focus: "Creates an implements business plan" },
+  { n: "Oisin Stack", title: "Media & Marketing Lead", yr: "TBD", focus: "Outreach, handles sponsor benefits, video" }
 ];
 
 export default function Leadership() {
