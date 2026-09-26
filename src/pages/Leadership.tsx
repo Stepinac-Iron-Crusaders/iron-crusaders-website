@@ -46,7 +46,7 @@ const LEADS = [
   },
   {
     n: "Oisin Stack",
-    yr: "TBD",
+    yr: "Junior",
     roles: ["Social Media & Marketing Lead"],
     focus:
       "Leads outreach, manages sponsor benefits, and produces team media.",
