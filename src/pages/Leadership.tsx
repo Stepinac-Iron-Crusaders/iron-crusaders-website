@@ -3,11 +3,14 @@ import { AnimatedPage } from "../components/AnimatedPage";
 import { PlaceholderImage } from "../components/PlaceholderImage";
 
 const LEADS = [
-  { n: "Subash Jonnalagadda & Joseph Alex", title: "Team Captains", yr: "Junior & Sophomore", focus: "Owns season timeline, design reviews, pit ops." },
-  { n: "Subash Jonnalagadda & Joseph Alex", title: "Building/Design Leads", yr: "Junior & Sophomore", focus: "Leads design of robot systems" },
+  { n: "Joseph Alex", title: "Co-Captain", yr: "Sophomore", focus: "Owns season timeline, design reviews, pit ops." },
+  { n: "Subash Jonnalagadda", title: "Co-Captain", yr: "Junior", focus: "Owns season timeline, design reviews, pit ops." },
+  { n: "Joseph Alex", title: "Building/Design Co-Lead", yr: "Sophomore", focus: "Leads design of robot systems" },
+  { n: "Subash Jonnalagadda", title: "Building/Design Co-Lead", yr: "Junior", focus: "Leads building of robot systems" },
   { n: "Julian Reiff", title: "Coding Lead", yr: "Sophomore", focus: "Autonomous, vision, robot control." },
-  { n: "Mathew Kulapurathazhe & Thomas Munchoff", title: "Finance Leads", yr: "Sophomore", focus: "Creates an implements business plan" },
-  { n: "Oisin Stack", title: "Media & Marketing Lead", yr: "TBD", focus: "Outreach, handles sponsor benefits, video" }
+  { n: "Mathew Kulapurathazhe", title: "Finance Co-Lead", yr: "Sophomore", focus: "Creates and implements business plan" },
+  { n: "Thomas Munchoff", title: "Finance Co-Lead", yr: "Sophomore", focus: "Creates and implements business plan" },
+  { n: "Oisin Stack", title: "Social Media & Marketing Lead", yr: "TBD", focus: "Outreach, handles sponsor benefits, video" }
 ];
 
 export default function Leadership() {
