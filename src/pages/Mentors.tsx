@@ -30,7 +30,8 @@ function MentorPhoto({ name }: { name: string }) {
 const MENTORS = 
   [
     { n: "Mr. Alex Estrella", role: "Lead Mentor", bg: "Faculty - Computer Science and Engineering", years: "5 yrs", email: "aestrella@stepinac.org" },
-    { n: "Dr. Samantha Asche-Godin", role: "Outreach", bg: "Faculty - Science Department", years: "4 yrs", email: "saschegodin@stepinac.org" }
+    { n: "Dr. Samantha Asche-Godin", role: "Outreach", bg: "Faculty - Science Department", years: "4 yrs", email: "saschegodin@stepinac.org" },
+    { n: "Dr. Adam Rappoport", role: "Mechanics", bg: "Faculty - Science Department", years: "1 yr", email: "arappoport@stepinac.org" }
   ];
 
 export default function Mentors() {
