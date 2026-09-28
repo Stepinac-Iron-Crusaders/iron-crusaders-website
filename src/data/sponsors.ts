@@ -8,7 +8,7 @@ export type Sponsor = {
 
 import SendCutSendLogo from "../assets/sendcutsend_logo.png";
 import iFixitLogo from "../assets/iFixit_logo.png"
-import DigiKeyLogo from "../assets/Digikey_Logo.png"
+import WPHLogo from "../assets/WPH_logo.png"
   
 export const TIERS = [
   {
@@ -73,7 +73,7 @@ export const TIERS = [
 export const SPONSORS: Sponsor[] = [
   { name: "iFixit - Squire", tier: "Squire", logo: iFixitLogo, website: "https://www.ifixit.com/" },
   { name: "SendCutSend - Paladin", tier: "Paladin", logo: SendCutSendLogo, website: "https://sendcutsend.com/" },
-  { name: "DigiKey - Ally", tier: "Ally", logo: DigiKeyLogo, website: "https://www.digikey.com/" },
+  { name: "White Plains Hospital - Squire", tier: "Squire", logo: WPHLogo, website: "https://www.wphospital.org/" },
 ];
 
 export const DEFAULT_LOGO_SIZES: Record<string, string> = {
