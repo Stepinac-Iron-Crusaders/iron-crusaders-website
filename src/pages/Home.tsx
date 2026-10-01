@@ -12,7 +12,7 @@ import { Marquee } from "../components/Marquee";
 import TeamPhoto from "../assets/Robotics_Team_Photo.jpeg"
 
 const STATS = {
-  students: "20+",
+  students: "30+",
   awards: "N/A",
   competitions: "ROOKIE",
   founded: "2026",
@@ -830,7 +830,7 @@ export default function Home() {
                 title: "Students",
                 to: "/team/students",
                 desc: "Design, fabrication, programming, and strategy — students own every subsystem and every match.",
-                count: "20+ Members",
+                count: "30+ Members",
                 accent: "red",
               },
               {
