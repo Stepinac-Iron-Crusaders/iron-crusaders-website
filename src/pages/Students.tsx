@@ -41,7 +41,13 @@ const ROSTER = [
   { n: "Josiah Gold", email: "josiahgold344@stepinac.org", role: "Design/Building Team", yr: "Junior" },
   { n: "Aiden Rios", email: "aidenrios306@stepinac.org", role: "Design/Building Team", yr: "Junior" },
   { n: "Gabriel Alba", email: "gabrielalba953@stepinac.org", role: "Design/Building Team", yr: "Sophomore" },
-  { n: "Ryan McManus", email: "ryanmcmanus962@stepinac.org", role: "Design/Building Team", yr: "Sophomore" }
+  { n: "Ryan McManus", email: "ryanmcmanus962@stepinac.org", role: "Design/Building Team", yr: "Sophomore" },
+  { n: "Luke Kreig", email: "lukekreig553@stepinac.org", role: "Design/Build Team, Finance Team, Marketing/Social Media Team", yr: "Sophomore" },
+  { n: "Andrew Hampton", email: "andrewhampton675@stepinac.org", role: "Coding Team", yr: "Freshman" },
+  { n: "Austin Rebholz", email: "austinrebholz830@stepinac.org", role: "Design/Build Team, Coding Team, Marketing/Social Media Team", yr: "Sophomore" },
+  { n: "Louis Cedrone", email: "louiscedrone907@stepinac.org", role: "Design/Build Team, Marketing/Social Media Team", yr: "Sophomore" },
+  { n: "Fabio Coppola", email: "fabiocoppola226@stepinac.org", role: "Finance Team, Marketing/Social Media Team", yr: "Junior" },
+  { n: "John Burke", email: "johnburke441@stepinac.org", role: "Design/Build Team, Marketing/Social Media Team", yr: "Sophomore" }
 ];
 
 export default function Students() {
