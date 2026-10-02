@@ -49,7 +49,7 @@ const ROSTER = [
   { n: "Fabio Coppola", email: "fabiocoppola226@stepinac.org", role: "Finance Team, Marketing/Social Media Team", yr: "Junior" },
   { n: "John Burke", email: "johnburke441@stepinac.org", role: "Design/Build Team, Marketing/Social Media Team", yr: "Sophomore" },
   { n: "James Pettit", email: "jamespettit229@stepinac.org", role: "Design/Build Team, Marketing/Social Media Team", yr: "Freshman" },
-  { n: 'Korede "Dara" Kola-Olugboye', email: "Design/Build Team, Coding Team", role: "Design/Build Team, Marketing/Social Media Team", yr: "Sophomore" },
+  { n: "Dara Kola-Olugboye", email: "Design/Build Team, Coding Team", role: "Design/Build Team, Marketing/Social Media Team", yr: "Sophomore" },
   { n: "Justin Paulino", email: "justinpaulino517@stepinac.org", role: "Design/Build Team, Coding Team", yr: "Junior" },
   { n: "Konrad Burnett", email: "konradburnett588@stepinac.org", role: "Coding Team", yr: "Senior" },
   { n: "Julian Gopaul", email: "juliangopaul342@stepinac.org", role: "Design/Build Team", yr: "Freshman" }
