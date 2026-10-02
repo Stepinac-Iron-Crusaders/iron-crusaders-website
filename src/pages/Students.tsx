@@ -35,11 +35,14 @@ const ROSTER = [
   { n: "Martin Kilcoyne", email: "martinkilcoyne337@stepinac.org", role: "Design/Build Team, Finance Team", yr: "Sophomore" },
   { n: "Viggo McCartney", email: "viggomccartney945@stepinac.org", role: "Design/Build Team, Finance Team", yr: "Sophomore" },
   { n: "Anthony MacDonald", email: "anthonymacdonald775@stepinac.org", role: "Design/Build Team", yr: "Sophomore" },
+  { n: "Dara Kola-Olugboye", email: "Design/Build Team, Coding Team", role: "Design/Build Team, Marketing/Social Media Team", yr: "Sophomore" },
   { n: "Robert Geib", email: "robertgeib429@stepinac.org", role: "Coding Team", yr: "Junior" },
+  { n: "Konrad Burnett", email: "konradburnett588@stepinac.org", role: "Coding Team", yr: "Senior" },
   { n: "Aston Seravo", email: "astonseravo509@stepinac.org", role: "Design/Build Team, Coding Team, Finance Team", yr: "Sophomore" },
   { n: "Gianluca Fideleo", email: "gianlucafideleo955@stepinac.org", role: "Design/Building Team", yr: "Senior" },
   { n: "Josiah Gold", email: "josiahgold344@stepinac.org", role: "Design/Building Team", yr: "Junior" },
   { n: "Aiden Rios", email: "aidenrios306@stepinac.org", role: "Design/Building Team", yr: "Junior" },
+  { n: "James Pettit", email: "jamespettit229@stepinac.org", role: "Design/Build Team, Marketing/Social Media Team", yr: "Freshman" },
   { n: "Gabriel Alba", email: "gabrielalba953@stepinac.org", role: "Design/Building Team", yr: "Sophomore" },
   { n: "Ryan McManus", email: "ryanmcmanus962@stepinac.org", role: "Design/Building Team", yr: "Sophomore" },
   { n: "Luke Kreig", email: "lukekreig553@stepinac.org", role: "Design/Build Team, Finance Team, Marketing/Social Media Team", yr: "Sophomore" },
@@ -48,10 +51,7 @@ const ROSTER = [
   { n: "Louis Cedrone", email: "louiscedrone907@stepinac.org", role: "Design/Build Team, Marketing/Social Media Team", yr: "Sophomore" },
   { n: "Fabio Coppola", email: "fabiocoppola226@stepinac.org", role: "Finance Team, Marketing/Social Media Team", yr: "Junior" },
   { n: "John Burke", email: "johnburke441@stepinac.org", role: "Design/Build Team, Marketing/Social Media Team", yr: "Sophomore" },
-  { n: "James Pettit", email: "jamespettit229@stepinac.org", role: "Design/Build Team, Marketing/Social Media Team", yr: "Freshman" },
-  { n: "Dara Kola-Olugboye", email: "Design/Build Team, Coding Team", role: "Design/Build Team, Marketing/Social Media Team", yr: "Sophomore" },
   { n: "Justin Paulino", email: "justinpaulino517@stepinac.org", role: "Design/Build Team, Coding Team", yr: "Junior" },
-  { n: "Konrad Burnett", email: "konradburnett588@stepinac.org", role: "Coding Team", yr: "Senior" },
   { n: "Julian Gopaul", email: "juliangopaul342@stepinac.org", role: "Design/Build Team", yr: "Freshman" }
 ];
 
