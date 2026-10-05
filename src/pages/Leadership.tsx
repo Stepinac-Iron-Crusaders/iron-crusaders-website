@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AnimatedPage } from "../components/AnimatedPage";
 import { PlaceholderImage } from "../components/PlaceholderImage";
 import { gsap, prefersReducedMotion } from "../lib/gsap";
-import { BRANCHES, CAPTAINS, branchMembers } from "../data/leadership";
+import { BRANCHES, CAPTAINS } from "../data/leadership";
 import { ROSTER } from "../data/team";
 
 function PersonPhoto({
@@ -55,10 +55,10 @@ export default function Leadership() {
     if (!tree || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
-      // Connector lines draw downward, then the cross rail fills in.
       const drops = tree.querySelectorAll<HTMLElement>("[data-drop]");
       const rail = tree.querySelector<HTMLElement>("[data-rail]");
       const stem = tree.querySelector<HTMLElement>("[data-stem]");
+      const captains = tree.querySelectorAll<HTMLElement>("[data-captain]");
 
       if (stem) {
         gsap.from(stem, {
@@ -93,8 +93,6 @@ export default function Leadership() {
         });
       }
 
-      // Captain nodes breathe once as the tree settles.
-      const captains = tree.querySelectorAll<HTMLElement>("[data-captain]");
       if (captains.length) {
         gsap.from(captains, {
           y: -6,
@@ -120,7 +118,6 @@ export default function Leadership() {
         ========================================================= */}
         <section className="border-b border-zinc-800 bg-zinc-950">
           <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-16">
-            {/* Breadcrumbs */}
             <div className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-zinc-500">
               <Link to="/" className="hover:text-white">
                 Home
@@ -137,7 +134,6 @@ export default function Leadership() {
               <span className="text-zinc-300">Leadership</span>
             </div>
 
-            {/* Title */}
             <div className="mt-6 max-w-3xl">
               <div className="mb-3 flex items-center gap-3">
                 <span className="h-px w-8 bg-zinc-700" aria-hidden="true" />
@@ -153,41 +149,27 @@ export default function Leadership() {
               </h1>
 
               <p className="mt-4 text-[15px] leading-relaxed text-zinc-400">
-                Two co-captains set the direction. Four subteam leads turn it
-                into builds, code, budgets, and content. Everyone else makes it
-                real.
+                Two co-captains set the direction. Subteam leads turn it into
+                builds, code, budgets, and content.
               </p>
             </div>
           </div>
         </section>
 
         {/* =========================================================
-            LEADERSHIP TREE
+            LEADERSHIP
         ========================================================= */}
         <section className="border-b border-zinc-800 bg-zinc-900">
           <div className="mx-auto max-w-[1280px] px-4 py-14 lg:px-8 lg:py-20">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <h2 className="font-mono text-xs font-bold uppercase tracking-[0.12em] text-white">
-                  Chain of Command
-                </h2>
-
-                <p className="mt-2 max-w-[60ch] text-sm text-zinc-400">
-                  Captains at the top, subteam leads beneath them, and the
-                  students carrying the work.
-                </p>
-              </div>
-
-              <span className="border border-zinc-800 bg-zinc-950 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.12em] text-zinc-500">
-                Captains → Leads → Members
-              </span>
-            </div>
-
-            <div ref={treeRef} className="mt-12">
+            <div ref={treeRef}>
               {/* ----------------------------------------------
-                  TIER 1 — CAPTAINS
+                  CO-CAPTAINS
               ---------------------------------------------- */}
-              <div className="flex flex-wrap justify-center gap-5 sm:gap-8">
+              <h2 className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-white">
+                Co-Captains
+              </h2>
+
+              <div className="mt-6 flex flex-wrap justify-center gap-5 sm:gap-8">
                 {CAPTAINS.map((c) => (
                   <div
                     key={c.n}
@@ -234,14 +216,7 @@ export default function Leadership() {
                 ))}
               </div>
 
-              {/* Captain tier label */}
-              <div className="mt-6 flex justify-center">
-                <span className="border border-red-900/50 bg-red-950/20 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-red-400">
-                  Tier 1 — Co-Captains
-                </span>
-              </div>
-
-              {/* Vertical stem down to the cross rail */}
+              {/* Vertical connector down to the leads rail */}
               <div
                 data-stem
                 className="mx-auto h-8 w-px bg-gradient-to-b from-red-600/60 to-zinc-700"
@@ -249,15 +224,18 @@ export default function Leadership() {
               />
 
               {/* ----------------------------------------------
-                  TIER 2 — SUBTEAM BRANCHES
+                  TEAM LEADS
               ---------------------------------------------- */}
+              <h2 className="font-mono text-xs font-bold uppercase tracking-[0.16em] text-white">
+                Team Leads
+              </h2>
+
               <div
-                className="relative"
+                className="relative mt-6"
                 style={{ "--col-gap": "1.25rem" } as React.CSSProperties}
               >
-                {/* Horizontal rail: spans centre-to-centre of the first and
-                    last branch, accounting for the column gap so it meets each
-                    drop line exactly. */}
+                {/* Rail spans centre-to-centre of the first and last
+                    column so it meets each drop line exactly. */}
                 <div
                   data-rail
                   className="absolute top-0 hidden h-px bg-zinc-700 lg:block
@@ -267,117 +245,79 @@ export default function Leadership() {
                 />
 
                 <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                  {BRANCHES.map((b) => {
-                    const preview = branchMembers(b.id);
-                    const remaining = Math.max(0, b.members - preview.length);
+                  {BRANCHES.map((b) => (
+                    <div key={b.id} className="relative pt-8">
+                      <span
+                        data-drop
+                        className="absolute left-1/2 top-0 ml-[-0.5px] h-8 w-px bg-zinc-700"
+                        aria-hidden="true"
+                      />
 
-                    return (
-                      <div key={b.id} className="relative pt-8">
-                        {/* Drop line from the rail into this branch */}
+                      <div className="flex h-full flex-col border border-zinc-800 bg-zinc-950 transition-colors duration-200 hover:border-zinc-700">
                         <span
-                          data-drop
-                          className="absolute left-1/2 top-0 ml-[-0.5px] h-8 w-px bg-zinc-700"
+                          className={`block h-0.5 w-full ${b.accentBar}`}
                           aria-hidden="true"
                         />
 
-                        <div className="flex h-full flex-col border border-zinc-800 bg-zinc-950 transition-colors duration-200 hover:border-zinc-700">
-                          <span
-                            className={`block h-0.5 w-full ${b.accentBar}`}
-                            aria-hidden="true"
-                          />
+                        <div className="flex flex-1 flex-col p-5">
+                          {/* Team name + member count */}
+                          <div className="flex items-start justify-between gap-3">
+                            <h3 className="text-sm font-black uppercase tracking-[0.08em] text-white">
+                              {b.name}
+                            </h3>
 
-                          <div className="flex flex-1 flex-col p-5">
-                            {/* Branch header */}
-                            <div className="flex items-start justify-between gap-3">
-                              <h3 className="text-sm font-black uppercase tracking-[0.08em] text-white">
-                                {b.name}
-                              </h3>
-
-                              <span
-                                className={`shrink-0 border px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wide ${b.chip}`}
-                              >
-                                {b.members}
-                              </span>
-                            </div>
-
-                            <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.1em] text-zinc-600">
-                              Tier 2 — {b.members} members
-                            </div>
-
-                            {/* Leads */}
-                            <div className="mt-4 space-y-3">
-                              {b.leads.map((l) => (
-                                <div
-                                  key={l.n}
-                                  className="flex items-center gap-3"
-                                >
-                                  <PersonPhoto
-                                    name={l.n}
-                                    className="h-10 w-10 shrink-0"
-                                  />
-
-                                  <div className="min-w-0">
-                                    <div className="truncate text-xs font-bold text-white">
-                                      {l.n}
-                                    </div>
-
-                                    <div
-                                      className={`mt-0.5 font-mono text-[10px] uppercase tracking-wide ${b.leadText}`}
-                                    >
-                                      {l.role}
-                                    </div>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-
-                            <p className="mt-4 text-xs leading-relaxed text-zinc-400">
-                              {b.desc}
-                            </p>
-
-                            {/* Tier 3 — member preview */}
-                            <div className="mt-auto pt-5">
-                              <div className="border-t border-zinc-800 pt-4">
-                                <div className="font-mono text-[10px] uppercase tracking-[0.12em] text-zinc-600">
-                                  Tier 3 — On this subteam
-                                </div>
-
-                                <ul className="mt-2 space-y-1">
-                                  {preview.map((name) => (
-                                    <li
-                                      key={name}
-                                      className="flex items-center gap-2 text-xs text-zinc-400"
-                                    >
-                                      <span
-                                        className={`h-1 w-1 shrink-0 ${b.dot}`}
-                                        aria-hidden="true"
-                                      />
-                                      <span className="truncate">{name}</span>
-                                    </li>
-                                  ))}
-                                </ul>
-
-                                {remaining > 0 && (
-                                  <div className="mt-2 font-mono text-[10px] uppercase tracking-wide text-zinc-600">
-                                    +{remaining} more
-                                  </div>
-                                )}
-
-                                <Link
-                                  to="/team/students"
-                                  className="mt-4 inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.1em] text-zinc-400 transition-colors duration-200 hover:text-white"
-                                >
-                                  View roster
-                                  <span aria-hidden="true">→</span>
-                                </Link>
-                              </div>
-                            </div>
+                            <span
+                              className={`shrink-0 border px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wide ${b.chip}`}
+                            >
+                              {b.members} members
+                            </span>
                           </div>
+
+                          {/* Leads for this team */}
+                          <div className="mt-5 space-y-3">
+                            {b.leads.map((l) => (
+                              <div
+                                key={l.n}
+                                className="flex items-center gap-3"
+                              >
+                                <PersonPhoto
+                                  name={l.n}
+                                  className="h-10 w-10 shrink-0"
+                                />
+
+                                <div className="min-w-0">
+                                  <div className="truncate text-xs font-bold text-white">
+                                    {l.n}
+                                  </div>
+
+                                  <div
+                                    className={`mt-0.5 font-mono text-[10px] uppercase tracking-wide ${b.leadText}`}
+                                  >
+                                    {l.role}
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+
+                          <p className="mt-5 text-xs leading-relaxed text-zinc-400">
+                            {b.desc}
+                          </p>
                         </div>
                       </div>
-                    );
-                  })}
+                    </div>
+                  ))}
                 </div>
+              </div>
+
+              <div className="mt-10 flex justify-center">
+                <Link
+                  to="/team/students"
+                  className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.1em] text-zinc-400 transition-colors duration-200 hover:text-white"
+                >
+                  View the full roster
+                  <span aria-hidden="true">→</span>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,5 +1,3 @@
-import { ROSTER } from "./team";
-
 export type Captain = {
   n: string;
   yr: string;
@@ -39,7 +37,6 @@ export type Branch = {
   accentBar: string;
   chip: string;
   leadText: string;
-  dot: string;
 };
 
 export const BRANCHES: Branch[] = [
@@ -55,7 +52,6 @@ export const BRANCHES: Branch[] = [
     accentBar: "bg-red-500",
     chip: "border-red-900/60 bg-red-950/30 text-red-400",
     leadText: "text-red-400",
-    dot: "bg-red-500",
   },
   {
     id: "coding",
@@ -70,7 +66,6 @@ export const BRANCHES: Branch[] = [
     accentBar: "bg-blue-500",
     chip: "border-blue-900/60 bg-blue-950/30 text-blue-400",
     leadText: "text-blue-400",
-    dot: "bg-blue-500",
   },
   {
     id: "finance",
@@ -84,7 +79,6 @@ export const BRANCHES: Branch[] = [
     accentBar: "bg-emerald-500",
     chip: "border-emerald-900/60 bg-emerald-950/30 text-emerald-400",
     leadText: "text-emerald-400",
-    dot: "bg-emerald-500",
   },
   {
     id: "media",
@@ -95,21 +89,5 @@ export const BRANCHES: Branch[] = [
     accentBar: "bg-orange-500",
     chip: "border-orange-900/60 bg-orange-950/30 text-orange-400",
     leadText: "text-orange-400",
-    dot: "bg-orange-500",
   },
 ];
-
-const TEAM_KEYWORDS: Record<string, string[]> = {
-  build: ["Design/Build Team", "Design/Building Team"],
-  coding: ["Coding Team"],
-  finance: ["Finance Team"],
-  media: ["Marketing/Social Media Team"],
-};
-
-/** Roster members assigned to a branch, derived from each student's role string. */
-export function branchMembers(branchId: string, limit = 4): string[] {
-  const keys = TEAM_KEYWORDS[branchId] ?? [];
-  return ROSTER.filter((m) => keys.some((k) => m.role.includes(k)))
-    .map((m) => m.n)
-    .slice(0, limit);
-}

@@ -27,7 +27,7 @@ export const ROSTER: RosterMember[] = [
   { n: "Martin Kilcoyne", email: "martinkilcoyne337@stepinac.org", role: "Design/Build Team, Finance Team", yr: "Sophomore" },
   { n: "Viggo McCartney", email: "viggomccartney945@stepinac.org", role: "Design/Build Team, Finance Team", yr: "Sophomore" },
   { n: "Anthony MacDonald", email: "anthonymacdonald775@stepinac.org", role: "Design/Build Team", yr: "Sophomore" },
-  { n: "Dara Kola-Olugboye", email: "Design/Build Team, Coding Team", role: "Design/Build Team, Marketing/Social Media Team", yr: "Sophomore" },
+  { n: "Dara Kola-Olugboye", email: "darakolaolugboye721@stepinac.org", role: "Design/Build Team, Marketing/Social Media Team", yr: "Sophomore" },
   { n: "Robert Geib", email: "robertgeib429@stepinac.org", role: "Coding Co-lead", yr: "Junior" },
   { n: "Konrad Burnett", email: "konradburnett588@stepinac.org", role: "Coding Team", yr: "Senior" },
   { n: "Aston Seravo", email: "astonseravo509@stepinac.org", role: "Design/Build Team, Coding Team, Finance Team", yr: "Sophomore" },
