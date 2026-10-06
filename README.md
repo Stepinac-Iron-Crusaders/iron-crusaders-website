@@ -125,7 +125,7 @@ This software is protected under the **MIT license**. Basically, do whatever you
 
 ---
 
-### Tech Stack
+### Tech Stack 
 
 - [Vite](https://vitejs.dev/) + [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/) (via `@tailwindcss/vite`)
