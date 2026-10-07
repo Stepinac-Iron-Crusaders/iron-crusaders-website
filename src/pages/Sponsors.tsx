@@ -6,6 +6,14 @@ import { SPONSORS, TIERS } from "../data/sponsors";
 import { MagneticWrap, MagneticButton } from "../components/MagneticButton";
 // import { GoFundMeEmbed } from "../components/GoFundMeEmbed";
 
+const DONORS = [
+  { name: "John D.", amount: 100 },
+  { name: "Sarah M.", amount: 50 },
+  { name: "Anonymous", amount: 25 },
+  { name: "Michael R.", amount: 100 },
+  { name: "Anonymous", amount: 50 },
+  { name: "Alex P.", amount: 25 },
+];
 
 export default function Sponsors() {
   return (
@@ -181,6 +189,89 @@ export default function Sponsors() {
             <p className="mt-4 text-center font-mono text-[10px] uppercase tracking-[0.1em] text-zinc-600">
               Donations processed securely through GoFundMe
             </p>
+            {/* Donor Roll */}
+            <div className="mx-auto mt-8 max-w-[650px] border border-zinc-800 bg-zinc-900">
+              <div className="border-b border-zinc-800 bg-zinc-950 px-5 py-3">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-500">
+                    INDIVIDUAL SUPPORTERS
+                  </span>
+            
+                  <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-red-500">
+                    THANK YOU
+                  </span>
+                </div>
+              </div>
+            
+              {DONORS.length > 0 ? (
+                <div className="relative h-[220px] overflow-hidden bg-zinc-950">
+                  {/* Top fade */}
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-x-0 top-0 z-10 h-12 bg-gradient-to-b from-zinc-950 to-transparent"
+                  />
+            
+                  {/* Bottom fade */}
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-12 bg-gradient-to-t from-zinc-950 to-transparent"
+                  />
+            
+                  <div className="donor-scroll absolute left-0 right-0 top-0">
+                    {[...DONORS, ...DONORS].map((donor, index) => (
+                      <div
+                        key={`${donor.name}-${donor.amount}-${index}`}
+                        className="flex items-center justify-between border-b border-zinc-900 px-5 py-4"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="h-1.5 w-1.5 bg-red-600" />
+            
+                          <span className="font-mono text-sm font-medium text-zinc-300">
+                            {donor.name}
+                          </span>
+                        </div>
+            
+                        <span className="font-mono text-sm font-bold text-white">
+                          ${donor.amount.toLocaleString()}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+            
+                  <style>{`
+                    @keyframes donorScroll {
+                      from {
+                        transform: translateY(0);
+                      }
+            
+                      to {
+                        transform: translateY(-50%);
+                      }
+                    }
+            
+                    .donor-scroll {
+                      animation: donorScroll 18s linear infinite;
+                    }
+            
+                    .donor-scroll:hover {
+                      animation-play-state: paused;
+                    }
+            
+                    @media (prefers-reduced-motion: reduce) {
+                      .donor-scroll {
+                        animation: none;
+                      }
+                    }
+                  `}</style>
+                </div>
+              ) : (
+                <div className="flex h-[120px] items-center justify-center bg-zinc-950">
+                  <span className="font-mono text-xs uppercase tracking-[0.12em] text-zinc-600">
+                    Support the Iron Crusaders Today
+                  </span>
+                </div>
+              )}
+            </div>
       
           </div>
         </div>
