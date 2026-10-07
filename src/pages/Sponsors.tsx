@@ -7,12 +7,13 @@ import { MagneticWrap, MagneticButton } from "../components/MagneticButton";
 // import { GoFundMeEmbed } from "../components/GoFundMeEmbed";
 
 const DONORS = [
-  { name: "John D.", amount: 100 },
-  { name: "Sarah M.", amount: 50 },
-  { name: "Anonymous", amount: 25 },
-  { name: "Michael R.", amount: 100 },
-  { name: "Anonymous", amount: 50 },
-  { name: "Alex P.", amount: 25 },
+  { name: "Justin Paulino", amount: 10 },
+  { name: "Kimberly Sussman", amount: 100 },
+  { name: "Diana Camacho", amount: 140 },
+  { name: "Quamar Naqash", amount: 20 },
+  { name: "Jacquelyn Hernandez", amount: 100 },
+  { name: "Srilakshmi Jonnalagadda", amount: 100 },
+  { name: "Carolina Bustamante-filacouris", amount: 40 }
 ];
 
 export default function Sponsors() {
