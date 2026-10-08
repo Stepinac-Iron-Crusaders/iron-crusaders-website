@@ -19,8 +19,13 @@ import Contact from "./pages/Contact";
 import Newsletter from "./pages/Newsletter";
 import NewsletterSignup from "./pages/NewsletterSignup";
 import Sponsors from "./pages/Sponsors";
-import Budget from "./pages/Budget";
 import NotFound from "./pages/NotFound";
+import { ComingSoon } from "./components/ComingSoon";
+
+// The Budget page is built but not ready to ship; its route renders
+// <ComingSoon> instead (see below). Uncomment both this and the route to
+// bring the page back.
+// import Budget from "./pages/Budget";
 
 import TeamLogin from "./pages/TeamLogin";
 import TeamDashboard from "./pages/TeamDashboard";
@@ -111,7 +116,18 @@ export default function App() {
               element={<NewsletterSignup />}
             />
             <Route path="sponsors" element={<Sponsors />} />
-            <Route path="budget" element={<Budget />} />
+
+            {/* Budget page is built but not ready to ship yet. Swap back to
+                <Route path="budget" element={<Budget />} /> when ready. */}
+            <Route
+              path="budget"
+              element={
+                <ComingSoon
+                  title="Budget & Fundraising"
+                  blurb="Our budget and fundraising tracker are being finalized. Get in touch if you'd like a copy of the numbers."
+                />
+              }
+            />
 
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
