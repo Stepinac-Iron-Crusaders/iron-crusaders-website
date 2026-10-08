@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { PlaceholderImage } from "../components/PlaceholderImage";
 import SponsorsGrid from "../components/SponsorsGrid";
+import HomeFinanceWidget from "../components/HomeFinanceWidget";
 import { SPONSORS } from "../data/sponsors";
 import { gsap } from "../lib/gsap";
 import { Reveal } from "../components/Reveal";
@@ -1235,6 +1236,45 @@ export default function Home() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ===================================== 9. BUDGET & FUNDRAISING ===================================== */}
+      <section data-section id="budget" className="border-b border-zinc-800 bg-zinc-950">
+        <div className="mx-auto max-w-[1280px] px-4 py-16 lg:px-8 lg:py-20">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="max-w-2xl">
+              <div data-reveal-head className="mb-3 flex items-center gap-3 will-change-transform">
+                <span className="h-px w-8 bg-zinc-700" aria-hidden="true" />
+                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-zinc-500">
+                  Transparency
+                </span>
+                <span className="h-px w-8 bg-zinc-700" aria-hidden="true" />
+              </div>
+
+              <h2 data-reveal-head className="text-[28px] font-black uppercase tracking-[-0.02em] text-white sm:text-[36px] will-change-transform">
+                Where The Money Goes
+              </h2>
+
+              <p data-reveal-line className="mt-3 text-sm leading-relaxed text-zinc-400 will-change-transform">
+                We publish the whole budget. Every dollar goes to the robot, the travel to get there, and the tools
+                to build it.
+              </p>
+            </div>
+
+            <Reveal delay={0.1} y={16} triggerStart="top 96%">
+              <Link
+                to="/budget"
+                data-cursor="hover"
+                className="inline-flex items-center justify-center gap-2 border border-zinc-700 bg-zinc-900 px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+              >
+                Full Breakdown
+                <span aria-hidden="true">&rarr;</span>
+              </Link>
+            </Reveal>
+          </div>
+
+          <HomeFinanceWidget />
         </div>
       </section>
 

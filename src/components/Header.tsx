@@ -23,6 +23,7 @@ const NAV = {
     { label: "Awards", to: "/awards" },
     { label: "Media", to: "/media" },
     { label: "Resources", to: "/resources" },
+    { label: "Budget & Fundraising", to: "/budget" },
     { label: "Contact", to: "/contact" },
   ],
 };
@@ -119,7 +120,7 @@ export function Header() {
 
   const isRobotsActive = location.pathname.startsWith("/robots");
   const isTeamActive = location.pathname.startsWith("/team");
-  const isMoreActive = ["/outreach", "/events", "/awards", "/media", "/resources", "/contact"].some((p) => location.pathname.startsWith(p));
+  const isMoreActive = ["/outreach", "/events", "/awards", "/media", "/resources", "/budget", "/contact"].some((p) => location.pathname.startsWith(p));
 
   // close dropdowns on click outside, route change, esc
   useEffect(() => {

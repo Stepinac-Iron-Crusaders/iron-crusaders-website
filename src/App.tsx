@@ -19,6 +19,7 @@ import Contact from "./pages/Contact";
 import Newsletter from "./pages/Newsletter";
 import NewsletterSignup from "./pages/NewsletterSignup";
 import Sponsors from "./pages/Sponsors";
+import Budget from "./pages/Budget";
 import NotFound from "./pages/NotFound";
 
 import TeamLogin from "./pages/TeamLogin";
@@ -110,6 +111,7 @@ export default function App() {
               element={<NewsletterSignup />}
             />
             <Route path="sponsors" element={<Sponsors />} />
+            <Route path="budget" element={<Budget />} />
 
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
