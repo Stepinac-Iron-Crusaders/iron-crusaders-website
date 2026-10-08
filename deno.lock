@@ -1,0 +1,32 @@
+{
+  "version": "5",
+  "redirects": {
+    "https://esm.sh/@supabase/supabase-js@2": "https://esm.sh/@supabase/supabase-js@2.117.3"
+  },
+  "remote": {
+    "https://esm.sh/@supabase/supabase-js@2.117.3": "614f9e550b12b4be7054f947cc4949ebcc0eceeb8e83f7e226cc875356e9b126"
+  },
+  "workspace": {
+    "packageJson": {
+      "dependencies": [
+        "npm:@formspree/react@3",
+        "npm:@supabase/supabase-js@^2.115.0",
+        "npm:@tailwindcss/vite@^4.3.3",
+        "npm:@types/node@^24.13.3",
+        "npm:@types/react-dom@^19.2.4",
+        "npm:@types/react@^19.2.18",
+        "npm:@vitejs/plugin-react@^6.1.0",
+        "npm:autoprefixer@^10.5.4",
+        "npm:gsap@^3.15.0",
+        "npm:oxlint@^1.79.0",
+        "npm:postcss@^8.5.26",
+        "npm:react-dom@^19.2.8",
+        "npm:react-router-dom@^7.18.3",
+        "npm:react@^19.2.8",
+        "npm:tailwindcss@^4.3.3",
+        "npm:typescript@~6.0.2",
+        "npm:vite@^8.2.2"
+      ]
+    }
+  }
+}

@@ -15,7 +15,6 @@
 //   SUPABASE_PUBLISHABLE_KEY
 //   SUPABASE_SERVICE_ROLE_KEY
 // ============================================================================
-import { serve } from "https://deno.land/x/sift@0.8.1/mod.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const supabaseUrl = Deno.env.get("SUPABASE_URL") ?? "";
@@ -24,7 +23,7 @@ const supabaseServiceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
 
 const supabaseAdmin = createClient(supabaseUrl, supabaseServiceRoleKey);
 
-serve(async (req) => {
+Deno.serve(async (req) => {
   if (req.method !== "POST") {
     return new Response(JSON.stringify({ error: "Method not allowed" }), {
       status: 405,
@@ -176,9 +175,11 @@ serve(async (req) => {
       case "toggle-active": {
         const { target_user_id, active } = rest;
         if (!target_user_id) throw new Error("target_user_id is required");
+        // AdminUserAttributes takes ban_duration (a duration string), not a
+        // boolean. "none" lifts an existing ban; a long duration bans the user.
         const { error } = await supabaseAdmin.auth.admin.updateUserById(
           target_user_id,
-          { ban: !active }
+          { ban_duration: active ? "none" : "876000h" }
         );
         if (error) throw error;
 
