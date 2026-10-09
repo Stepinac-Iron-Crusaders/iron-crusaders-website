@@ -1,10 +1,3 @@
-export const SUBTEAMS = [
-  { name: "Design & Building", lead: "Leads: Subash Jonnalagadda & Joseph Alex • 26 members", desc: "Leads design of robot systems." },
-  { name: "Coding", lead: "Leads: Julian Reiff, Joseph Uthuppan & Robert Geib • 10 members", desc: "Autonomous, vision, robot control." },
-  { name: "Finance", lead: "Leads: Mathew Kulapurathazhe & Thomas Munchoff • 13 members", desc: "Creates and implements business plan" },
-  { name: "Media & Marketing", lead: "Lead: Oisin Stack • 9 members", desc: "Outreach, handles sponsor benefits, video" },
-];
-
 export type RosterMember = {
   n: string;
   email: string;
@@ -61,7 +54,6 @@ export const ROSTER: RosterMember[] = [
   { n: "Daniel Zheng", email: "danielzheng470@stepinac.org", role: "Design/Build Team, Coding Team", yr: "Sophomore" }, 
   { n: "Nicholas Riolo", email: "nicholasriolo351@stepinac.org", role: "Design/Build Team, Finance Team", yr: "Sophomore" },
   { n: "Lucas Madera", email: "lucasmadera236@stepinac.org", role: "Coding Team, Finance Team", yr: "Sophomore" },
-  { n: "Korede OluwaDarasimi Kola-Olugboye", email: "koredekolaolugb447@stepinac.org", role: "Design/Build Team, Coding Team", yr: "Sophomore" },
   { n: "Ezra Walters", email: "ezrawalters460@stepinac.org", role: "Design/Build Team, Marketing/Social Media Team", yr: "Sophomore" },
   { n: "Anthony Villa", email: "anthonyvilla508@stepinac.org", role: "Design/Build Team, Finance Team", yr: "Sophomore" },
 
@@ -76,5 +68,41 @@ export const ROSTER: RosterMember[] = [
   { n: "Andrew Hampton", email: "andrewhampton675@stepinac.org", role: "Coding Team", yr: "Freshman" },
   { n: "James Pettit", email: "jamespettit229@stepinac.org", role: "Design/Build Team, Marketing/Social Media Team", yr: "Freshman" },
   { n: "Ryan Keogh", email: "ryankeogh33@stepinac.org", role: "Design/Build Team", yr: "Freshman" }, 
-  { n: "Tristan Camacho", email: "trispclegend21@gmail.com", role: "Design/Build Team", yr: "Freshman" }, 
+  { n: "Tristan Camacho", email: "tristancamacho628@stepinac.org", role: "Design/Build Team", yr: "Freshman" }, 
 ];
+
+/** Roster size for a subteam, derived from ROSTER so counts cannot drift. */
+export function subteamCount(tag: string): number {
+  return ROSTER.filter((m) => m.role.includes(tag)).length;
+}
+
+export const SUBTEAMS = [
+  {
+    name: "Design & Building",
+    lead: "Leads: Subash Jonnalagadda & Joseph Alex",
+    tag: "Design/Build",
+    desc: "Leads design of robot systems.",
+  },
+  {
+    name: "Coding",
+    lead: "Leads: Julian Reiff, Joseph Uthuppan & Robert Geib",
+    tag: "Coding",
+    desc: "Autonomous, vision, robot control.",
+  },
+  {
+    name: "Finance",
+    lead: "Leads: Mathew Kulapurathazhe & Thomas Munchoff",
+    tag: "Finance",
+    desc: "Creates and implements business plan",
+  },
+  {
+    name: "Media & Marketing",
+    lead: "Lead: Oisin Stack",
+    tag: "Marketing/Social Media",
+    desc: "Outreach, handles sponsor benefits, video",
+  },
+].map((t) => ({
+  name: t.name,
+  lead: `${t.lead} • ${subteamCount(t.tag)} members`,
+  desc: t.desc,
+}));

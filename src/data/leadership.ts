@@ -1,3 +1,5 @@
+import { subteamCount } from "./team";
+
 export type Captain = {
   n: string;
   yr: string;
@@ -9,14 +11,14 @@ export const CAPTAINS: Captain[] = [
   {
     n: "Joseph Alex",
     yr: "Sophomore",
-    roles: ["Co-Captain", "Building/Design Co-Lead"],
+    roles: ["Co-Captain", "Design/Build Co-Lead"],
     focus:
       "Owns season timeline, design reviews, pit operations, and robot system design.",
   },
   {
     n: "Subash Jonnalagadda",
     yr: "Junior",
-    roles: ["Co-Captain", "Building/Design Co-Lead"],
+    roles: ["Co-Captain", "Design/Build Co-Lead"],
     focus:
       "Owns season timeline, design reviews, pit operations, and robot construction.",
   },
@@ -42,8 +44,8 @@ export type Branch = {
 export const BRANCHES: Branch[] = [
   {
     id: "build",
-    name: "Building/Design",
-    members: 23,
+    name: "Design & Building",
+    members: subteamCount("Design/Build"),
     leads: [
       { n: "Subash Jonnalagadda", role: "Co-Lead" },
       { n: "Joseph Alex", role: "Co-Lead" },
@@ -56,7 +58,7 @@ export const BRANCHES: Branch[] = [
   {
     id: "coding",
     name: "Coding",
-    members: 13,
+    members: subteamCount("Coding"),
     leads: [
       { n: "Julian Reiff", role: "Co-Lead" },
       { n: "Joseph Uthuppan", role: "Co-Lead" },
@@ -70,7 +72,7 @@ export const BRANCHES: Branch[] = [
   {
     id: "finance",
     name: "Finance",
-    members: 11,
+    members: subteamCount("Finance"),
     leads: [
       { n: "Mathew Kulapurathazhe", role: "Co-Lead" },
       { n: "Thomas Munchoff", role: "Co-Lead" },
@@ -83,7 +85,7 @@ export const BRANCHES: Branch[] = [
   {
     id: "media",
     name: "Media & Marketing",
-    members: 11,
+    members: subteamCount("Marketing/Social Media"),
     leads: [{ n: "Oisin Stack", role: "Marketing Lead" }],
     desc: "Outreach, sponsor deliverables, social media, and team media production.",
     accentBar: "bg-orange-500",

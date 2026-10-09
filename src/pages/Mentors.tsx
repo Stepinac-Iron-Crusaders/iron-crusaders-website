@@ -6,12 +6,25 @@ import { MagneticWrap } from "../components/MagneticButton";
 
 function MentorPhoto({ name }: { name: string }) {
   const [failed, setFailed] = useState(false);
+  const [phFailed, setPhFailed] = useState(false);
 
   if (failed) {
+    if (phFailed) {
+      return (
+        <div
+          className="h-14 w-14 shrink-0 border border-zinc-700 bg-zinc-800"
+          aria-hidden="true"
+        />
+      );
+    }
+
     return (
-      <div
-        className="h-14 w-14 shrink-0 border border-zinc-700 bg-zinc-800"
-        aria-hidden="true"
+      <img
+        src={`${import.meta.env.BASE_URL}students/placeholder.jpg`}
+        alt=""
+        className="h-14 w-14 shrink-0 border border-zinc-700 bg-zinc-800 object-cover"
+        onError={() => setPhFailed(true)}
+        loading="lazy"
       />
     );
   }
@@ -27,7 +40,7 @@ function MentorPhoto({ name }: { name: string }) {
   );
 }
 
-const MENTORS = 
+export const MENTORS = 
   [
     { n: "Mr. Alex Estrella", role: "Lead Mentor", bg: "Faculty - Computer Science and Engineering", years: "5 yrs", email: "aestrella@stepinac.org" },
     { n: "Dr. Samantha Asche-Godin", role: "Outreach", bg: "Faculty - Science Department", years: "4 yrs", email: "saschegodin@stepinac.org" },
@@ -61,7 +74,7 @@ export default function Mentors() {
                   aria-hidden="true"
                 />
                 <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-blue-500">
-                  Mentors • 12 Active
+                  Mentors • {MENTORS.length} Active
                 </span>
               </div>
 

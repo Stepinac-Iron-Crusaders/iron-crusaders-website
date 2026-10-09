@@ -11,9 +11,12 @@ import { MagneticWrap } from "../components/MagneticButton";
 import { CountUp } from "../components/CountUp";
 import { Marquee } from "../components/Marquee";
 import TeamPhoto from "../assets/Robotics_Team_Photo.jpeg"
+import { ROSTER } from "../data/team";
+import { MENTORS } from "./Mentors";
+import { BRANCHES } from "../data/leadership";
 
 const STATS = {
-  students: "30+",
+  students: String(ROSTER.length),
   awards: "N/A",
   competitions: "ROOKIE",
   founded: "2026",
@@ -831,21 +834,21 @@ export default function Home() {
                 title: "Students",
                 to: "/team/students",
                 desc: "Design, fabrication, programming, and strategy — students own every subsystem and every match.",
-                count: "30+ Members",
+                count: `${ROSTER.length} Members`,
                 accent: "red",
               },
               {
                 title: "Mentors",
                 to: "/team/mentors",
                 desc: "Professional engineers and educators who teach process, safety, and high-level competitive thinking.",
-                count: "2 Mentors",
+                count: `${MENTORS.length} Mentors`,
                 accent: "blue",
               },
               {
                 title: "Leadership",
                 to: "/team/leadership",
                 desc: "Captains and leads who set build timelines, run reviews, and hold the standard on quality.",
-                count: "4 Leads",
+                count: `${BRANCHES.length} Leads`,
                 accent: "zinc",
               },
             ].map((card) => (
