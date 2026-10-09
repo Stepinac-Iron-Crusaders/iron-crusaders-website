@@ -66,7 +66,17 @@ export function AnimatedPage({ children, className }: Props) {
           });
         }
 
-        const heroCtas = hero.querySelectorAll<HTMLElement>("a.bg-blue-600, a.bg-red-600, a.bg-white, a.bg-zinc-900, a.border, button");
+        // Only animate real calls-to-action. A bare `button` tag selector also
+        // matched form controls, so the portal's "Sign In" submit button was
+        // set to autoAlpha 0 — invisible and unclickable — whenever the GSAP
+        // ticker didn't advance. Never animate a form's submit controls from
+        // invisible: if the tween is interrupted the user can't sign in at all.
+        const heroCtas = Array.from(
+          hero.querySelectorAll<HTMLElement>(
+            "a.bg-blue-600, a.bg-red-600, a.bg-white, a.bg-zinc-900, a.border, button",
+          ),
+        ).filter((el) => !(el.tagName === "BUTTON" && el.closest("form")));
+
         if (heroCtas.length) {
           gsap.from(heroCtas, {
             y: 12,
@@ -75,7 +85,9 @@ export function AnimatedPage({ children, className }: Props) {
             stagger: 0.06,
             ease: "back.out(1.2)",
             delay: 0.36,
-            clearProps: "transform,opacity",
+            // visibility matters as much as opacity here: autoAlpha drives both,
+            // and leaving visibility:hidden behind makes controls unclickable.
+            clearProps: "transform,opacity,visibility",
           });
         }
 

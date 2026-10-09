@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { supabase } from "../lib/supabaseClient";
+import { supabase, isConfigured } from "../lib/supabaseClient";
+import { useAuth, useRoleDashboardPath } from "../contexts/AuthContext";
 import { AnimatedPage } from "../components/AnimatedPage";
 
 export default function TeamLogin() {
   const navigate = useNavigate();
   const location = useLocation();
+  // Use the context signIn() rather than calling supabase directly: it awaits
+  // the profile/teams load before resolving, so ProtectedRoute won't render
+  // once with a null user and bounce straight back to this page.
+  const { signIn, user, loading: authLoading } = useAuth();
+  const roleDashboardPath = useRoleDashboardPath();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,19 +26,23 @@ export default function TeamLogin() {
   const [resetLoading, setResetLoading] = useState(false);
   const [resetMsg, setResetMsg] = useState("");
 
+  // Honour an explicit redirect target when the user was bounced here from a
+  // protected page. Otherwise land on the dashboard for their role, which is
+  // what the floating portal button and the docs both do.
+  const redirectTarget = () => {
+    const from = (location.state as { from?: { pathname?: string } } | null)?.from
+      ?.pathname;
+    if (from && from !== "/team/portal/login") return from;
+    return roleDashboardPath;
+  };
+
+  // Already signed in (fresh session, or a bounce back from ProtectedRoute).
   useEffect(() => {
-    const checkExistingSession = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-
-      if (session) {
-        navigate("/team/portal/dashboard", { replace: true });
-      }
-    };
-
-    checkExistingSession();
-  }, [navigate]);
+    if (!authLoading && user) {
+      navigate(redirectTarget(), { replace: true });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, authLoading, navigate]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -40,39 +50,35 @@ export default function TeamLogin() {
     setError("");
     setLoading(true);
 
-    const { error } = await supabase.auth.signInWithPassword({
-      email: email.trim(),
-      password,
-    });
+    const { error: signInError } = await signIn(email, password);
 
-    if (error) {
-      console.error("Supabase login error:", error);
-      setError(error.message);
+    if (signInError) {
+      console.error("Supabase login error:", signInError);
+      setError(signInError.message);
       setLoading(false);
       return;
     }
 
-    const from =
-      (location.state as { from?: { pathname?: string } } | null)?.from
-        ?.pathname || "/team/portal/dashboard";
-
-    navigate(from, { replace: true });
+    navigate(redirectTarget(), { replace: true });
   };
 
   const handleForgotPassword = async (e: FormEvent) => {
     e.preventDefault();
     setResetLoading(true);
     setResetMsg("");
-    try {
-      await supabase.auth.resetPasswordForEmail(resetEmail.trim(), {
-        redirectTo: `${window.location.origin}/#/team/portal/login`,
-      });
+    const { error: resetError } = await supabase.auth.resetPasswordForEmail(
+      resetEmail.trim(),
+      { redirectTo: `${window.location.origin}/#/team/portal/login` },
+    );
+    if (resetError) {
+      setResetMsg(resetError.message ?? "Failed to send reset link.");
+    } else {
       setResetMsg("Check your email for a password reset link.");
-    } catch (err: any) {
-      setResetMsg(err.message ?? "Failed to send reset link.");
     }
     setResetLoading(false);
   };
+
+  const disabled = !isConfigured || loading;
 
   return (
     <AnimatedPage>
@@ -113,6 +119,24 @@ export default function TeamLogin() {
 
           {/* Login card */}
           <div className="border border-zinc-800 bg-zinc-900 p-6 sm:p-8">
+            {/* Missing Supabase config: say so plainly instead of letting the
+                submit button fail against the placeholder client. */}
+            {!isConfigured && (
+              <div className="mb-6 border border-amber-700/60 bg-amber-950/20 px-4 py-3">
+                <p className="font-mono text-xs font-bold uppercase tracking-[0.12em] text-amber-400">
+                  Portal Not Configured
+                </p>
+                <p className="mt-2 text-xs leading-relaxed text-amber-200/80">
+                  This build is missing its Supabase credentials, so sign-in is
+                  disabled. Copy <code className="text-amber-300">.env.example</code>{" "}
+                  to <code className="text-amber-300">.env.local</code> and fill in{" "}
+                  <code className="text-amber-300">VITE_SUPABASE_URL</code> and{" "}
+                  <code className="text-amber-300">VITE_SUPABASE_PUBLISHABLE_KEY</code>,
+                  then restart the dev server.
+                </p>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Email */}
               <div>
@@ -128,10 +152,11 @@ export default function TeamLogin() {
                   type="email"
                   autoComplete="email"
                   required
+                  disabled={!isConfigured}
                   value={email}
                   onChange={(event) => setEmail(event.target.value)}
                   placeholder="you@example.com"
-                  className="w-full border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-700 focus:border-red-600"
+                  className="w-full border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-700 focus:border-red-600 disabled:cursor-not-allowed disabled:opacity-50"
                 />
               </div>
 
@@ -149,10 +174,11 @@ export default function TeamLogin() {
                   type="password"
                   autoComplete="current-password"
                   required
+                  disabled={!isConfigured}
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
                   placeholder="••••••••"
-                  className="w-full border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-700 focus:border-red-600"
+                  className="w-full border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-white outline-none transition-colors placeholder:text-zinc-700 focus:border-red-600 disabled:cursor-not-allowed disabled:opacity-50"
                 />
               </div>
 
@@ -169,12 +195,13 @@ export default function TeamLogin() {
               <div className="text-right">
                 <button
                   type="button"
+                  disabled={!isConfigured}
                   onClick={() => {
                     setShowForgot(true);
                     setResetEmail(email);
                     setResetMsg("");
                   }}
-                  className="font-mono text-[10px] uppercase tracking-[0.12em] text-zinc-600 transition-colors hover:text-red-400"
+                  className="font-mono text-[10px] uppercase tracking-[0.12em] text-zinc-600 transition-colors hover:text-red-400 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   Forgot password?
                 </button>
@@ -183,7 +210,7 @@ export default function TeamLogin() {
               {/* Submit */}
               <button
                 type="submit"
-                disabled={loading}
+                disabled={disabled}
                 className="w-full bg-red-600 px-6 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {loading ? "Signing In..." : "Sign In →"}

@@ -206,9 +206,11 @@ Deno.serve(async (req) => {
       case "request-reset": {
         const { email } = rest;
         if (!email) throw new Error("email is required");
+        // Must match public/CNAME (ironcrusaders.me), and needs the leading
+        // slash for the hash since the app routes with HashRouter.
         const { error } = await supabaseAdmin.auth.resetPasswordForEmail(
           email,
-          { redirectTo: "https://ironcrusaders.dev/team/portal/login" }
+          { redirectTo: "https://ironcrusaders.me/#/team/portal/login" }
         );
         if (error) throw error;
 
