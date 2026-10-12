@@ -13,6 +13,7 @@ const DONORS = [
   { name: "Quamar Naqash", amount: 20 },
   { name: "Jacquelyn Hernandez", amount: 100 },
   { name: "Srilakshmi Jonnalagadda", amount: 100 },
+  { name: "Wilson Ramos", amount: 40 },
   { name: "Carolina Bustamante-filacouris", amount: 40 }
 ];
 
