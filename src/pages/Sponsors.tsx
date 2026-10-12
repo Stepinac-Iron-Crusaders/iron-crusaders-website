@@ -43,7 +43,7 @@ export default function Sponsors() {
                 <span className="text-zinc-500">Us</span>
               </h1>
               <p className="mt-4 max-w-[48ch] text-[15px] leading-relaxed text-zinc-400">
-                Every dollar goes to materials, machining, travel, and outreach — directly into student learning. Join 18 companies and families funding the 2025–26 season.
+                Every dollar goes to materials, machining, travel, and outreach — directly into student learning. Join 11 companies and families funding the 2025–26 season.
               </p>
               <div className="mt-6 flex gap-3">
                 <MagneticWrap>
