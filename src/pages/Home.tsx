@@ -2,7 +2,9 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { PlaceholderImage } from "../components/PlaceholderImage";
 import SponsorsGrid from "../components/SponsorsGrid";
-import HomeFinanceWidget from "../components/HomeFinanceWidget";
+// Only used by the hidden Transparency/budget section further down — re-enable
+// the import together with that section.
+// import HomeFinanceWidget from "../components/HomeFinanceWidget";
 import { SPONSORS } from "../data/sponsors";
 import { gsap } from "../lib/gsap";
 import { Reveal } from "../components/Reveal";
@@ -1242,7 +1244,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===================================== 9. BUDGET & FUNDRAISING ===================================== */}
+      {/* ===================================== 9. BUDGET & FUNDRAISING =====================================
+       * HIDDEN — budget figures are not accurate yet, so the Transparency /
+       * "Where The Money Goes" block is not rendered on the home page.
+       * Uncomment the block below (and the HomeFinanceWidget import at the
+       * top of this file) to bring it back.
+       */}
+      {/*
       <section data-section id="budget" className="border-b border-zinc-800 bg-zinc-950">
         <div className="mx-auto max-w-[1280px] px-4 py-16 lg:px-8 lg:py-20">
           <div className="flex flex-wrap items-end justify-between gap-6">
@@ -1280,6 +1288,7 @@ export default function Home() {
           <HomeFinanceWidget />
         </div>
       </section>
+      */}
 
       {/* ===================================== 10. FINAL CTA ===================================== */}
       <section data-cta className="relative overflow-hidden bg-red-600" aria-label="Call to action">
