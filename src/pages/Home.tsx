@@ -189,7 +189,6 @@ function SponsorCountdown() {
   );
 }
 
-
 export default function Home() {
   // Load Instagram's embed script and process the Reel rendered in Latest News.
   useEffect(() => {
@@ -1217,7 +1216,14 @@ export default function Home() {
 
           <div
             data-reveal-line
-         {/* ===================================== LATEST NEWS ===================================== */}
+            className="mt-8 flex flex-col items-center justify-center text-center"
+          >
+            <SponsorCountdown />
+          </div>
+        </div>
+      </section>
+
+      {/* ===================================== LATEST NEWS ===================================== */}
       <section data-section className="border-b border-zinc-800 bg-zinc-950">
         <div className="mx-auto max-w-[1280px] px-4 py-16 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-2xl text-center">
@@ -1285,77 +1291,6 @@ export default function Home() {
           </p>
         </div>
       </section>
-
--500">Updates</span>
-                <span className="h-px w-8 bg-zinc-700" />
-              </div>
-
-              <h2 data-reveal-head className="text-[30px] font-black uppercase tracking-[-0.02em] text-white sm:text-[38px] will-change-transform">
-                Latest News
-              </h2>
-
-              <p data-reveal-line className="mt-4 text-sm leading-relaxed text-zinc-400 will-change-transform">
-                We’re preparing our news and media system. Team updates, competition reports, project announcements, and
-                community stories will appear here.
-              </p>
-
-              <div className="mx-auto mt-6 h-1 w-48 bg-zinc-800 overflow-hidden">
-                <div data-progress-bar className="h-1 w-[45%] bg-blue-600 origin-left will-change-transform" />
-              </div>
-
-              <p data-reveal-line className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-600 will-change-transform">
-                News system in progress
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===================================== 9. BUDGET & FUNDRAISING =====================================
-       * HIDDEN — budget figures are not accurate yet, so the Transparency /
-       * "Where The Money Goes" block is not rendered on the home page.
-       * Uncomment the block below (and the HomeFinanceWidget import at the
-       * top of this file) to bring it back.
-       */}
-      {/*
-      <section data-section id="budget" className="border-b border-zinc-800 bg-zinc-950">
-        <div className="mx-auto max-w-[1280px] px-4 py-16 lg:px-8 lg:py-20">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <div className="max-w-2xl">
-              <div data-reveal-head className="mb-3 flex items-center gap-3 will-change-transform">
-                <span className="h-px w-8 bg-zinc-700" aria-hidden="true" />
-                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-zinc-500">
-                  Transparency
-                </span>
-                <span className="h-px w-8 bg-zinc-700" aria-hidden="true" />
-              </div>
-
-              <h2 data-reveal-head className="text-[28px] font-black uppercase tracking-[-0.02em] text-white sm:text-[36px] will-change-transform">
-                Where The Money Goes
-              </h2>
-
-              <p data-reveal-line className="mt-3 text-sm leading-relaxed text-zinc-400 will-change-transform">
-                We publish the whole budget. Every dollar goes to the robot, the travel to get there, and the tools
-                to build it.
-              </p>
-            </div>
-
-            <Reveal delay={0.1} y={16} triggerStart="top 96%">
-              <Link
-                to="/budget"
-                data-cursor="hover"
-                className="inline-flex items-center justify-center gap-2 border border-zinc-700 bg-zinc-900 px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
-              >
-                Full Breakdown
-                <span aria-hidden="true">&rarr;</span>
-              </Link>
-            </Reveal>
-          </div>
-
-          <HomeFinanceWidget />
-        </div>
-      </section>
-      */}
 
       {/* ===================================== 10. FINAL CTA ===================================== */}
       <section data-cta className="relative overflow-hidden bg-red-600" aria-label="Call to action">
