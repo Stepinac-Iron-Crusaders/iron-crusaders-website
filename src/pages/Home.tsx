@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { PlaceholderImage } from "../components/PlaceholderImage";
+// import { PlaceholderImage } from "../components/PlaceholderImage";
 import SponsorsGrid from "../components/SponsorsGrid";
 // Only used by the hidden Transparency/budget section further down — re-enable
 // the import together with that section.
