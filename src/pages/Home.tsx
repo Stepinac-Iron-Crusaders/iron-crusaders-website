@@ -1247,38 +1247,57 @@ export default function Home() {
             </p>
           </div>
 
-          <div data-reveal-card className="mx-auto mt-10 flex w-full max-w-[540px] justify-center will-change-transform">
-            <div className="w-full overflow-hidden rounded-xl border border-zinc-800 bg-white p-2">
-              <blockquote
-                className="instagram-media"
-                data-instgrm-permalink="https://www.instagram.com/reel/DemxdWJhhDR/"
-                data-instgrm-version="14"
-                style={{
-                  background: "#fff",
-                  border: 0,
-                  borderRadius: "3px",
-                  boxShadow: "0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)",
-                  margin: "0 auto",
-                  maxWidth: "540px",
-                  minWidth: "0",
-                  padding: 0,
-                  width: "100%",
-                }}
-              >
-                <a
-                  href="https://www.instagram.com/reel/DemxdWJhhDR/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="block p-6 text-center text-sm font-semibold text-blue-600"
+          <div data-reveal-card className="mt-10 will-change-transform">
+            <div
+              className={
+                REELS.length > 2
+                  ? "flex w-full snap-x snap-mandatory gap-6 overflow-x-auto pb-6 pt-2 scrollbar-thin scrollbar-thumb-zinc-700"
+                  : "flex flex-wrap justify-center gap-6"
+              }
+            >
+              {REELS.map((reel) => (
+                <div
+                  key={reel.id}
+                  className={
+                    REELS.length > 2
+                      ? "w-[320px] shrink-0 snap-center sm:w-[420px] md:w-[480px]"
+                      : "w-full max-w-[540px] flex-1 min-w-[300px]"
+                  }
                 >
-                  Watch this Reel on Instagram
-                </a>
-              </blockquote>
+                  <div className="w-full overflow-hidden rounded-xl border border-zinc-800 bg-white p-2">
+                    <blockquote
+                      className="instagram-media"
+                      data-instgrm-permalink={reel.url}
+                      data-instgrm-version="14"
+                      style={{
+                        background: "#fff",
+                        border: 0,
+                        borderRadius: "3px",
+                        boxShadow: "0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)",
+                        margin: "0 auto",
+                        maxWidth: "540px",
+                        minWidth: "0",
+                        padding: 0,
+                        width: "100%",
+                      }}
+                    >
+                      <a
+                        href={reel.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="block p-6 text-center text-sm font-semibold text-blue-600"
+                      >
+                        Watch this post on Instagram
+                      </a>
+                    </blockquote>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
           <p className="mt-5 text-center font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-600">
-            Follow{" "}
+            {REELS.length > 2 && "Scroll left / right • "}Follow{" "}
             <a
               href="https://www.instagram.com/stepinacrobotics/"
               target="_blank"
@@ -1291,7 +1310,7 @@ export default function Home() {
           </p>
         </div>
       </section>
-
+      
       {/* ===================================== 10. FINAL CTA ===================================== */}
       <section data-cta className="relative overflow-hidden bg-red-600" aria-label="Call to action">
         <div
