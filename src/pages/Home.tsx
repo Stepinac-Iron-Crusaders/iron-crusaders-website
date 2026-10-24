@@ -191,6 +191,44 @@ function SponsorCountdown() {
 
 
 export default function Home() {
+  // Load Instagram's embed script and process the Reel rendered in Latest News.
+  useEffect(() => {
+    type InstagramWindow = Window & {
+      instgrm?: { Embeds?: { process: () => void } };
+    };
+
+    const processInstagramEmbeds = () => {
+      (window as InstagramWindow).instgrm?.Embeds?.process();
+    };
+
+    const scriptSrc = "https://www.instagram.com/embed.js";
+    const existingScript = document.querySelector<HTMLScriptElement>(
+      `script[src="${scriptSrc}"]`
+    );
+
+    if (existingScript) {
+      if ((window as InstagramWindow).instgrm?.Embeds) {
+        processInstagramEmbeds();
+      } else {
+        existingScript.addEventListener("load", processInstagramEmbeds, { once: true });
+      }
+
+      return () => {
+        existingScript.removeEventListener("load", processInstagramEmbeds);
+      };
+    }
+
+    const script = document.createElement("script");
+    script.src = scriptSrc;
+    script.async = true;
+    script.onload = processInstagramEmbeds;
+    document.body.appendChild(script);
+
+    return () => {
+      script.onload = null;
+    };
+  }, []);
+
   const pageRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const heroImageRef = useRef<HTMLDivElement>(null);
@@ -1179,52 +1217,76 @@ export default function Home() {
 
           <div
             data-reveal-line
-            className="mt-10 flex flex-col items-center gap-4 border-t border-zinc-800 pt-10 will-change-transform"
-          >
-            <p className="max-w-[48ch] text-center text-sm leading-relaxed text-zinc-400">
-              Want your logo here? Sponsor a competitive, student-led engineering program with proven community impact.
+         {/* ===================================== LATEST NEWS ===================================== */}
+      <section data-section className="border-b border-zinc-800 bg-zinc-950">
+        <div className="mx-auto max-w-[1280px] px-4 py-16 lg:px-8 lg:py-20">
+          <div className="mx-auto max-w-2xl text-center">
+            <div data-reveal-head className="mb-3 flex items-center justify-center gap-3 will-change-transform">
+              <span className="h-px w-8 bg-zinc-700" aria-hidden="true" />
+              <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-zinc-500">
+                Updates
+              </span>
+              <span className="h-px w-8 bg-zinc-700" aria-hidden="true" />
+            </div>
+
+            <h2
+              data-reveal-head
+              className="text-[30px] font-black uppercase tracking-[-0.02em] text-white sm:text-[38px] will-change-transform"
+            >
+              Latest News
+            </h2>
+
+            <p data-reveal-line className="mt-4 text-sm leading-relaxed text-zinc-400 will-change-transform">
+              Team updates, projects, and community moments from Stepinac Robotics.
             </p>
-          
-            <MagneticWrap>
-              <Link
-                to="/sponsors"
-                data-cursor="hover"
-                className="inline-flex items-center justify-center bg-red-600 px-8 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_10px_30px_rgba(220,38,38,0.35)] transition-colors hover:bg-red-700"
-              >
-                Become a Sponsor
-              </Link>
-            </MagneticWrap>
-          
-            <SponsorCountdown />
-          
-            <span className="font-mono text-[11px] uppercase tracking-wide text-zinc-600">
-              501(c)(3) • Tax-deductible • Tier packages available
-            </span>
           </div>
+
+          <div data-reveal-card className="mx-auto mt-10 flex w-full max-w-[540px] justify-center will-change-transform">
+            <div className="w-full overflow-hidden rounded-xl border border-zinc-800 bg-white p-2">
+              <blockquote
+                className="instagram-media"
+                data-instgrm-permalink="https://www.instagram.com/reel/DemxdWJhhDR/"
+                data-instgrm-version="14"
+                style={{
+                  background: "#fff",
+                  border: 0,
+                  borderRadius: "3px",
+                  boxShadow: "0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)",
+                  margin: "0 auto",
+                  maxWidth: "540px",
+                  minWidth: "0",
+                  padding: 0,
+                  width: "100%",
+                }}
+              >
+                <a
+                  href="https://www.instagram.com/reel/DemxdWJhhDR/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block p-6 text-center text-sm font-semibold text-blue-600"
+                >
+                  Watch this Reel on Instagram
+                </a>
+              </blockquote>
+            </div>
+          </div>
+
+          <p className="mt-5 text-center font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-600">
+            Follow{" "}
+            <a
+              href="https://www.instagram.com/stepinacrobotics/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-zinc-400 transition-colors hover:text-white"
+            >
+              @stepinacrobotics
+            </a>{" "}
+            for more updates
+          </p>
         </div>
       </section>
 
-      {/* ===================================== LATEST NEWS — IN PROGRESS ===================================== */}
-      <section data-section className="border-b border-zinc-800 bg-zinc-950">
-        <div className="mx-auto max-w-[1280px] px-4 py-16 lg:px-8 lg:py-20">
-          <div
-            data-progress-card
-            className="group relative flex min-h-[300px] items-center justify-center overflow-hidden border border-zinc-800 bg-zinc-900 will-change-transform"
-          >
-            <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-br from-zinc-700/10 via-transparent to-red-600/10" />
-            <div className="max-w-xl px-6 py-12 text-center relative">
-              <div data-reveal-head className="mb-6 flex justify-center will-change-transform">
-                <div className="inline-flex items-center gap-2 border border-zinc-700 bg-zinc-950 px-4 py-2">
-                  <span className="h-2 w-2 animate-pulse bg-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.7)]" />
-                  <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-400">
-                    Page In Progress
-                  </span>
-                </div>
-              </div>
-
-              <div data-reveal-head className="mb-3 flex items-center justify-center gap-3 will-change-transform">
-                <span className="h-px w-8 bg-zinc-700" />
-                <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-zinc-500">Updates</span>
+-500">Updates</span>
                 <span className="h-px w-8 bg-zinc-700" />
               </div>
 
