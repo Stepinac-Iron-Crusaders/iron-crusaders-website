@@ -13,6 +13,7 @@ import { MagneticWrap } from "../components/MagneticButton";
 import { CountUp } from "../components/CountUp";
 import { Marquee } from "../components/Marquee";
 import TeamPhoto from "../assets/Robotics_Team_Photo.jpeg"
+import CodeTeachingPhoto from "../assets/Robotics_Teaching_Photo_Coding.jpeg"
 import { ROSTER } from "../data/team";
 import { MENTORS } from "./Mentors";
 import { BRANCHES } from "../data/leadership";
@@ -736,7 +737,11 @@ export default function Home() {
 
             <div data-reveal-card className="relative will-change-transform" data-parallax-wrap>
               <div className="relative overflow-hidden">
-                <PlaceholderImage label="TEAM WORKSHOP IMAGE PLACEHOLDER" className="aspect-[4/3] rounded-none" />
+                <img
+                  src={CodeTeachingPhoto}
+                  alt="Iron Crusaders students teaching coding"
+                  className="aspect-[4/3] w-full object-cover rounded-none"
+                />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-zinc-950/40 to-transparent" />
               </div>
 
