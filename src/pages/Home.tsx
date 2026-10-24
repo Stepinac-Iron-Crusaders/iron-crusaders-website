@@ -25,6 +25,17 @@ const STATS = {
   founded: "2026",
 } as const;
 
+const REELS = [
+  {
+    id: "DemxdWJhhDR",
+    url: "https://www.instagram.com/reel/DemxdWJhhDR/",
+  },
+  {
+    id: "DcR-kWGRLyZ",
+    url: "https://www.instagram.com/p/DcR-kWGRLyZ/",
+  },
+];
+
 function KickoffCountdown() {
   const kickoff = new Date("2027-01-09T12:00:00-05:00").getTime();
 
