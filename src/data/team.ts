@@ -36,7 +36,6 @@ export const ROSTER: RosterMember[] = [
 
 
   //one team only sophmores
-  { n: "Anthony MacDonald", email: "anthonymacdonald775@stepinac.org", role: "Design/Build Team", yr: "Sophomore" },
   { n: "Gabriel Alba", email: "gabrielalba953@stepinac.org", role: "Design/Build Team", yr: "Sophomore" },
   { n: "Ryan McManus", email: "ryanmcmanus962@stepinac.org", role: "Design/Build Team", yr: "Sophomore" },
   { n: "Zachary Chavez", email: "zacharychavez228@stepinac.org", role: "Design/Build Team", yr: "Sophomore" },
