@@ -21,41 +21,35 @@ const REELS = [
 export default function Media() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Load Instagram embed script and parse widgets on mount
+  // Load Instagram embed script and process embeds reliably
   useEffect(() => {
     type InstagramWindow = Window & {
       instgrm?: { Embeds?: { process: () => void } };
     };
 
-    const processInstagramEmbeds = () => {
-      (window as InstagramWindow).instgrm?.Embeds?.process();
+    const processEmbeds = () => {
+      if ((window as InstagramWindow).instgrm?.Embeds) {
+        (window as InstagramWindow).instgrm?.Embeds?.process();
+      }
     };
 
     const scriptSrc = "https://www.instagram.com/embed.js";
-    const existingScript = document.querySelector<HTMLScriptElement>(
-      `script[src="${scriptSrc}"]`
-    );
+    let script = document.querySelector<HTMLScriptElement>(`script[src="${scriptSrc}"]`);
 
-    if (existingScript) {
-      if ((window as InstagramWindow).instgrm?.Embeds) {
-        processInstagramEmbeds();
-      } else {
-        existingScript.addEventListener("load", processInstagramEmbeds, { once: true });
-      }
-
-      return () => {
-        existingScript.removeEventListener("load", processInstagramEmbeds);
-      };
+    if (!script) {
+      script = document.createElement("script");
+      script.src = scriptSrc;
+      script.async = true;
+      document.body.appendChild(script);
     }
 
-    const script = document.createElement("script");
-    script.src = scriptSrc;
-    script.async = true;
-    script.onload = processInstagramEmbeds;
-    document.body.appendChild(script);
+    // Delayed trigger ensures DOM elements are fully layout-ready for Instagram
+    const timer1 = setTimeout(processEmbeds, 150);
+    const timer2 = setTimeout(processEmbeds, 600);
 
     return () => {
-      script.onload = null;
+      clearTimeout(timer1);
+      clearTimeout(timer2);
     };
   }, []);
 
@@ -66,9 +60,9 @@ export default function Media() {
 
     const ctx = gsap.context(() => {
       gsap.from("[data-media-card]", {
-        y: 24,
-        autoAlpha: 0,
-        duration: 0.75,
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
         stagger: 0.1,
         ease: "power3.out",
       });
@@ -137,7 +131,7 @@ export default function Media() {
                 <div
                   key={reel.id}
                   data-media-card
-                  className="w-full overflow-hidden rounded-xl border border-zinc-800 bg-white p-2 shadow-xl transition-transform hover:-translate-y-1"
+                  className="flex justify-center w-full overflow-hidden rounded-xl border border-zinc-800 bg-white p-2 shadow-xl transition-transform hover:-translate-y-1"
                 >
                   <blockquote
                     className="instagram-media"
@@ -150,7 +144,7 @@ export default function Media() {
                       boxShadow: "0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)",
                       margin: "0 auto",
                       maxWidth: "540px",
-                      minWidth: "0",
+                      minWidth: "280px",
                       padding: 0,
                       width: "100%",
                     }}
