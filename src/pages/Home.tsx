@@ -34,6 +34,10 @@ const REELS = [
     id: "DcR-kWGRLyZ",
     url: "https://www.instagram.com/p/DcR-kWGRLyZ/",
   },
+  {
+    id: "DfLqOMBBfte",
+    url: "https://www.instagram.com/p/DfLqOMBBfte/",
+  },
 ];
 
 function KickoffCountdown() {
