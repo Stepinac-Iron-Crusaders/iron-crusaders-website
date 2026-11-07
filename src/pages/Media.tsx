@@ -125,15 +125,15 @@ export default function Media() {
               </h2>
             </div>
 
-            {/* Horizontal Scroll Track */}
+            {/* Horizontal Scroll Track (Displays 2 cards at full width on desktop) */}
             <div className="flex w-full snap-x snap-mandatory gap-6 overflow-x-auto pb-6 pt-2 scrollbar-thin scrollbar-thumb-zinc-700">
               {REELS.map((reel) => (
                 <div
                   key={reel.id}
                   data-media-card
-                  className="w-[320px] shrink-0 snap-center sm:w-[380px] md:w-[420px]"
+                  className="w-[320px] min-w-[320px] shrink-0 flex-none snap-center sm:w-[460px] sm:min-w-[460px] lg:w-[540px] lg:min-w-[540px]"
                 >
-                  <div className="flex items-center justify-center overflow-hidden rounded-xl border border-zinc-800 bg-white p-2 shadow-xl">
+                  <div className="w-full overflow-hidden rounded-xl border border-zinc-800 bg-white p-2 shadow-xl">
                     <blockquote
                       className="instagram-media"
                       data-instgrm-permalink={reel.url}
@@ -144,8 +144,8 @@ export default function Media() {
                         borderRadius: "3px",
                         boxShadow: "0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)",
                         margin: "0 auto",
-                        maxWidth: "100%",
-                        minWidth: "280px",
+                        maxWidth: "540px",
+                        minWidth: "0",
                         padding: 0,
                         width: "100%",
                       }}
