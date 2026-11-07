@@ -43,7 +43,6 @@ export default function Media() {
       document.body.appendChild(script);
     }
 
-    // Delayed trigger ensures DOM elements are fully layout-ready for Instagram
     const timer1 = setTimeout(processEmbeds, 150);
     const timer2 = setTimeout(processEmbeds, 600);
 
@@ -104,7 +103,7 @@ export default function Media() {
                   href="https://www.instagram.com/stepinacrobotics/"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:opacity-90 transition-opacity"
+                  className="bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white transition-opacity hover:opacity-90"
                 >
                   Instagram →
                 </a>
@@ -113,7 +112,7 @@ export default function Media() {
           </div>
         </section>
 
-        {/* Media Grid Section */}
+        {/* Horizontal Scrolling Media Track */}
         <section className="bg-zinc-900" ref={containerRef}>
           <div className="mx-auto max-w-[1280px] px-4 py-16 lg:px-8 lg:py-20">
             <div className="mb-8 flex flex-col gap-2">
@@ -126,48 +125,55 @@ export default function Media() {
               </h2>
             </div>
 
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Horizontal Scroll Track */}
+            <div className="flex w-full snap-x snap-mandatory gap-6 overflow-x-auto pb-6 pt-2 scrollbar-thin scrollbar-thumb-zinc-700">
               {REELS.map((reel) => (
                 <div
                   key={reel.id}
                   data-media-card
-                  className="flex justify-center w-full overflow-hidden rounded-xl border border-zinc-800 bg-white p-2 shadow-xl transition-transform hover:-translate-y-1"
+                  className="w-[320px] shrink-0 snap-center sm:w-[380px] md:w-[420px]"
                 >
-                  <blockquote
-                    className="instagram-media"
-                    data-instgrm-permalink={reel.url}
-                    data-instgrm-version="14"
-                    style={{
-                      background: "#fff",
-                      border: 0,
-                      borderRadius: "3px",
-                      boxShadow: "0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)",
-                      margin: "0 auto",
-                      maxWidth: "540px",
-                      minWidth: "280px",
-                      padding: 0,
-                      width: "100%",
-                    }}
-                  >
-                    <a
-                      href={reel.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="block p-6 text-center text-sm font-semibold text-blue-600"
+                  <div className="flex items-center justify-center overflow-hidden rounded-xl border border-zinc-800 bg-white p-2 shadow-xl">
+                    <blockquote
+                      className="instagram-media"
+                      data-instgrm-permalink={reel.url}
+                      data-instgrm-version="14"
+                      style={{
+                        background: "#fff",
+                        border: 0,
+                        borderRadius: "3px",
+                        boxShadow: "0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)",
+                        margin: "0 auto",
+                        maxWidth: "100%",
+                        minWidth: "280px",
+                        padding: 0,
+                        width: "100%",
+                      }}
                     >
-                      Watch this post on Instagram
-                    </a>
-                  </blockquote>
+                      <a
+                        href={reel.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="block p-6 text-center text-sm font-semibold text-blue-600"
+                      >
+                        Watch this post on Instagram
+                      </a>
+                    </blockquote>
+                  </div>
                 </div>
               ))}
             </div>
+
+            <p className="mt-4 text-center font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500">
+              Scroll left / right to view all posts
+            </p>
 
             <div className="mt-12 flex justify-center border-t border-zinc-800 pt-8">
               <a
                 href="https://www.instagram.com/stepinacrobotics/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 px-6 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:opacity-90 shadow-lg transition-opacity"
+                className="inline-flex items-center gap-2 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 px-6 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-lg transition-opacity hover:opacity-90"
               >
                 Follow @stepinacrobotics for more updates →
               </a>
