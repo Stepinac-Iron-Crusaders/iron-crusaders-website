@@ -19,9 +19,9 @@ const REELS = [
 ];
 
 export default function Media() {
-  const mediaRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Load Instagram embed script and process embeds
+  // Load Instagram embed script and parse widgets on mount
   useEffect(() => {
     type InstagramWindow = Window & {
       instgrm?: { Embeds?: { process: () => void } };
@@ -60,7 +60,7 @@ export default function Media() {
   }, []);
 
   useLayoutEffect(() => {
-    const container = mediaRef.current;
+    const container = containerRef.current;
     if (!container) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -68,8 +68,8 @@ export default function Media() {
       gsap.from("[data-media-card]", {
         y: 24,
         autoAlpha: 0,
-        duration: 0.8,
-        stagger: 0.12,
+        duration: 0.75,
+        stagger: 0.1,
         ease: "power3.out",
       });
     }, container);
@@ -80,6 +80,7 @@ export default function Media() {
   return (
     <AnimatedPage>
       <>
+        {/* Header Section */}
         <section className="border-b border-zinc-800 bg-zinc-950">
           <div className="mx-auto max-w-[1280px] px-4 py-12 lg:px-8 lg:py-16">
             <div className="flex flex-wrap items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-zinc-500">
@@ -109,7 +110,7 @@ export default function Media() {
                   href="https://www.instagram.com/stepinacrobotics/"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:opacity-90"
+                  className="bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-white hover:opacity-90 transition-opacity"
                 >
                   Instagram →
                 </a>
@@ -118,15 +119,15 @@ export default function Media() {
           </div>
         </section>
 
-        {/* ——— Instagram Media Gallery ——— */}
-        <section className="bg-zinc-900" ref={mediaRef}>
+        {/* Media Grid Section */}
+        <section className="bg-zinc-900" ref={containerRef}>
           <div className="mx-auto max-w-[1280px] px-4 py-16 lg:px-8 lg:py-20">
             <div className="mb-8 flex flex-col gap-2">
               <div className="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-red-500">
                 <span className="h-2 w-2 rounded-full bg-red-600 animate-pulse" />
                 Latest Highlights
               </div>
-              <h2 className="text-2xl font-black uppercase tracking-tight text-white">
+              <h2 className="text-2xl font-black uppercase tracking-tight text-white sm:text-3xl">
                 Instagram Posts &amp; Reels
               </h2>
             </div>
@@ -172,7 +173,7 @@ export default function Media() {
                 href="https://www.instagram.com/stepinacrobotics/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 px-6 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:opacity-90 shadow-lg"
+                className="inline-flex items-center gap-2 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 px-6 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white hover:opacity-90 shadow-lg transition-opacity"
               >
                 Follow @stepinacrobotics for more updates →
               </a>
